@@ -4,11 +4,6 @@
     height: 50%;
 }
 
-#header img {
-    width: 64px;
-    height: 64px;
-}
-
 #notes li {
     position: relative;
     width: 300px;
@@ -62,4 +57,9 @@
     -webkit-transform: rotate(6deg);
     -moz-transform: rotate(6deg);
     -o-transform: rotate(6deg);
+}
+
+.icon {
+    width: 64px;
+    height: 64px;
 }
