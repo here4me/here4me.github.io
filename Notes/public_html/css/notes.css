@@ -4,6 +4,11 @@
     height: 50%;
 }
 
+#icon {
+    width: 64px;
+    height: 64px;
+}
+
 #notes li {
     position: relative;
     width: 300px;
