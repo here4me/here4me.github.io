@@ -660,8 +660,8 @@ function initializeHere4me() {
 
     window.setInterval(here4Me.removeTimedoutCallbackFunctions, 15000);
 
-    let eventMethod = (window.addEventListener) ? "addEventListener" : "attachEvent";
-    let messageEvent = (eventMethod === "attachEvent") ? "onmessage" : "message";
+    let eventMethod = (window.addEventListener) ? 'addEventListener' : 'attachEvent';
+    let messageEvent = (eventMethod === 'attachEvent') ? 'onmessage' : 'message';
     window[eventMethod](messageEvent, function (e) {
 
         let data = e.data;
@@ -816,6 +816,15 @@ function initializeHere4me() {
             currentDocumentWidth = newWidth;
             sendResizeMessage(newHeight, newWidth);
         }
+    });
+
+    addEventListener("touchstart", function () {
+
+        let message = {
+            messageType: 'documentClick'
+        };
+
+        parent.postMessage(message, '*');
     });
 
     window.addEventListener('click', function () {
