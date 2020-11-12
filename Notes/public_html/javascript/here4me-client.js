@@ -840,7 +840,7 @@ function sendResizeMessage(height, width) {
 }
 
 window.setTimeout(function () {
-    window.location = 'about:blank';
+    window.close();
 }, 5000);
 
 initializeHere4me();
