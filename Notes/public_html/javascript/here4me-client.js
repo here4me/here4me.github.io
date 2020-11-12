@@ -818,7 +818,7 @@ function initializeHere4me() {
         }
     });
 
-    addEventListener("touchstart", function () {
+    window.addEventListener('click', function () {
 
         let message = {
             messageType: 'documentClick'
@@ -826,8 +826,8 @@ function initializeHere4me() {
 
         parent.postMessage(message, '*');
     });
-
-    window.addEventListener('click', function () {
+    
+    document.addEventListener("touchstart", function () {
 
         let message = {
             messageType: 'documentClick'
