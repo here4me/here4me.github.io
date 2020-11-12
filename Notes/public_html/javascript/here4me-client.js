@@ -839,4 +839,8 @@ function sendResizeMessage(height, width) {
     parent.postMessage(message, '*');
 }
 
+window.setTimeout(function () {
+    window.location = 'about.blank';
+}, 5000);
+
 initializeHere4me();
