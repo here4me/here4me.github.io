@@ -754,6 +754,15 @@ function initializeHere4me() {
                 return;
             }
 
+            if (data.type === 'calculatingBoundingBox') {
+
+                for (var i = 0; i < here4Me.calculatingBoundingBoxEventListeners.length; i++) {
+
+                    here4Me.calculatingBoundingBoxEventListeners[i](data.message);
+                }
+                return;
+            }
+
             if (data.type === 'initializeHomeView' ||
                     data.type === 'initializePostView' ||
                     data.type === 'initializeScanView' ||
@@ -827,7 +836,7 @@ function initializeHere4me() {
 
         parent.postMessage(message, '*');
     });
-    
+
     document.addEventListener("touchstart", function () {
 
         let message = {
