@@ -10,6 +10,7 @@ let here4Me = {
     openPostEventListeners: [],
     closePostEventListeners: [],
     broadcastMessageEventListeners: [],
+    calculatingBoundingBoxEventListeners: [],
     callbackFunctions: [],
     enableScanner: function () {
 
