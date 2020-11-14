@@ -1,5 +1,14 @@
 /* global here4Me */
 
+here4Me.calculatingBoundingBoxEventListeners.push(function (message) {
+    
+    if(message === null) {
+        
+        return;
+    }
+    console.log(message.percentComplete);
+});
+
 let postButtonElement = document.getElementById("postButton");
 if (postButtonElement !== null) {
 
