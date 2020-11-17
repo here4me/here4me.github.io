@@ -4,6 +4,7 @@ let here4Me = {
     homeId: null,
     siteId: null,
     currentRefId: 0,
+    initializeEventListeners: [],
     qrCodeScanEventListeners: [],
     qrCodeScanLocationEventListeners: [],
     userQRCodeContentIdEventListeners: [],
@@ -16,6 +17,9 @@ let here4Me = {
 
         let eventListeners;
         switch (eventType) {
+            case 'initialize':
+                eventListeners = here4Me.initializeEventListeners;
+                break;
             case 'qrCodeScan':
                 eventListeners = here4Me.qrCodeScanEventListeners;
                 break;
@@ -812,6 +816,11 @@ function initializeHere4me() {
                 if (here4Me.viewType === null && data.viewType !== null) {
 
                     here4Me.viewType = data.viewType;
+                }
+                
+                for (var i = 0; i < here4Me.initializeEventListeners.length; i++) {
+
+                    here4Me.initializeEventListeners[i](data.userId);
                 }
 
                 return;

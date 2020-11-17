@@ -2,8 +2,9 @@
 
 let reef = new Reef('#posts', {data: {posts: []}, template: renderSites, allowHTML: true});
 reef.render();
-window.onload = function () {
 
+here4Me.addEventListener('initialize', function (message) {
+    
     here4Me.readAllPosts(function (response) {
 
         if (response.statusCode === 'SUCCESSFUL') {
@@ -16,7 +17,7 @@ window.onload = function () {
             reef.data.posts = posts;
         }
     });
-};
+});
 
 let saveButtonElement = document.getElementById("saveButton");
 saveButtonElement.addEventListener('click', function (event) {
