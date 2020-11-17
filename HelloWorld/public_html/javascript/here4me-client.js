@@ -12,27 +12,27 @@ let here4Me = {
     broadcastMessageEventListeners: [],
     calculatingBoundingBoxEventListeners: [],
     callbackFunctions: [],
-    addEventListener: function(eventType, handler) {
-        
+    addEventListener: function (eventType, handler) {
+
         let eventListeners;
-        switch(eventType) {
+        switch (eventType) {
             case 'qrCodeScan':
-                eventListeners = here4Me.qrCodeScanEventListeners;
+                eventListeners = qrCodeScanEventListeners;
                 break;
             case 'userQRCodeContentId':
-                eventListeners = here4Me.userQRCodeContentIdEventListeners;
+                eventListeners = userQRCodeContentIdEventListeners;
                 break;
             case 'openPost':
-                eventListeners = here4Me.openPostEventListeners;
+                eventListeners = openPostEventListeners;
                 break;
             case 'closePost':
-                eventListeners = here4Me.closePostEventListeners;
+                eventListeners = closePostEventListeners;
                 break;
             case 'broadcastMessage':
-                eventListeners = here4Me.broadcastMessageEventListeners;
+                eventListeners = broadcastMessageEventListeners;
                 break;
             case 'calculatingBoundingBox':
-                eventListeners = here4Me.calculatingBoundingBoxEventListeners;
+                eventListeners = calculatingBoundingBoxEventListeners;
                 break;
             default:
                 return;
@@ -685,7 +685,6 @@ function initializeHere4me() {
     let currentWindoWidth = Number.MIN_VALUE;
     let currentWindowHeight = Number.MIN_VALUE;
 
-
     window.setInterval(here4Me.removeTimedoutCallbackFunctions, 15000);
 
     let eventMethod = (window.addEventListener) ? 'addEventListener' : 'attachEvent';
@@ -711,6 +710,8 @@ function initializeHere4me() {
                     currentWindowHeight = message.height;
                     currentDocumentWidth = homeContent.scrollWidth;
                     currentDocumentHeight = homeContent.scrollHeight;
+                    homeContent.style.width = currentDocumentHeight + 'px';
+                    homeContent.style.height = message.height + 'px';
                     sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                     return;
                 }
