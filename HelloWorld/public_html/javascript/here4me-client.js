@@ -698,7 +698,7 @@ function initializeHere4me() {
 
                 let message = data.message;
                 homeContent.style.width = message.width + 'px';
-                homeContent.style.height = (message.height + 100) + 'px';
+                homeContent.style.height = message.height + 'px';
                 if ((homeContent.scrollWidth > 0
                         && homeContent.scrollHeight > 0)
                         && (currentDocumentWidth !== homeContent.scrollWidth ||

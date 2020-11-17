@@ -4,114 +4,112 @@
         <title>Post</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
         <link rel="stylesheet" href="../css/helloWorld.css">
     </head>
-    <body>
-        <div id="here4me">
-            <div id="welcome">
-                <div id="postForm">
-                    <h1>Post Message</h1>
-                    <div>
-                        <label>Title</label>
-                        <input id="postMessageTitle" type="text">
-                    </div>
-                    <div>
-                        <label>Message</label>
-                        <select id="postMessage">
-                            <option value=""></option>
-                            <option value="Hello World!">
-                                Hello World!
-                            </option>
-                            <option value="Hola Mundo!">
-                                Hola Mundo!
-                            </option>
-                            <option value="Bonjour le monde!">
-                                Bonjour le monde!
-                            </option>
-                            <option value="Hallo Welt!">
-                                Hallo Welt!
-                            </option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Days of the Week</label>
-                        <select id="daysOfTheWeek" multiple>
-                            <option value="0">Sunday</option>
-                            <option value="1">Monday</option>
-                            <option value="2">Tuesday</option>
-                            <option value="3">Wednesday</option>
-                            <option value="4">Thursday</option>
-                            <option value="5">Friday</option>
-                            <option value="6">Saturday</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>From Time</label>
-                        <select id="fromTime">
-                            <option value="" selected></option>
-                            <option value="0">12am</option>
-                            <option value="1">1am</option>
-                            <option value="2">2am</option>
-                            <option value="3">3am</option>
-                            <option value="4">4am</option>
-                            <option value="5">5am</option>
-                            <option value="6">6am</option>
-                            <option value="7">7am</option>
-                            <option value="8">8am</option>
-                            <option value="9">9am</option>
-                            <option value="10">10am</option>
-                            <option value="11">11am</option>
-                            <option value="12">12pm</option>
-                            <option value="13">1pm</option>
-                            <option value="14">2pm</option>
-                            <option value="15">3pm</option>
-                            <option value="16">4pm</option>
-                            <option value="17">5pm</option>
-                            <option value="18">6pm</option>
-                            <option value="19">7pm</option>
-                            <option value="20">8pm</option>
-                            <option value="21">9pm</option>
-                            <option value="22">10pm</option>
-                            <option value="23">11pm</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Thru Time</label>
-                        <select id="thruTime">
-                            <option value="" selected></option>
-                            <option value="0">12am</option>
-                            <option value="1">1am</option>
-                            <option value="2">2am</option>
-                            <option value="3">3am</option>
-                            <option value="4">4am</option>
-                            <option value="5">5am</option>
-                            <option value="6">6am</option>
-                            <option value="7">7am</option>
-                            <option value="8">8am</option>
-                            <option value="9">9am</option>
-                            <option value="10">10am</option>
-                            <option value="11">11am</option>
-                            <option value="12">12pm</option>
-                            <option value="13">1pm</option>
-                            <option value="14">2pm</option>
-                            <option value="15">3pm</option>
-                            <option value="16">4pm</option>
-                            <option value="17">5pm</option>
-                            <option value="18">6pm</option>
-                            <option value="19">7pm</option>
-                            <option value="20">8pm</option>
-                            <option value="21">9pm</option>
-                            <option value="22">10pm</option>
-                            <option value="23">11pm</option>
-                        </select>
-                    </div>
-                    <div id="buttonBar">
-                        <button id="postbutton">Post</button>
-                    </div>
+    <body id="here4me">
+        <div id="welcome">
+            <div id="postForm">
+                <h1>Post Message</h1>
+                <div>
+                    <label>Title</label>
+                    <input id="postMessageTitle" type="text">
                 </div>
-                <h1 id="postProgress">&nbsp;</h1>
+                <div>
+                    <label>Message</label>
+                    <select id="postMessage">
+                        <option value=""></option>
+                        <option value="Hello World!">
+                            Hello World!
+                        </option>
+                        <option value="Hola Mundo!">
+                            Hola Mundo!
+                        </option>
+                        <option value="Bonjour le monde!">
+                            Bonjour le monde!
+                        </option>
+                        <option value="Hallo Welt!">
+                            Hallo Welt!
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label>Days of the Week</label>
+                    <select id="daysOfTheWeek" multiple>
+                        <option value="0">Sunday</option>
+                        <option value="1">Monday</option>
+                        <option value="2">Tuesday</option>
+                        <option value="3">Wednesday</option>
+                        <option value="4">Thursday</option>
+                        <option value="5">Friday</option>
+                        <option value="6">Saturday</option>
+                    </select>
+                </div>
+                <div>
+                    <label>From Time</label>
+                    <select id="fromTime">
+                        <option value="" selected></option>
+                        <option value="0">12am</option>
+                        <option value="1">1am</option>
+                        <option value="2">2am</option>
+                        <option value="3">3am</option>
+                        <option value="4">4am</option>
+                        <option value="5">5am</option>
+                        <option value="6">6am</option>
+                        <option value="7">7am</option>
+                        <option value="8">8am</option>
+                        <option value="9">9am</option>
+                        <option value="10">10am</option>
+                        <option value="11">11am</option>
+                        <option value="12">12pm</option>
+                        <option value="13">1pm</option>
+                        <option value="14">2pm</option>
+                        <option value="15">3pm</option>
+                        <option value="16">4pm</option>
+                        <option value="17">5pm</option>
+                        <option value="18">6pm</option>
+                        <option value="19">7pm</option>
+                        <option value="20">8pm</option>
+                        <option value="21">9pm</option>
+                        <option value="22">10pm</option>
+                        <option value="23">11pm</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Thru Time</label>
+                    <select id="thruTime">
+                        <option value="" selected></option>
+                        <option value="0">12am</option>
+                        <option value="1">1am</option>
+                        <option value="2">2am</option>
+                        <option value="3">3am</option>
+                        <option value="4">4am</option>
+                        <option value="5">5am</option>
+                        <option value="6">6am</option>
+                        <option value="7">7am</option>
+                        <option value="8">8am</option>
+                        <option value="9">9am</option>
+                        <option value="10">10am</option>
+                        <option value="11">11am</option>
+                        <option value="12">12pm</option>
+                        <option value="13">1pm</option>
+                        <option value="14">2pm</option>
+                        <option value="15">3pm</option>
+                        <option value="16">4pm</option>
+                        <option value="17">5pm</option>
+                        <option value="18">6pm</option>
+                        <option value="19">7pm</option>
+                        <option value="20">8pm</option>
+                        <option value="21">9pm</option>
+                        <option value="22">10pm</option>
+                        <option value="23">11pm</option>
+                    </select>
+                </div>
+                <div id="buttonBar">
+                    <button id="postbutton">Post</button>
+                </div>
             </div>
+            <h1 id="postProgress">&nbsp;</h1>
         </div>
         <script src="../javascript/here4me-client.js"></script>
         <script src="../javascript/helloWorld-post.js"></script>
