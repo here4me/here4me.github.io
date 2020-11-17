@@ -1,5 +1,5 @@
-#welcome img {
-    display: block;
+#welcome {
+    display: none;
 }
 
 #message img {
