@@ -41,7 +41,7 @@ saveButtonElement.addEventListener('click', function (event) {
 
         let qrCodeContent = {
             id: null,
-            acceptedSiteIds: ['SITE-ID'],
+            acceptedSiteIds: ['37a462e5cf0d9c8996eb7fa24cf327d0'],
             acceptedSiteOwnerIds: ['0b9d9a9ad5f2169a5bdf393e5002a938'],
             contentType: 'hello-world-data',
             filter: null,
@@ -85,6 +85,7 @@ document.addEventListener('render', function (event) {
         button.onclick = function () {
 
             here4Me.readPost(event.detail.posts[button.dataset.index].id, function (response) {
+                
                 if (response.statusCode === 'SUCCESSFUL') {
 
                     here4Me.deletePost(response.message, function (response) {

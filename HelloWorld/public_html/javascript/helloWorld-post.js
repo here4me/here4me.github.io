@@ -69,7 +69,7 @@ postButtonElement.addEventListener('click', function (event) {
         title: title,
         userDisplayName: null,
         contentType: 'hello-world-data',
-        acceptedSiteIds: ['SITE-ID'],
+        acceptedSiteIds: ['37a462e5cf0d9c8996eb7fa24cf327d0'],
         acceptedSiteOwnerIds: ['0b9d9a9ad5f2169a5bdf393e5002a938'],
         isUserProfilePost: false,
         filterSource: filterSrc,
