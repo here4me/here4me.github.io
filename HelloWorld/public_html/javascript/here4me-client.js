@@ -698,7 +698,7 @@ function initializeHere4me() {
 
                 let message = data.message;
                 homeContent.style.width = message.width + 'px';
-                homeContent.style.height = message.height + 'px';
+                homeContent.style.height = (message.height + 100) + 'px';
                 if ((homeContent.scrollWidth > 0
                         && homeContent.scrollHeight > 0)
                         && (currentDocumentWidth !== homeContent.scrollWidth ||
@@ -710,8 +710,6 @@ function initializeHere4me() {
                     currentWindowHeight = message.height;
                     currentDocumentWidth = homeContent.scrollWidth;
                     currentDocumentHeight = homeContent.scrollHeight;
-                    homeContent.style.width = currentDocumentWidth + 'px';
-                    homeContent.style.height = currentDocumentHeight + 'px';
                     sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                     return;
                 }
