@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Configuration</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+        <link rel="stylesheet" href="../css/helloWorld.css">
+    </head>
+    <body>
+        <div id="here4me">
+            <h1>Configuration</h1>
+            <div>
+                <label>Personal Message</label>
+                <select id="personalMessage">
+                    <option value="None">
+                        None
+                    </option>
+                    <option value="Hello World!">
+                        Hello World!
+                    </option>
+                    <option value="Hola Mundo!">
+                        Hola Mundo!
+                    </option>
+                    <option value="Bonjour le monde!">
+                        Bonjour le monde!
+                    </option>
+                    <option value="Hallo Welt!">
+                        Hallo Welt!
+                    </option>
+                </select>
+            </div>
+            <div id="buttonBar">
+                <button id="saveButton">Save</button>
+            </div>
+            <div>
+                <h3>Your Hello World Posts</h3>
+                <div id="posts">
+                    <div>
+                        <button id="postId" class="deletePostButton">Delete</button>
+                        <span>
+                            My post name
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/reefjs/dist/reef.min.js"></script>
+        <script src="../javascript/here4me-client.js"></script>
+        <script src="../javascript/helloWorld-configuration.js"></script>
+    </body>
+</html>

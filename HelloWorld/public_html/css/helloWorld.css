@@ -1,0 +1,75 @@
+#welcome img {
+    display: block;
+}
+
+#message img {
+    max-width: 256px;
+}
+
+#message {
+    display: none;
+    text-align: center;
+}
+
+#postForm {
+    display: block;
+}
+
+#postProgress {
+    text-align: center;
+    display: none;
+}
+
+#postMessageTitle {
+    width: 100%;
+}
+
+#postMessage {
+    width: 100%;
+}
+
+#personalMessage {
+    width: 100%;
+}
+
+.deletePostButton{
+    margin-right: 15px;
+    width: 25%;
+}
+
+#personalMessage img {
+    max-width: 256px;
+}
+
+#personalMessage {
+    text-align: center;
+}
+
+#daysOfTheWeek {
+    width: 100%;
+}
+
+#fromTime {
+    width: 100%;
+}
+
+#thruTime {
+    width: 100%;
+}
+
+#buttonBar {
+    text-align: right;
+}
+
+#cancelbutton {
+    width: 25%;
+}
+
+#postbutton {
+    width: 25%;
+}
+
+#saveButton {
+    width: 25%;
+}
+
