@@ -17,22 +17,22 @@ let here4Me = {
         let eventListeners;
         switch (eventType) {
             case 'qrCodeScan':
-                eventListeners = qrCodeScanEventListeners;
+                eventListeners = here4Me.qrCodeScanEventListeners;
                 break;
             case 'userQRCodeContentId':
-                eventListeners = userQRCodeContentIdEventListeners;
+                eventListeners = here4Me.userQRCodeContentIdEventListeners;
                 break;
             case 'openPost':
-                eventListeners = openPostEventListeners;
+                eventListeners = here4Me.openPostEventListeners;
                 break;
             case 'closePost':
-                eventListeners = closePostEventListeners;
+                eventListeners = here4Me.closePostEventListeners;
                 break;
             case 'broadcastMessage':
-                eventListeners = broadcastMessageEventListeners;
+                eventListeners = here4Me.broadcastMessageEventListeners;
                 break;
             case 'calculatingBoundingBox':
-                eventListeners = calculatingBoundingBoxEventListeners;
+                eventListeners = here4Me.calculatingBoundingBoxEventListeners;
                 break;
             default:
                 return;
