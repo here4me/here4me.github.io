@@ -710,8 +710,8 @@ function initializeHere4me() {
                     currentWindowHeight = message.height;
                     currentDocumentWidth = homeContent.scrollWidth;
                     currentDocumentHeight = homeContent.scrollHeight;
-                    homeContent.style.width = currentDocumentHeight + 'px';
-                    homeContent.style.height = message.height + 'px';
+                    homeContent.style.width = currentDocumentWidth + 'px';
+                    homeContent.style.height = currentDocumentHeight + 'px';
                     sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                     return;
                 }
