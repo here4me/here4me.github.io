@@ -4,7 +4,7 @@ here4Me.addEventListener('calculatingBoundingBox', function (message) {
 
     document.getElementById("postForm").style.display = 'none';
     document.getElementById("postProgress").style.display = 'block';
-    document.getElementById("messageBody").innerHTML = message.percentComplete + '%';
+    document.getElementById("postProgress").innerHTML = message.percentComplete + '%';
 });
 
 let postButtonElement = document.getElementById("postbutton");
@@ -80,6 +80,6 @@ postButtonElement.addEventListener('click', function (event) {
 
         document.getElementById("postForm").style.display = 'block';
         document.getElementById("postProgress").style.display = 'none';
-        document.getElementById("messageBody").innerHTML = '&nbsp;';
+        document.getElementById("postProgress").innerHTML = '&nbsp;';
     });
 });
