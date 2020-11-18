@@ -76,6 +76,12 @@ postButtonElement.addEventListener('click', function (event) {
     };
 
     here4Me.createPost(post, function (response) {
+        
+
+        if (response.statusCode === 'SUCCESSFUL') {
+            
+            here4Me.broadcastMessage('POST_CREATED');
+        }
 
         document.getElementById("postMessageTitle").value = null;
         let  postMessageElement = document.getElementById("postMessage");

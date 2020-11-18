@@ -19,6 +19,22 @@ here4Me.addEventListener('initialize', function (message) {
     });
 });
 
+here4Me.addEventListener('broadcastMessage', function (message) {
+
+    here4Me.readAllPosts(function (response) {
+
+        if (response.statusCode === 'SUCCESSFUL') {
+
+            let posts = response.message;
+            for (var i = 0; i < posts.length; i++) {
+
+                posts[i].index = i;
+            }
+            reef.data.posts = posts;
+        }
+    });
+});
+
 let saveButtonElement = document.getElementById("saveButton");
 saveButtonElement.addEventListener('click', function (event) {
 

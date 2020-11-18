@@ -2,6 +2,7 @@
 
 here4Me.addEventListener('openPost', function (message) {
     
+    here4Me.enableScanner();
     here4Me.enablePostButton();
     here4Me.enableScanButton();
     here4Me.enableConfigurationButton();
