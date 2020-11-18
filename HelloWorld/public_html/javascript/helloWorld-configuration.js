@@ -5,6 +5,27 @@ reef.render();
 
 here4Me.addEventListener('initialize', function (message) {
 
+    here4Me.getUserQRCodeContentId(function (response) {
+
+        if (response.statusCode === 'SUCCESSFUL') {
+
+            here4Me.readQRCodeContent(response.message, function (response) {
+
+                if (response.statusCode === 'SUCCESSFUL') {
+
+                    let personalMessageElement = document.getElementById("personalMessage");
+                    for (var i = 0; i < personalMessageElement.length; i++) {
+
+                        if (personalMessageElement.options[i].value === response.message.content) {
+
+                            personalMessageElement.options[i].selected = true;
+                        }
+                    }
+                }
+            });
+        }
+    });
+
     here4Me.readAllPosts(function (response) {
 
         if (response.statusCode === 'SUCCESSFUL') {
