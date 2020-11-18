@@ -60,28 +60,30 @@ let saveButtonElement = document.getElementById("saveButton");
 saveButtonElement.addEventListener('click', function (event) {
 
     let personalMessageValue = document.getElementById("personalMessage").value;
-    if (personalMessageValue.trim() === 'None') {
+    here4Me.getUserQRCodeContentId(function (response) {
 
-        here4Me.getUserQRCodeContentId(function (response) {
+        if (response.statusCode === 'SUCCESSFUL') {
 
-            if (response.statusCode === 'SUCCESSFUL') {
+            here4Me.readQRCodeContent(response.message, function (response) {
 
-                here4Me.readQRCodeContent(response.message, function (response) {
+                if (response.statusCode === 'SUCCESSFUL') {
 
-                    if (response.statusCode === 'SUCCESSFUL') {
+                    here4Me.deleteQRCodeContent(response.message, function (response) {
 
-                        here4Me.deleteQRCodeContent(response.message, function (response) {
+                        if (response.statusCode === 'SUCCESSFUL') {
 
-                            if (response.statusCode === 'SUCCESSFUL') {
+                            if (personalMessageValue.trim() === 'None') {
 
                                 here4Me.clearUserQRCodeContentId(function (response) {});
                             }
-                        });
-                    }
-                });
-            }
-        });
-    } else {
+                        }
+                    });
+                }
+            });
+        }
+    });
+    
+    if (personalMessageValue.trim() !== 'None') {
 
         let qrCodeContent = {
             id: null,
