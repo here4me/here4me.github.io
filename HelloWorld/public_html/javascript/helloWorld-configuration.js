@@ -7,11 +7,11 @@ here4Me.addEventListener('initialize', function (message) {
 
     here4Me.getUserQRCodeContentId(function (response) {
 
-        if (response.statusCode === 'SUCCESSFUL') {
+        if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
 
             here4Me.readQRCodeContent(response.message, function (response) {
 
-                if (response.statusCode === 'SUCCESSFUL') {
+                if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
 
                     let personalMessageElement = document.getElementById("personalMessage");
                     for (var i = 0; i < personalMessageElement.length; i++) {
