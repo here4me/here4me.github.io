@@ -23,8 +23,8 @@ postButtonElement.addEventListener('click', function (event) {
         return;
     }
 
-    let filterSrc = "let returnValue = true;\n";
-    filterSrc += "let now = new Date();\n";
+    let filter = "let returnValue = true;\n";
+    filter += "let now = new Date();\n";
     let daysOfTheWeekElement = document.getElementById("daysOfTheWeek");
     if (daysOfTheWeekElement.length > 0) {
 
@@ -35,34 +35,34 @@ postButtonElement.addEventListener('click', function (event) {
 
                 if (matchCount === 0) {
 
-                    filterSrc += 'returnValue = returnValue && (';
+                    filter += 'returnValue = returnValue && (';
                 } else {
 
-                    filterSrc += ' || ';
+                    filter += ' || ';
                 }
-                filterSrc += '(now.getDay() === ' + parseInt(daysOfTheWeekElement.options[i].value) + ')';
+                filter += '(now.getDay() === ' + parseInt(daysOfTheWeekElement.options[i].value) + ')';
                 matchCount++;
             }
         }
 
         if (matchCount > 0) {
 
-            filterSrc += ');\n';
+            filter += ');\n';
         }
     }
 
     let fromTimeValue = document.getElementById("fromTime").value;
     if (fromTimeValue !== null && fromTimeValue.trim() !== '') {
 
-        filterSrc += 'returnValue = returnValue && (now.getHours() >= ' + parseInt(fromTimeValue) + ');\n';
+        filter += 'returnValue = returnValue && (now.getHours() >= ' + parseInt(fromTimeValue) + ');\n';
     }
 
     let thruTimeValue = document.getElementById("thruTime").value;
     if (thruTimeValue !== null && thruTimeValue.trim() !== '') {
 
-        filterSrc += 'returnValue = returnValue && (now.getHours() <= ' + parseInt(thruTimeValue) + ');\n';
+        filter += 'returnValue = returnValue && (now.getHours() <= ' + parseInt(thruTimeValue) + ');\n';
     }
-    filterSrc += 'return returnValue;';
+    filter += 'return returnValue;';
 
     let post = {
         title: title,
@@ -71,7 +71,7 @@ postButtonElement.addEventListener('click', function (event) {
         acceptedSiteIds: ['37a462e5cf0d9c8996eb7fa24cf327d0'],
         acceptedSiteOwnerIds: ['0b9d9a9ad5f2169a5bdf393e5002a938'],
         isUserProfilePost: false,
-        filterSource: filterSrc,
+        filter: filter,
         content: postMessageValue
     };
 
