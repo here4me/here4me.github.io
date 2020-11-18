@@ -68,22 +68,16 @@ saveButtonElement.addEventListener('click', function (event) {
 
                 if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
 
-                    here4Me.deleteQRCodeContent(response.message, function (response) {
-
-                        if (response.statusCode === 'SUCCESSFUL') {
-
-                            if (personalMessageValue.trim() === 'None') {
-
-                                here4Me.clearUserQRCodeContentId(function (response) {});
-                            }
-                        }
-                    });
+                    here4Me.deleteQRCodeContent(response.message, function (response) {});
                 }
             });
         }
     });
-    
-    if (personalMessageValue.trim() !== 'None') {
+
+    if (personalMessageValue.trim() === 'None') {
+
+        here4Me.clearUserQRCodeContentId(function (response) {});
+    } else {
 
         let qrCodeContent = {
             id: null,
