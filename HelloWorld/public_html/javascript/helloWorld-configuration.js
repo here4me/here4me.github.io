@@ -4,7 +4,7 @@ let reef = new Reef('#posts', {data: {posts: []}, template: renderSites, allowHT
 reef.render();
 
 here4Me.addEventListener('initialize', function (message) {
-    
+
     here4Me.readAllPosts(function (response) {
 
         if (response.statusCode === 'SUCCESSFUL') {
@@ -29,11 +29,17 @@ saveButtonElement.addEventListener('click', function (event) {
 
             if (response.statusCode === 'SUCCESSFUL') {
 
-                here4Me.deleteQRCodeContent(response.message, function (response) {
+                here4Me.readQRCodeContent(response.message, function (response) {
 
                     if (response.statusCode === 'SUCCESSFUL') {
 
-                        here4Me.clearUserQRCodeContentId(function (response) {});
+                        here4Me.deleteQRCodeContent(response.message, function (response) {
+
+                            if (response.statusCode === 'SUCCESSFUL') {
+
+                                here4Me.clearUserQRCodeContentId(function (response) {});
+                            }
+                        });
                     }
                 });
             }
@@ -86,7 +92,7 @@ document.addEventListener('render', function (event) {
         button.onclick = function () {
 
             here4Me.readPost(event.detail.posts[button.dataset.index].id, function (response) {
-                
+
                 if (response.statusCode === 'SUCCESSFUL') {
 
                     here4Me.deletePost(response.message, function (response) {
