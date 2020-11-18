@@ -26,7 +26,6 @@ postButtonElement.addEventListener('click', function (event) {
     let filterSrc = "let returnValue = true;\n";
     filterSrc += "let now = new Date();\n";
     let daysOfTheWeekElement = document.getElementById("daysOfTheWeek");
-
     if (daysOfTheWeekElement.length > 0) {
 
         let matchCount = 0;
@@ -77,6 +76,41 @@ postButtonElement.addEventListener('click', function (event) {
     };
 
     here4Me.createPost(post, function (response) {
+
+        document.getElementById("postMessageTitle").value = null;
+        let  postMessageElement = document.getElementById("postMessage");
+        for (var i = 0; i < postMessageElement.length; i++) {
+
+            if (i === 0) {
+                postMessageElement.options[i].selected = true;
+            }
+            postMessageElement.options[i].selected = false;
+        }
+
+        let daysOfTheWeekElement = document.getElementById("daysOfTheWeek");
+        for (var i = 0; i < daysOfTheWeekElement.length; i++) {
+
+            daysOfTheWeekElement.options[i].selected = false;
+        }
+
+        let fromTimeElement = document.getElementById("fromTime");
+        for (var i = 0; i < fromTimeElement.length; i++) {
+
+            if (i === 0) {
+                fromTimeElement.options[i].selected = true;
+            }
+            fromTimeElement.options[i].selected = false;
+        }
+
+        let thruTimeElement = document.getElementById("thruTime");
+        for (var i = 0; i < thruTimeElement.length; i++) {
+
+            if (i === 0) {
+                thruTimeElement.options[i].selected = true;
+            }
+            thruTimeElement.options[i].selected = false;
+            break
+        }
 
         document.getElementById("postForm").style.display = 'block';
         document.getElementById("postProgress").style.display = 'none';
