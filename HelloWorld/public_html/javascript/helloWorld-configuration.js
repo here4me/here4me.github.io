@@ -62,11 +62,11 @@ saveButtonElement.addEventListener('click', function (event) {
     let personalMessageValue = document.getElementById("personalMessage").value;
     here4Me.getUserQRCodeContentId(function (response) {
 
-        if (response.statusCode === 'SUCCESSFUL') {
+        if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
 
             here4Me.readQRCodeContent(response.message, function (response) {
 
-                if (response.statusCode === 'SUCCESSFUL') {
+                if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
 
                     here4Me.deleteQRCodeContent(response.message, function (response) {
 
