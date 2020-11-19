@@ -43,7 +43,7 @@ saveButtonElement.addEventListener('click', function (event) {
 
         if (qrCodeContent !== null) {
 
-            here4Me.deleteQRCodeContentResonse(qrCodeContent, function (response) {});
+            here4Me.deleteQRCodeContent(qrCodeContent, function (response) {});
         }
         setUserQRCodeContent();
     });
