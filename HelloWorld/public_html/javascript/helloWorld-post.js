@@ -13,6 +13,7 @@ let thruTimeElement = document.getElementById('thruTime');
 let postButtonElement = document.getElementById('postbutton');
 let postProgressElement = document.getElementById('postProgress');
 let postProgressMessageElement = document.getElementById('postProgressMessage');
+let isPostInProgress = false;
 
 postButtonElement.addEventListener('click', function (event) {
 
@@ -21,22 +22,27 @@ postButtonElement.addEventListener('click', function (event) {
 
         return;
     }
-    
+
+    isPostInProgress = true;
     here4Me.createPost(post, function (response) {
 
-        clearPostForm();
-        showPostForm();
         if (response.statusCode === 'SUCCESSFUL') {
 
             here4Me.broadcastMessage('POST_CREATED');
         }
+        clearPostForm();
+        showPostForm();
+        isPostInProgress = false;
     });
 });
 
 here4Me.addEventListener('calculatingBoundingBox', function (status) {
 
     let percentComplete = status.percentComplete;
-    showBoundingBoxProgress(percentComplete);
+    if(isPostInProgress) {
+        
+        showBoundingBoxProgress(percentComplete);
+    }
 });
 
 function showBoundingBoxProgress(percentComplete) {
@@ -150,7 +156,7 @@ function clearPostForm() {
 }
 
 function clearSelectElement(selectElement) {
-    
+
     for (var i = 0; i < selectElement.length; i++) {
 
         let option = selectElement.options[i];
