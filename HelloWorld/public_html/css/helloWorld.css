@@ -34,7 +34,7 @@
 
 .deletePostButton{
     margin-right: 15px;
-    width: 25%;
+    width: 50%;
 }
 
 #personalMessage img {
@@ -70,9 +70,5 @@
 }
 
 #saveButton {
-    width: 50%;
-}
-
-#deletePostButton {
     width: 50%;
 }
