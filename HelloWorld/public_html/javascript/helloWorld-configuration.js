@@ -24,7 +24,15 @@ document.addEventListener('render', function (event) {
         let post = posts[buttonIndex];
         button.onclick = function () {
 
-            deletePost(post);
+            deletePost(post, function () {
+
+                let posts = reef.data.posts;
+                posts.splice(button.dataset.index, 1);
+                for (var j = 0; j < posts.length; j++) {
+
+                    posts[j].index = j;
+                }
+            });
         };
     }
 });
@@ -143,18 +151,13 @@ function createQRCodeContent(qrCodeContent, callback) {
     });
 }
 
-function deletePost(post) {
+function deletePost(post, callback) {
 
     here4Me.deletePost(post, function (response) {
 
         if (response.statusCode === 'SUCCESSFUL') {
 
-            let posts = reef.data.posts;
-            posts.splice(button.dataset.index, 1);
-            for (var j = 0; j < posts.length; j++) {
-
-                posts[j].index = j;
-            }
+            callback();
         }
     });
 }
