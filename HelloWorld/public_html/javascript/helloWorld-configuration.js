@@ -1,47 +1,82 @@
 /* global here4Me */
 
+const CONTENT_TYPE = 'hello-world-data';
+const SITE_ID = '37a462e5cf0d9c8996eb7fa24cf327d0';
+const SITE_OWNER_ID = '0b9d9a9ad5f2169a5bdf393e5002a938';
+
+let personalMessageElement = document.getElementById("personalMessage");
+let saveButtonElement = document.getElementById("saveButton");
+let postsElement = document.getElementById("posts");
 let reef = new Reef('#posts', {data: {posts: []}, template: renderSites, allowHTML: true});
-reef.render();
 
-here4Me.addEventListener('initialize', function (message) {
+document.addEventListener('render', function (event) {
 
-    here4Me.getUserQRCodeContentId(function (response) {
+    if (!event.target.matches('#posts')) {
+        return;
+    }
 
-        if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
+    let posts = event.detail.posts;
+    let buttons = postsElement.getElementsByClassName('deletePostButton');
+    for (var i = 0; i < buttons.length; i++) {
 
-            here4Me.readQRCodeContent(response.message, function (response) {
+        let button = buttons[i];
+        let buttonIndex = button.dataset.index;
+        let post = posts[buttonIndex];
+        button.onclick = function () {
 
-                if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
+            deletePost(post);
+        };
+    }
+});
 
-                    let personalMessageElement = document.getElementById("personalMessage");
-                    for (var i = 0; i < personalMessageElement.length; i++) {
+saveButtonElement.addEventListener('click', function (event) {
 
-                        if (personalMessageElement.options[i].value === response.message.content) {
+    getUserQRCodeContent(function (qrCodeContent) {
 
-                            personalMessageElement.options[i].selected = true;
-                        }
-                    }
-                }
-            });
+        if (qrCodeContent !== null) {
+
+            here4Me.deleteQRCodeContentResonse(qrCodeContent, function (response) {});
         }
+        setUserQRCodeContent();
     });
+});
 
-    here4Me.readAllPosts(function (response) {
+here4Me.addEventListener('initialize', function () {
 
-        if (response.statusCode === 'SUCCESSFUL') {
-
-            let posts = response.message;
-            for (var i = 0; i < posts.length; i++) {
-
-                posts[i].index = i;
-            }
-            reef.data.posts = posts;
-        }
-    });
+    reef.render();
+    setPersonalMessageSelect();
+    displayAllPosts();
 });
 
 here4Me.addEventListener('broadcastMessage', function (message) {
 
+    switch (message) {
+
+        case 'POST_CREATED':
+            displayAllPosts();
+            break;
+    }
+});
+
+function setPersonalMessageSelect() {
+
+    getUserQRCodeContent(function (qrCodeContent) {
+
+        if (qrCodeContent !== null) {
+
+            for (var i = 0; i < personalMessageElement.length; i++) {
+
+                if (personalMessageElement.options[i].value === qrCodeContent.content) {
+
+                    personalMessageElement.options[i].selected = true;
+                }
+            }
+        }
+    });
+}
+
+function displayAllPosts() {
+
     here4Me.readAllPosts(function (response) {
 
         if (response.statusCode === 'SUCCESSFUL') {
@@ -54,52 +89,92 @@ here4Me.addEventListener('broadcastMessage', function (message) {
             reef.data.posts = posts;
         }
     });
-});
+}
 
-let saveButtonElement = document.getElementById("saveButton");
-saveButtonElement.addEventListener('click', function (event) {
+function getUserQRCodeContent(callback) {
 
-    let personalMessageValue = document.getElementById("personalMessage").value;
     here4Me.getUserQRCodeContentId(function (response) {
 
-        if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
+        let qrCodeContentId = response.message;
+        if (response.statusCode === 'SUCCESSFUL' && qrCodeContentId !== null) {
 
             here4Me.readQRCodeContent(response.message, function (response) {
 
-                if (response.statusCode === 'SUCCESSFUL' && response.message !== null) {
+                let qrCodeContent = response.message;
+                if (response.statusCode === 'SUCCESSFUL') {
 
-                    here4Me.deleteQRCodeContent(response.message, function (response) {});
+                    callback(qrCodeContent);
                 }
+                callback(null);
             });
         }
+        callback(null);
     });
+}
 
+function setUserQRCodeContent() {
+
+    let personalMessageValue = personalMessageElement.value;
     if (personalMessageValue.trim() === 'None') {
 
         here4Me.clearUserQRCodeContentId(function (response) {});
     } else {
 
-        let qrCodeContent = {
-            id: null,
-            acceptedSiteIds: ['37a462e5cf0d9c8996eb7fa24cf327d0'],
-            acceptedSiteOwnerIds: ['0b9d9a9ad5f2169a5bdf393e5002a938'],
-            contentType: 'hello-world-data',
-            filter: null,
-            content: document.getElementById('personalMessage').value,
-            service: null,
-            context: null,
-            version: null
-        };
+        createQRCodeContent(buildQRCodeContent(), function (qrCodeContentId) {
 
-        here4Me.createQRCodeContent(qrCodeContent, function (response) {
+            if (qrCodeContentId !== null) {
 
-            if (response.statusCode === 'SUCCESSFUL') {
-
-                here4Me.setUserQRCodeContentId(response.message.id, function (response) {});
+                here4Me.setUserQRCodeContentId(qrCodeContentId, function (response) {});
             }
         });
     }
-});
+}
+
+function createQRCodeContent(qrCodeContent, callback) {
+
+    here4Me.createQRCodeContent(qrCodeContent, function (response) {
+
+        let qrCodeContentId = response.message.id;
+        if (response.statusCode === 'SUCCESSFUL') {
+
+            callback(qrCodeContentId);
+        }
+        callback(null);
+    });
+}
+
+function deletePost(post) {
+
+    here4Me.deletePost(post, function (response) {
+
+        if (response.statusCode === 'SUCCESSFUL') {
+
+            let posts = reef.data.posts;
+            posts.splice(button.dataset.index, 1);
+            for (var j = 0; j < posts.length; j++) {
+
+                posts[j].index = j;
+            }
+        }
+    });
+}
+
+function buildQRCodeContent() {
+
+    let qrCodeContent = {
+        id: null,
+        contentType: CONTENT_TYPE,
+        acceptedSiteIds: [SITE_ID],
+        acceptedSiteOwnerIds: [SITE_OWNER_ID],
+        filter: null,
+        content: personalMessageElement.value,
+        service: null,
+        context: null,
+        version: null
+    };
+
+    return qrCodeContent;
+}
 
 function renderSites(props) {
     return `${props.posts.map(renderPost).join('')}`;
@@ -111,37 +186,3 @@ function renderPost(post) {
                 <span>${post.title}</span>
             </div>`;
 }
-
-document.addEventListener('render', function (event) {
-
-    if (!event.target.matches('#posts')) {
-        return;
-    }
-
-    let buttons = document.getElementById("posts").getElementsByClassName('deletePostButton');
-    for (var i = 0; i < buttons.length; i++) {
-
-        let button = buttons[i];
-        button.onclick = function () {
-
-            here4Me.readPost(event.detail.posts[button.dataset.index].id, function (response) {
-
-                if (response.statusCode === 'SUCCESSFUL') {
-
-                    here4Me.deletePost(response.message, function (response) {
-
-                        if (response.statusCode === 'SUCCESSFUL') {
-
-                            let posts = reef.data.posts;
-                            posts.splice(button.dataset.index, 1);
-                            for (var j = 0; j < posts.length; j++) {
-
-                                posts[j].index = j;
-                            }
-                        }
-                    });
-                }
-            });
-        };
-    }
-}, false);

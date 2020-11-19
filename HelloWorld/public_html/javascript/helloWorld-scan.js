@@ -1,6 +1,9 @@
 /* global here4Me */
 
-here4Me.addEventListener('scannedQRCodeContent', function (message) {
+let personalMessageBodyElement = document.getElementById('personalMessageBody');
 
-    document.getElementById("personalMessageBody").innerHTML = message.content;
+here4Me.addEventListener('scannedQRCodeContent', function (qrCodeContent) {
+
+    personalMessageBodyElement.innerHTML = qrCodeContent.content;
 });
+

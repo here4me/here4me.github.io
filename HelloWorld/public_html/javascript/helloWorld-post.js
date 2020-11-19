@@ -1,31 +1,95 @@
 /* global here4Me */
 
-here4Me.addEventListener('calculatingBoundingBox', function (message) {
+const CONTENT_TYPE = 'hello-world-data';
+const SITE_ID = '37a462e5cf0d9c8996eb7fa24cf327d0';
+const SITE_OWNER_ID = '0b9d9a9ad5f2169a5bdf393e5002a938';
 
-    document.getElementById("postForm").style.display = 'none';
-    document.getElementById("postProgress").style.display = 'block';
-    document.getElementById("postProgressMessage").innerHTML = message.percentComplete + '%';
-});
+let postFormElement = document.getElementById('postForm');
+let postTitleElement = document.getElementById('postTitle');
+let postMessageElement = document.getElementById('postMessage');
+let daysOfTheWeekElement = document.getElementById('daysOfTheWeek');
+let fromTimeElement = document.getElementById('fromTime');
+let thruTimeElement = document.getElementById('thruTime');
+let postButtonElement = document.getElementById('postbutton');
+let postProgressElement = document.getElementById('postProgress');
+let postProgressMessageElement = document.getElementById('postProgressMessage');
 
-let postButtonElement = document.getElementById("postbutton");
 postButtonElement.addEventListener('click', function (event) {
 
-    let title = document.getElementById("postMessageTitle").value;
-    title = (title === null || title.trim() === '') ? null : title;
-    if (title === null || title.trim() === '') {
+    let post = buildPost();
+    if (post === null) {
 
         return;
     }
+    
+    here4Me.createPost(post, function (response) {
 
-    let postMessageValue = document.getElementById("postMessage").value;
-    if (postMessageValue === null || postMessageValue.trim() === '') {
+        clearPostForm();
+        showPostForm();
+        if (response.statusCode === 'SUCCESSFUL') {
 
-        return;
+            here4Me.broadcastMessage('POST_CREATED');
+        }
+    });
+});
+
+here4Me.addEventListener('calculatingBoundingBox', function (status) {
+
+    let percentComplete = status.percentComplete;
+    showBoundingBoxProgress(percentComplete);
+});
+
+function showBoundingBoxProgress(percentComplete) {
+
+    postFormElement.style.display = 'none';
+    postProgressElement.style.display = 'block';
+    postProgressMessageElement.innerHTML = percentComplete + '%';
+}
+
+function showPostForm() {
+
+    postFormElement.style.display = 'block';
+    postProgressElement.style.display = 'none';
+    postProgressMessageElement.innerHTML = '&nbsp;';
+}
+
+function buildPost() {
+
+    let title = postTitleElement.value;
+    let postMessage = document.getElementById('postMessage').value;
+    if (isEmpty(title) || isEmpty(postMessage)) {
+
+        return null;
     }
 
-    let filter = "let returnValue = true;\n";
-    filter += "let now = new Date();\n";
-    let daysOfTheWeekElement = document.getElementById("daysOfTheWeek");
+    let post = {
+        title: title,
+        userDisplayName: null,
+        contentType: CONTENT_TYPE,
+        acceptedSiteIds: [SITE_ID],
+        acceptedSiteOwnerIds: [SITE_OWNER_ID],
+        isUserProfilePost: false,
+        filter: buildDateTimeFilter(),
+        content: postMessage
+    };
+
+    return post;
+}
+
+function buildDateTimeFilter() {
+
+    let filter = 'let returnValue = true;\n';
+    filter += 'let now = new Date();\n';
+    filter = appendDayOfWeekFilter(filter);
+    filter = appendFromTimeFilter(filter);
+    filter = appendThruTimeFilter(filter);
+    filter += 'return returnValue;';
+
+    return filter;
+}
+
+function appendDayOfWeekFilter(filter) {
+
     if (daysOfTheWeekElement.length > 0) {
 
         let matchCount = 0;
@@ -51,75 +115,59 @@ postButtonElement.addEventListener('click', function (event) {
         }
     }
 
-    let fromTimeValue = document.getElementById("fromTime").value;
-    if (fromTimeValue !== null && fromTimeValue.trim() !== '') {
+    return filter;
+}
+
+function appendFromTimeFilter(filter) {
+
+    let fromTimeValue = fromTimeElement.value;
+    if (!isEmpty(fromTimeValue)) {
 
         filter += 'returnValue = returnValue && (now.getHours() >= ' + parseInt(fromTimeValue) + ');\n';
     }
 
-    let thruTimeValue = document.getElementById("thruTime").value;
-    if (thruTimeValue !== null && thruTimeValue.trim() !== '') {
+    return filter;
+}
+
+function appendThruTimeFilter(filter) {
+
+    let thruTimeValue = thruTimeElement.value;
+    if (!isEmpty(thruTimeValue)) {
 
         filter += 'returnValue = returnValue && (now.getHours() <= ' + parseInt(thruTimeValue) + ');\n';
     }
-    filter += 'return returnValue;';
 
-    let post = {
-        title: title,
-        userDisplayName: null,
-        contentType: 'hello-world-data',
-        acceptedSiteIds: ['37a462e5cf0d9c8996eb7fa24cf327d0'],
-        acceptedSiteOwnerIds: ['0b9d9a9ad5f2169a5bdf393e5002a938'],
-        isUserProfilePost: false,
-        filter: filter,
-        content: postMessageValue
-    };
+    return filter;
+}
 
-    here4Me.createPost(post, function (response) {
-        
+function clearPostForm() {
 
-        if (response.statusCode === 'SUCCESSFUL') {
-            
-            here4Me.broadcastMessage('POST_CREATED');
+    postTitleElement.value = null;
+    clearSelectElement(postMessageElement);
+    clearSelectElement(daysOfTheWeekElement);
+    clearSelectElement(fromTimeElement);
+    clearSelectElement(thruTimeElement);
+}
+
+function clearSelectElement(selectElement) {
+    
+    for (var i = 0; i < selectElement.length; i++) {
+
+        let option = selectElement.options[i];
+        if (i === 0 && option.value === '') {
+            option.selected = true;
         }
+        option.selected = false;
+    }
+}
 
-        document.getElementById("postMessageTitle").value = null;
-        let  postMessageElement = document.getElementById("postMessage");
-        for (var i = 0; i < postMessageElement.length; i++) {
+function isEmpty(value) {
 
-            if (i === 0) {
-                postMessageElement.options[i].selected = true;
-            }
-            postMessageElement.options[i].selected = false;
-        }
+    value = (value === null || value.trim() === '') ? null : value;
+    if (value === null || value.trim() === '') {
 
-        let daysOfTheWeekElement = document.getElementById("daysOfTheWeek");
-        for (var i = 0; i < daysOfTheWeekElement.length; i++) {
+        return true;
+    }
 
-            daysOfTheWeekElement.options[i].selected = false;
-        }
-
-        let fromTimeElement = document.getElementById("fromTime");
-        for (var i = 0; i < fromTimeElement.length; i++) {
-
-            if (i === 0) {
-                fromTimeElement.options[i].selected = true;
-            }
-            fromTimeElement.options[i].selected = false;
-        }
-
-        let thruTimeElement = document.getElementById("thruTime");
-        for (var i = 0; i < thruTimeElement.length; i++) {
-
-            if (i === 0) {
-                thruTimeElement.options[i].selected = true;
-            }
-            thruTimeElement.options[i].selected = false;
-            break
-        }
-
-        document.getElementById("postForm").style.display = 'block';
-        document.getElementById("postProgress").style.display = 'none';
-        document.getElementById("postProgressMessage").innerHTML = '&nbsp;';
-    });
-});
+    return false;
+}

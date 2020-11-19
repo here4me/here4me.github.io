@@ -1,21 +1,38 @@
 /* global here4Me */
 
-here4Me.addEventListener('openPost', function (message) {
-    
+let welcomeElement = document.getElementById('welcome');
+let messageElement = document.getElementById('message');
+let messageBodyElement = document.getElementById('messageBody');
+
+here4Me.addEventListener('openPost', function (post) {
+
+    enableSiteFunctionality();
+    if (post === null) {
+
+        showWelcome();
+        return;
+    }
+    showHelloWorldContent(post.content);
+});
+
+function enableSiteFunctionality() {
+
     here4Me.enableScanner();
     here4Me.enablePostButton();
     here4Me.enableScanButton();
     here4Me.enableConfigurationButton();
+}
 
-    if (message === null) {
+function showWelcome() {
 
-        document.getElementById("welcome").style.display = 'block';
-        document.getElementById("message").style.display = 'none';
-        document.getElementById("messageBody").innerHTML = '';
-        return;
-    }
+    welcomeElement.style.display = 'block';
+    messageElement.style.display = 'none';
+    messageBodyElement.innerHTML = '';
+}
 
-    document.getElementById("welcome").style.display = 'none';
-    document.getElementById("message").style.display = 'block';
-    document.getElementById("messageBody").innerHTML = message.content;
-});
+function showHelloWorldContent(content) {
+
+    welcomeElement.style.display = 'none';
+    messageElement.style.display = 'block';
+    messageBodyElement.innerHTML = content;
+}
