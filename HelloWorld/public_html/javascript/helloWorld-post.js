@@ -26,6 +26,7 @@ postButtonElement.addEventListener('click', function (event) {
     isPostInProgress = true;
     here4Me.createPost(post, function (response) {
 
+        console.log('Got create post response!');
         if (response.statusCode === 'SUCCESSFUL') {
 
             here4Me.broadcastMessage('POST_CREATED');
@@ -38,6 +39,7 @@ postButtonElement.addEventListener('click', function (event) {
 
 here4Me.addEventListener('calculatingBoundingBox', function (status) {
 
+    console.log('Got calculating response!');
     let percentComplete = status.percentComplete;
     if(isPostInProgress) {
         
