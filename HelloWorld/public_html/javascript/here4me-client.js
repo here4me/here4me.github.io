@@ -668,13 +668,14 @@ let here4Me = {
     removeTimedoutCallbackFunctions: function () {
 
         let now = Date.now();
-        for (var i = 0; i <= here4Me.callbackFunctions.length; i++) {
+        for (var i = 0; i < here4Me.callbackFunctions.length; i++) {
 
             let callbackFunction = here4Me.callbackFunctions[i];
             if (callbackFunction !== null &&
                     callbackFunction !== undefined &&
                     (now - callbackFunction.timestamp) >= 60000) {
 
+                console.log('Callback timed out!');
                 here4Me.callbackFunctions.splice(i, 1);
             }
         }
@@ -727,7 +728,7 @@ function initializeHere4me() {
 
                 console.log('Here for me client go response: ' + data.type);
                 console.log(data.message);
-                for (var i = 0; i <= here4Me.callbackFunctions.length; i++) {
+                for (var i = 0; i < here4Me.callbackFunctions.length; i++) {
 
                     let callbackFunction = here4Me.callbackFunctions[i];
                     if (callbackFunction !== null &&
@@ -736,6 +737,7 @@ function initializeHere4me() {
 
                         console.log('Function found!');
                         here4Me.callbackFunctions.splice(i, 1);
+                        console.log('Callback removed!');
                         callbackFunction.callback(data.message.response);
                         break;
                     }
@@ -820,7 +822,7 @@ function initializeHere4me() {
 
                     here4Me.viewType = data.viewType;
                 }
-                
+
                 for (var i = 0; i < here4Me.initializeEventListeners.length; i++) {
 
                     here4Me.initializeEventListeners[i](data.userId);
