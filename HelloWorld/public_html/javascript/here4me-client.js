@@ -725,6 +725,8 @@ function initializeHere4me() {
                     data.type === 'recordResponse' ||
                     data.type === 'serviceMessageResponse') {
 
+                console.log('Here for me client go response: ' + data.type);
+                console.log(data.message);
                 for (var i = 0; i <= here4Me.callbackFunctions.length; i++) {
 
                     let callbackFunction = here4Me.callbackFunctions[i];
@@ -732,6 +734,7 @@ function initializeHere4me() {
                             callbackFunction !== undefined &&
                             callbackFunction.refId === data.message.refId) {
 
+                        console.log('Function found!');
                         here4Me.callbackFunctions.splice(i, 1);
                         callbackFunction.callback(data.message.response);
                         break;
