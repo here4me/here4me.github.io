@@ -1,8 +1,8 @@
 /* global here4Me */
 
 const CONTENT_TYPE = 'hello-world-data';
-const SITE_ID = '37a462e5cf0d9c8996eb7fa24cf327d0';
-const SITE_OWNER_ID = '0b9d9a9ad5f2169a5bdf393e5002a938';
+const SITE_ID = '9bdd7936d8a3a39c97e4e152795c68f4';
+const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
 let postFormElement = document.getElementById('postForm');
 let postTitleElement = document.getElementById('postTitle');
