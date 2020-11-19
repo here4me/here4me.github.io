@@ -112,9 +112,11 @@ function getUserQRCodeContent(callback) {
                 if (response.statusCode === 'SUCCESSFUL') {
 
                     callback(qrCodeContent);
+                    return;
                 }
                 callback(null);
             });
+            return;
         }
         callback(null);
     });
