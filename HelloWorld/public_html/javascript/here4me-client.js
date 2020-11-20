@@ -700,23 +700,30 @@ function initializeHere4me() {
 
             if (data.type === 'windowResize') {
 
-                let message = data.message;
-                homeContent.style.width = message.width + 'px';
-                homeContent.style.height = message.height + 'px';
-                if ((homeContent.scrollWidth > 0
-                        && homeContent.scrollHeight > 0)
-                        && (currentDocumentWidth !== homeContent.scrollWidth ||
-                                currentDocumentHeight !== homeContent.scrollHeight ||
-                                currentWindoWidth !== message.width ||
-                                currentWindowHeight !== message.height)) {
+                let intervalId = window.setInterval(function () {
 
-                    currentWindoWidth = message.width;
-                    currentWindowHeight = message.height;
-                    currentDocumentWidth = homeContent.scrollWidth;
-                    currentDocumentHeight = homeContent.scrollHeight;
-                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
-                    return;
-                }
+                    let message = data.message;
+                    homeContent.style.width = message.width + 'px';
+                    homeContent.style.height = message.height + 'px';
+                    if (homeContent.scrollWidth === 0 || homeContent.scrollHeight === 0) {
+                        return;
+                    }
+
+                    window.clearInterval(intervalId);
+                    if ((homeContent.scrollWidth > 0
+                            && homeContent.scrollHeight > 0)
+                            && (currentDocumentWidth !== homeContent.scrollWidth ||
+                                    currentDocumentHeight !== homeContent.scrollHeight ||
+                                    currentWindoWidth !== message.width ||
+                                    currentWindowHeight !== message.height)) {
+
+                        currentWindoWidth = message.width;
+                        currentWindowHeight = message.height;
+                        currentDocumentWidth = homeContent.scrollWidth;
+                        currentDocumentHeight = homeContent.scrollHeight;
+                        sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
+                    }
+                }, 100);
             }
 
             if (data.type === 'userQRCodeContentResponse' ||
