@@ -835,7 +835,7 @@ function initializeHere4me() {
                 return;
             }
         }
-    }, false);
+    });
 
     window.addEventListener('load', function () {
 
