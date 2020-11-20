@@ -711,9 +711,12 @@ function initializeHere4me() {
 
                     currentWindoWidth = message.width;
                     currentWindowHeight = message.height;
-                    currentDocumentWidth = homeContent.scrollWidth;
-                    currentDocumentHeight = homeContent.scrollHeight;
-                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
+                    if (homeContent.scrollWidth > 0 && homeContent.scrollHeight > 0) {
+                        
+                        currentDocumentWidth = homeContent.scrollWidth;
+                        currentDocumentHeight = homeContent.scrollHeight;
+                        sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
+                    }
                     return;
                 }
             }
