@@ -892,7 +892,7 @@ function sendResizeMessage(height, width) {
         height: height,
         width: width
     };
-
+    console.log(message);
     parent.postMessage(message, '*');
 }
 
