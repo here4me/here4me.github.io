@@ -704,12 +704,10 @@ function initializeHere4me() {
                 let message = data.message;
                 homeContent.style.width = message.width + 'px';
                 homeContent.style.height = message.height + 'px';
-                if ((homeContent.scrollWidth > 0
-                        && homeContent.scrollHeight > 0)
-                        && (currentDocumentWidth !== homeContent.scrollWidth ||
-                                currentDocumentHeight !== homeContent.scrollHeight ||
-                                currentWindoWidth !== message.width ||
-                                currentWindowHeight !== message.height)) {
+                if (currentDocumentWidth !== homeContent.scrollWidth ||
+                        currentDocumentHeight !== homeContent.scrollHeight ||
+                        currentWindoWidth !== message.width ||
+                        currentWindowHeight !== message.height) {
 
                     currentWindoWidth = message.width;
                     currentWindowHeight = message.height;
