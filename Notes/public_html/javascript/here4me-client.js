@@ -4,6 +4,7 @@ let here4Me = {
     homeId: null,
     siteId: null,
     currentRefId: 0,
+    initializeEventListeners: [],
     qrCodeScanEventListeners: [],
     qrCodeScanLocationEventListeners: [],
     userQRCodeContentIdEventListeners: [],
@@ -12,6 +13,36 @@ let here4Me = {
     broadcastMessageEventListeners: [],
     calculatingBoundingBoxEventListeners: [],
     callbackFunctions: [],
+    addEventListener: function (eventType, handler) {
+
+        let eventListeners;
+        switch (eventType) {
+            case 'initialize':
+                eventListeners = here4Me.initializeEventListeners;
+                break;
+            case 'qrCodeScan':
+                eventListeners = here4Me.qrCodeScanEventListeners;
+                break;
+            case 'userQRCodeContentId':
+                eventListeners = here4Me.userQRCodeContentIdEventListeners;
+                break;
+            case 'openPost':
+                eventListeners = here4Me.openPostEventListeners;
+                break;
+            case 'closePost':
+                eventListeners = here4Me.closePostEventListeners;
+                break;
+            case 'broadcastMessage':
+                eventListeners = here4Me.broadcastMessageEventListeners;
+                break;
+            case 'calculatingBoundingBox':
+                eventListeners = here4Me.calculatingBoundingBoxEventListeners;
+                break;
+            default:
+                return;
+        }
+        eventListeners.push(handler);
+    },
     enableScanner: function () {
 
         parent.postMessage({
@@ -637,12 +668,12 @@ let here4Me = {
     removeTimedoutCallbackFunctions: function () {
 
         let now = Date.now();
-        for (var i = 0; i <= here4Me.callbackFunctions.length; i++) {
+        for (var i = 0; i < here4Me.callbackFunctions.length; i++) {
 
             let callbackFunction = here4Me.callbackFunctions[i];
             if (callbackFunction !== null &&
                     callbackFunction !== undefined &&
-                    (now - callbackFunction.timestamp) >= 60000) {
+                    (now - callbackFunction.timestamp) >= 300000) {
 
                 here4Me.callbackFunctions.splice(i, 1);
             }
@@ -657,7 +688,6 @@ function initializeHere4me() {
     let currentDocumentHeight = homeContent.scrollHeight;
     let currentWindoWidth = Number.MIN_VALUE;
     let currentWindowHeight = Number.MIN_VALUE;
-
 
     window.setInterval(here4Me.removeTimedoutCallbackFunctions, 15000);
 
@@ -695,7 +725,7 @@ function initializeHere4me() {
                     data.type === 'recordResponse' ||
                     data.type === 'serviceMessageResponse') {
 
-                for (var i = 0; i <= here4Me.callbackFunctions.length; i++) {
+                for (var i = 0; i < here4Me.callbackFunctions.length; i++) {
 
                     let callbackFunction = here4Me.callbackFunctions[i];
                     if (callbackFunction !== null &&
@@ -788,6 +818,11 @@ function initializeHere4me() {
                     here4Me.viewType = data.viewType;
                 }
 
+                for (var i = 0; i < here4Me.initializeEventListeners.length; i++) {
+
+                    here4Me.initializeEventListeners[i](data.userId);
+                }
+
                 return;
             }
 
@@ -850,6 +885,9 @@ function initializeHere4me() {
 function sendResizeMessage(height, width) {
 
     let message = {
+        viewType: here4Me.viewType,
+        homeId: here4Me.homeId,
+        siteId: here4Me.siteId,
         messageType: 'documentResize',
         height: height,
         width: width
