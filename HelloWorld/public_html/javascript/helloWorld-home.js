@@ -3,6 +3,7 @@
 let welcomeElement = document.getElementById('welcome');
 let messageElement = document.getElementById('message');
 let messageBodyElement = document.getElementById('messageBody');
+let closeButtonElement = document.getElementById("closeButton");
 
 here4Me.addEventListener('openPost', function (post) {
 
@@ -13,6 +14,11 @@ here4Me.addEventListener('openPost', function (post) {
         return;
     }
     showHelloWorldContent(post.content);
+});
+
+closeButtonElement.addEventListener('click', function (event) {
+
+    here4Me.close();
 });
 
 function enableSiteFunctionality() {

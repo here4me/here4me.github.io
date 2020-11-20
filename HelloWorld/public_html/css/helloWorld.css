@@ -57,7 +57,11 @@
     width: 100%;
 }
 
-#buttonBar {
+#homeButtonBar {
+    text-align: center;
+}
+
+#postButtonBar {
     text-align: right;
 }
 
@@ -69,6 +73,6 @@
     width: 50%;
 }
 
-#saveButton {
+#closeButton {
     width: 50%;
 }

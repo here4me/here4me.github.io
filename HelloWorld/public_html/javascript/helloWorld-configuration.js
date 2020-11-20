@@ -5,7 +5,6 @@ const SITE_ID = '9bdd7936d8a3a39c97e4e152795c68f4';
 const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
 let personalMessageElement = document.getElementById("personalMessage");
-let saveButtonElement = document.getElementById("saveButton");
 let postsElement = document.getElementById("posts");
 let reef = new Reef('#posts', {data: {posts: []}, template: renderSites, allowHTML: true});
 
@@ -37,7 +36,7 @@ document.addEventListener('render', function (event) {
     }
 });
 
-saveButtonElement.addEventListener('click', function (event) {
+personalMessageElement.addEventListener('change', function (event) {
 
     getUserQRCodeContent(function (qrCodeContent) {
 
