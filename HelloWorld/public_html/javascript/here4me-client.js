@@ -885,9 +885,6 @@ function initializeHere4me() {
 function sendResizeMessage(height, width) {
 
     let message = {
-        viewType: here4Me.viewType,
-        homeId: here4Me.homeId,
-        siteId: here4Me.siteId,
         messageType: 'documentResize',
         height: height,
         width: width
