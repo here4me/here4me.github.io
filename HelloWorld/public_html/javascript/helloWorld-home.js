@@ -16,6 +16,11 @@ here4Me.addEventListener('openPost', function (post) {
     showHelloWorldContent(post.content);
 });
 
+here4Me.addEventListener('closePost', function (post) {
+
+    here4Me.close();
+});
+
 closeButtonElement.addEventListener('click', function (event) {
 
     here4Me.close();
