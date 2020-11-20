@@ -700,23 +700,21 @@ function initializeHere4me() {
 
             if (data.type === 'windowResize') {
 
-                console.log(here4Me.viewType);
                 let message = data.message;
                 homeContent.style.width = message.width + 'px';
                 homeContent.style.height = message.height + 'px';
-                if (currentDocumentWidth !== homeContent.scrollWidth ||
-                        currentDocumentHeight !== homeContent.scrollHeight ||
-                        currentWindoWidth !== message.width ||
-                        currentWindowHeight !== message.height) {
+                if ((homeContent.scrollWidth > 0
+                        && homeContent.scrollHeight > 0)
+                        && (currentDocumentWidth !== homeContent.scrollWidth ||
+                                currentDocumentHeight !== homeContent.scrollHeight ||
+                                currentWindoWidth !== message.width ||
+                                currentWindowHeight !== message.height)) {
 
                     currentWindoWidth = message.width;
                     currentWindowHeight = message.height;
-                    if (homeContent.scrollWidth > 0 && homeContent.scrollHeight > 0) {
-                        
-                        currentDocumentWidth = homeContent.scrollWidth;
-                        currentDocumentHeight = homeContent.scrollHeight;
-                        sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
-                    }
+                    currentDocumentWidth = homeContent.scrollWidth;
+                    currentDocumentHeight = homeContent.scrollHeight;
+                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                     return;
                 }
             }
@@ -837,7 +835,7 @@ function initializeHere4me() {
                 return;
             }
         }
-    });
+    }, false);
 
     window.addEventListener('load', function () {
 
@@ -887,14 +885,11 @@ function initializeHere4me() {
 function sendResizeMessage(height, width) {
 
     let message = {
-        viewType: here4Me.viewType,
-        homeId: here4Me.homeId,
-        siteId: here4Me.siteId,
         messageType: 'documentResize',
         height: height,
         width: width
     };
-    console.log(message);
+
     parent.postMessage(message, '*');
 }
 
