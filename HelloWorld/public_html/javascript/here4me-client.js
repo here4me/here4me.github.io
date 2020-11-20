@@ -693,6 +693,7 @@ function initializeHere4me() {
 
     let eventMethod = (window.addEventListener) ? 'addEventListener' : 'attachEvent';
     let messageEvent = (eventMethod === 'attachEvent') ? 'onmessage' : 'message';
+    let windowResizeIntervalId = null;
     window[eventMethod](messageEvent, function (e) {
 
         let data = e.data;
@@ -703,16 +704,22 @@ function initializeHere4me() {
                 let message = data.message;
                 homeContent.style.width = message.width + 'px';
                 homeContent.style.height = message.height + 'px';
-                let intervalId = window.setInterval(function () {
+                if (windowResizeIntervalId !== null) {
                     
+                    return;
+                }
+                
+                windowResizeIntervalId = window.setInterval(function () {
+
                     if (homeContent.scrollWidth === 0 || homeContent.scrollHeight === 0) {
                         return;
                     }
-                    window.clearInterval(intervalId);
+                    window.clearInterval(windowResizeIntervalId);
+                    windowResizeIntervalId = null;
                     if (currentDocumentWidth !== homeContent.scrollWidth ||
-                                    currentDocumentHeight !== homeContent.scrollHeight ||
-                                    currentWindoWidth !== message.width ||
-                                    currentWindowHeight !== message.height) {
+                            currentDocumentHeight !== homeContent.scrollHeight ||
+                            currentWindoWidth !== message.width ||
+                            currentWindowHeight !== message.height) {
 
                         currentWindoWidth = message.width;
                         currentWindowHeight = message.height;
