@@ -700,6 +700,7 @@ function initializeHere4me() {
 
             if (data.type === 'windowResize') {
 
+                console.log(here4Me.viewType);
                 let message = data.message;
                 homeContent.style.width = message.width + 'px';
                 homeContent.style.height = message.height + 'px';
