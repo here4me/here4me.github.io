@@ -705,10 +705,10 @@ function initializeHere4me() {
                 bodyElement.style.width = message.width + 'px';
                 bodyElement.style.height = message.height + 'px';
                 if (windowResizeIntervalId !== null) {
-                    
+
                     return;
                 }
-                
+
                 windowResizeIntervalId = window.setInterval(function () {
 
                     if (bodyElement.scrollWidth === 0 || bodyElement.scrollHeight === 0) {
@@ -817,6 +817,13 @@ function initializeHere4me() {
                 if (here4Me.siteId === null && data.siteId !== null) {
 
                     here4Me.siteId = data.siteId;
+                    let bodySiteId = document.body.dataset.siteId;
+                    if (bodySiteId !== null && bodySiteId !== undefined && bodySiteId !== data.siteId) {
+
+                        here4Me.close();
+                        here4Me.showHereForMe();
+                        return;
+                    }
                 }
 
                 if (here4Me.userId === null && data.userId !== null) {
