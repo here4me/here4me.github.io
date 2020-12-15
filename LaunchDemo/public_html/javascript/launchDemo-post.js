@@ -18,6 +18,7 @@ function checkIfStepOnePostExists(callback) {
         if (response.statusCode !== 'SUCCESSFUL') {
 
             callback(false);
+            return;
         }
 
         let posts = response.message;
@@ -26,9 +27,9 @@ function checkIfStepOnePostExists(callback) {
             if (posts[i].content === 'LAUNCH_DEMO_STEP_ONE') {
 
                 callback(true);
+                return;
             }
         }
-
         callback(false);
     });
 }
