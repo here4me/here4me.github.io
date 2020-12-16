@@ -1,14 +1,17 @@
 /* global here4Me */
 
-here4Me.addEventListener('initialize', function () {
+here4Me.addEventListener('initialize', function (userId) {
 
-    checkIfStepOnePostExists(function (exists) {
+    if (userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
 
-        if (!exists) {
+        checkIfStepOnePostExists(function (exists) {
 
-            createDemoPost();
-        }
-    });
+            if (!exists) {
+
+                createDemoPost();
+            }
+        });
+    }
 });
 
 function checkIfStepOnePostExists(callback) {
