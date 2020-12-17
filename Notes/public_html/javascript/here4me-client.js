@@ -683,9 +683,9 @@ let here4Me = {
 
 function initializeHere4me() {
 
-    let homeContent = document.getElementById('here4me');
-    let currentDocumentWidth = homeContent.scrollWidth;
-    let currentDocumentHeight = homeContent.scrollHeight;
+    let bodyElement = document.body;
+    let currentDocumentWidth = bodyElement.scrollWidth;
+    let currentDocumentHeight = bodyElement.scrollHeight;
     let currentWindoWidth = Number.MIN_VALUE;
     let currentWindowHeight = Number.MIN_VALUE;
 
@@ -693,6 +693,7 @@ function initializeHere4me() {
 
     let eventMethod = (window.addEventListener) ? 'addEventListener' : 'attachEvent';
     let messageEvent = (eventMethod === 'attachEvent') ? 'onmessage' : 'message';
+    let windowResizeIntervalId = null;
     window[eventMethod](messageEvent, function (e) {
 
         let data = e.data;
@@ -701,22 +702,32 @@ function initializeHere4me() {
             if (data.type === 'windowResize') {
 
                 let message = data.message;
-                homeContent.style.width = message.width + 'px';
-                homeContent.style.height = message.height + 'px';
-                if ((homeContent.scrollWidth > 0
-                        && homeContent.scrollHeight > 0)
-                        && (currentDocumentWidth !== homeContent.scrollWidth ||
-                                currentDocumentHeight !== homeContent.scrollHeight ||
-                                currentWindoWidth !== message.width ||
-                                currentWindowHeight !== message.height)) {
+                bodyElement.style.width = message.width + 'px';
+                bodyElement.style.height = message.height + 'px';
+                if (windowResizeIntervalId !== null) {
 
-                    currentWindoWidth = message.width;
-                    currentWindowHeight = message.height;
-                    currentDocumentWidth = homeContent.scrollWidth;
-                    currentDocumentHeight = homeContent.scrollHeight;
-                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                     return;
                 }
+
+                windowResizeIntervalId = window.setInterval(function () {
+
+                    if (bodyElement.scrollWidth === 0 || bodyElement.scrollHeight === 0) {
+                        return;
+                    }
+                    window.clearInterval(windowResizeIntervalId);
+                    windowResizeIntervalId = null;
+                    if (currentDocumentWidth !== bodyElement.scrollWidth ||
+                            currentDocumentHeight !== bodyElement.scrollHeight ||
+                            currentWindoWidth !== message.width ||
+                            currentWindowHeight !== message.height) {
+
+                        currentWindoWidth = message.width;
+                        currentWindowHeight = message.height;
+                        currentDocumentWidth = bodyElement.scrollWidth;
+                        currentDocumentHeight = bodyElement.scrollHeight;
+                        sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
+                    }
+                }, 100);
             }
 
             if (data.type === 'userQRCodeContentResponse' ||
@@ -806,6 +817,13 @@ function initializeHere4me() {
                 if (here4Me.siteId === null && data.siteId !== null) {
 
                     here4Me.siteId = data.siteId;
+                    let bodySiteId = document.body.dataset.siteId;
+                    if (bodySiteId !== null && bodySiteId !== undefined && bodySiteId !== data.siteId) {
+
+                        here4Me.close();
+                        here4Me.showHereForMe();
+                        return;
+                    }
                 }
 
                 if (here4Me.userId === null && data.userId !== null) {
@@ -842,7 +860,7 @@ function initializeHere4me() {
         let scaleCount = 0;
         let intervalId = window.setInterval(function () {
 
-            document.getElementById('here4me').style.webkitTransform = 'scale(1)';
+            document.body.style.webkitTransform = 'scale(1)';
             if (++scaleCount === 10) {
 
                 window.clearInterval(intervalId);
@@ -853,8 +871,8 @@ function initializeHere4me() {
 
     window.addEventListener('resize', function () {
 
-        let newHeight = homeContent.scrollHeight;
-        var newWidth = homeContent.scrollWidth;
+        let newHeight = bodyElement.scrollHeight;
+        var newWidth = bodyElement.scrollWidth;
         if (Math.abs(currentDocumentHeight - newHeight) > 5 || Math.abs(currentDocumentWidth - newWidth) > 5) {
 
             currentDocumentHeight = newHeight;

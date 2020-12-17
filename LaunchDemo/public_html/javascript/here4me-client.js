@@ -43,6 +43,16 @@ let here4Me = {
         }
         eventListeners.push(handler);
     },
+    scrollTo: function (xCoord, yCoord) {
+
+        parent.postMessage({
+            viewType: here4Me.viewType,
+            homeId: here4Me.homeId,
+            messageType: 'scrollTo',
+            xCoord: xCoord,
+            yCoord: yCoord
+        }, '*');
+    },
     enableScanner: function () {
 
         parent.postMessage({
