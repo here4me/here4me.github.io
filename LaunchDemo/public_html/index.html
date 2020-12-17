@@ -9,31 +9,33 @@
         <link rel="stylesheet" href="./css/launchDemo.css">
     </head>
     <body data-site-id="63f58ae9fcdae20ea8d3743ab806ab2f">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    Slide One
-                </div>
-                <div class="carousel-item">
-                    Slide Two
-                </div>
-                <div class="carousel-item">
-                    Slide Three
+        <div class="row">
+            <div class="col-2">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#slide-one" data-bs-toggle="pill">Slide One</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#slide-two" data-bs-toggle="pill">Slide Two</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#slide-three" data-bs-toggle="pill">Slide Three</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-10">
+                <div class="tab-content">
+                    <div id="slide-one" class="tab-pane active">
+                        Slide One
+                    </div>
+                    <div id="slide-two" class="tab-pane">
+                        Slide Two
+                    </div>
+                    <div id="slide-three" class="tab-pane">
+                        Slide Three
+                    </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
