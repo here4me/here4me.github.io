@@ -9,30 +9,34 @@
         <link rel="stylesheet" href="./css/launchDemo.css">
     </head>
     <body data-site-id="63f58ae9fcdae20ea8d3743ab806ab2f">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    Slide A.
+                    <img class="d-block w-100" src="https://placeimg.com/1080/500/animals" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>My Caption Title (1st Image)</h5>
+                        <p>The whole caption will only show up if the screen is at least medium size.</p>
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    Slide B.
+                    <img class="d-block w-100" src="https://placeimg.com/1080/500/arch" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    Slide C.
+                    <img class="d-block w-100" src="https://placeimg.com/1080/500/nature" alt="Third slide">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="sr-only">Next</span>
             </a>
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
