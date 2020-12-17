@@ -683,9 +683,9 @@ let here4Me = {
 
 function initializeHere4me() {
 
-    let hereForMeElement = document.getElementById('hereForMe');
-    let currentDocumentWidth = hereForMeElement.scrollWidth;
-    let currentDocumentHeight = hereForMeElement.scrollHeight;
+    let bodyElement = document.body;
+    let currentDocumentWidth = bodyElement.scrollWidth;
+    let currentDocumentHeight = bodyElement.scrollHeight;
     let currentWindoWidth = Number.MIN_VALUE;
     let currentWindowHeight = Number.MIN_VALUE;
 
@@ -702,8 +702,8 @@ function initializeHere4me() {
             if (data.type === 'windowResize') {
 
                 let message = data.message;
-                hereForMeElement.style.width = message.width + 'px';
-                hereForMeElement.style.height = message.height + 'px';
+                bodyElement.style.width = message.width + 'px';
+                bodyElement.style.height = message.height + 'px';
                 if (windowResizeIntervalId !== null) {
 
                     return;
@@ -711,20 +711,20 @@ function initializeHere4me() {
 
                 windowResizeIntervalId = window.setInterval(function () {
 
-                    if (hereForMeElement.scrollWidth === 0 || hereForMeElement.scrollHeight === 0) {
+                    if (bodyElement.scrollWidth === 0 || bodyElement.scrollHeight === 0) {
                         return;
                     }
                     window.clearInterval(windowResizeIntervalId);
                     windowResizeIntervalId = null;
-                    if (currentDocumentWidth !== hereForMeElement.scrollWidth ||
-                            currentDocumentHeight !== hereForMeElement.scrollHeight ||
+                    if (currentDocumentWidth !== bodyElement.scrollWidth ||
+                            currentDocumentHeight !== bodyElement.scrollHeight ||
                             currentWindoWidth !== message.width ||
                             currentWindowHeight !== message.height) {
 
                         currentWindoWidth = message.width;
                         currentWindowHeight = message.height;
-                        currentDocumentWidth = hereForMeElement.scrollWidth;
-                        currentDocumentHeight = hereForMeElement.scrollHeight;
+                        currentDocumentWidth = bodyElement.scrollWidth;
+                        currentDocumentHeight = bodyElement.scrollHeight;
                         sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                     }
                 }, 100);
@@ -817,8 +817,8 @@ function initializeHere4me() {
                 if (here4Me.siteId === null && data.siteId !== null) {
 
                     here4Me.siteId = data.siteId;
-                    let hereForMeSiteId = document.getElementById('hereForMe').dataset.siteId;
-                    if (hereForMeSiteId !== null && hereForMeSiteId !== undefined && hereForMeSiteId !== data.siteId) {
+                    let bodySiteId = document.body.dataset.siteId;
+                    if (bodySiteId !== null && bodySiteId !== undefined && bodySiteId !== data.siteId) {
 
                         here4Me.close();
                         here4Me.showHereForMe();
@@ -871,8 +871,8 @@ function initializeHere4me() {
 
     window.addEventListener('resize', function () {
 
-        let newHeight = hereForMeElement.scrollHeight;
-        var newWidth = hereForMeElement.scrollWidth;
+        let newHeight = bodyElement.scrollHeight;
+        var newWidth = bodyElement.scrollWidth;
         if (Math.abs(currentDocumentHeight - newHeight) > 5 || Math.abs(currentDocumentWidth - newWidth) > 5) {
 
             currentDocumentHeight = newHeight;
