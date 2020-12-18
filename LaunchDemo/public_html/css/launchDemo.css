@@ -3,6 +3,32 @@
     margin-bottom: 10px;
 }
 
+#postForm {
+    display: block
+}
+
+#postMessageFormGroup {
+    display: block;
+}
+
+#postMessageFormGroup {
+    display: none;
+}
+
+#qrCodeMessageFormGroup {
+    display: none;
+}
+
+#submitForm {
+    display: none;
+}
+
+#location-modal-image {
+    margin-top: 10px;
+    max-width: 256px;
+    margin-bottom: 25px;
+}
+
 .button-icon {
     width: 32px;
     height: 32px;

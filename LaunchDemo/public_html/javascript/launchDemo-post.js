@@ -1,5 +1,14 @@
 /* global here4Me */
 
+let currentFormGroup = 0;
+
+let postFormElement = document.getElementById("postForm");
+let titleFormGroupElement = document.getElementById("titleFormGroup");
+let postMessageFormGroupElement = document.getElementById("postMessageFormGroup");
+let qrCodeMessageFormGroupElement = document.getElementById("qrCodeMessageFormGroup");
+let nextButtonElement = document.getElementById("nextButton");
+let submitFormElement = document.getElementById("submitForm");
+
 here4Me.addEventListener('initialize', function (userId) {
 
     if (userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
@@ -91,3 +100,26 @@ function createQRCodePost(qrCode) {
 
     here4Me.createPost(post, function () {});
 }
+
+
+nextButtonElement.onclick = function () {
+
+    switch (currentFormGroup) {
+        case 0:
+            titleFormGroupElement.style.display = 'none';
+            postMessageFormGroupElement.style.display = 'block';
+            currentFormGroup++;
+            break;
+        case 1:
+            postMessageFormGroupElement.style.display = 'none';
+            qrCodeMessageFormGroupElement.style.display = 'block';
+            currentFormGroup++;
+            break;
+        case 2:
+            postFormElement.style.display = 'none';
+            qrCodeMessageFormGroupElement.style.display = 'none';
+            submitFormElement.style.display = 'block';
+            currentFormGroup++;
+            break;
+    }
+};

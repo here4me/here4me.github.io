@@ -3,11 +3,73 @@
     <head>
         <title>Post</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.rawgit.com/filipelinhares/ress/master/dist/ress.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/launchDemo.css">
     </head>
     <body data-site-id="63f58ae9fcdae20ea8d3743ab806ab2f">
+        <div class="container">
+            <h5>
+                Create First Post
+            </h5>
+            <div id="postForm">
+                <form>
+                    <div id="titleFormGroup" class="form-group">
+                        <p>
+                            First, let's give our post a title. The tile is the label
+                            that will show up under the post icon when the post is
+                            available.
+                        </p>
+                        <h6>Title</h6>
+                        <input id="title" class="form-control" autocomplete="off">
+                    </div>
+                    <div id="postMessageFormGroup" class="form-group">
+                        <p>
+                            Now, let's define what content we want this post to have.
+                            This is a simple demo, so we will add a short text message.
+                            As stated before, the content can be as simple or complex
+                            as the content producer desires.
+                        </p>
+                        <h6>Post Message</h6>
+                        <textarea id="postMessage"  class="form-control" rows="3"></textarea>
+                    </div>
+                    <div id="qrCodeMessageFormGroup" class="form-group">
+                        <p>
+                            Finally, we will define what content we want to show when
+                            the demo QR code is scanned. Keep in mind that not every
+                            site will require QR codes. QR codes have been added to
+                            this demo is to show the QR code feature.
+                        </p>
+                        <h6>QR Code Message</h6>
+                        <textarea id="qrCodeMessage"  class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+                <div class="col-12 text-right">
+                    <button id="nextButton" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+            <div id="submitForm">
+                <p>
+                    Now we need to select a location where the post will be available.
+                    By default here4.me provides the functionality to search for
+                    and select locations by address. Please select an address
+                    different from your current one but also one you can quickly
+                    walk to.  You can also search for an address or place by using
+                    the search box.  For example, you can type Safeway and hit
+                    search, and Safeway's near you will show up.
+                </p>
+                <div class="text-center">
+                    <img id="location-modal-image" src="./images/location-modal.png" alt="">
+                </div>
+                <div class="col-12 text-right">
+                    <button id="postButton" class="btn btn-primary">Create First Post</button>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
         <script src="./javascript/here4me-client.js"></script>
         <script src="./javascript/launchDemo-post.js"></script>
     </body>
