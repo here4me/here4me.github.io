@@ -4,8 +4,11 @@ let currentFormGroup = 0;
 
 let postFormElement = document.getElementById("postForm");
 let titleFormGroupElement = document.getElementById("titleFormGroup");
+let titleInputElement = document.getElementById("title");
 let postMessageFormGroupElement = document.getElementById("postMessageFormGroup");
+let postMessageInputElement = document.getElementById("postMessage");
 let qrCodeMessageFormGroupElement = document.getElementById("qrCodeMessageFormGroup");
+let qrCodeMessageInputElement = document.getElementById("qrCodeMessage");
 let nextButtonElement = document.getElementById("nextButton");
 let submitFormElement = document.getElementById("submitForm");
 
@@ -101,6 +104,38 @@ function createQRCodePost(qrCode) {
     here4Me.createPost(post, function () {});
 }
 
+titleInputElement.onchange = function () {
+    
+    if(titleInputElement.value.trim() === '') {
+        
+        nextButtonElement.classList.add('disabled');
+    }else {
+        
+        nextButtonElement.classList.remove('disabled');
+    }
+};
+
+postMessageInputElement.onchange = function () {
+    
+    if(postMessageInputElement.value.trim() === '') {
+        
+        nextButtonElement.classList.add('disabled');
+    }else {
+        
+        nextButtonElement.classList.remove('disabled');
+    }
+};
+
+qrCodeMessageInputElement.onchange = function () {
+    
+    if(qrCodeMessageInputElement.value.trim() === '') {
+        
+        nextButtonElement.classList.add('disabled');
+    }else {
+        
+        nextButtonElement.classList.remove('disabled');
+    }
+};
 
 nextButtonElement.onclick = function () {
 
