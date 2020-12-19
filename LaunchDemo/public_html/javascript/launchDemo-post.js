@@ -240,7 +240,7 @@ function buildPost() {
         acceptedSiteIds: [SITE_ID],
         acceptedSiteOwnerIds: [SITE_OWNER_ID],
         isUserProfilePost: false,
-        filter: buildDateTimeFilter(),
+        filter: null,
         content: JSON.stringify({
             postMessage: postMessage,
             qrCodeMessage: qrCodeMessage
