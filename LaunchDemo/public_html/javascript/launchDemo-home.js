@@ -6,6 +6,7 @@ let enablePostButtonElement = document.getElementById('enablePostButton');
 if (enablePostButtonElement) {
     
     enablePostButtonElement.onclick = function () {
+        enablePostButtonElement.style.display = 'none';
         here4Me.enablePostButton();
     };
 }
