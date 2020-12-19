@@ -879,7 +879,7 @@ function initializeHere4me() {
         sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
     });
 
-    window.addEventListener('resize', function () {
+    bodyElement.addEventListener('resize', function () {
 
         let newHeight = bodyElement.scrollHeight;
         var newWidth = bodyElement.scrollWidth;
