@@ -1,7 +1,10 @@
 /* global here4Me */
 
-let currentFormGroup = 0;
+const CONTENT_TYPE = 'string';
+const SITE_ID = '63f58ae9fcdae20ea8d3743ab806ab2f';
+const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
+let currentFormGroup = 0;
 let postFormElement = document.getElementById('postForm');
 let titleFormGroupElement = document.getElementById('titleFormGroup');
 let titleInputElement = document.getElementById('title');
@@ -12,6 +15,8 @@ let qrCodeMessageInputElement = document.getElementById('qrCodeMessage');
 let postFormBackButtonElement = document.getElementById('postFormBackButton');
 let nextButtonElement = document.getElementById('nextButton');
 let submitFormElement = document.getElementById('submitForm');
+let submitFormBackButtonElement = document.getElementById('submitFormBackButton');
+let createFirstPostButtonElement = document.getElementById('createFirstPostButton');
 
 here4Me.addEventListener('initialize', function (userId) {
 
@@ -62,8 +67,8 @@ function createQRCodeContent(content, callback) {
 
     let qrCodeContent = {
         id: null,
-        acceptedSiteIds: ['63f58ae9fcdae20ea8d3743ab806ab2f'],
-        acceptedSiteOwnerIds: ['8ae1a3cf2fa609656eaa447f8fe99b15'],
+        acceptedSiteIds: [SITE_ID],
+        acceptedSiteOwnerIds: [SITE_OWNER_ID],
         contentType: 'string',
         filter: null,
         content: content,
@@ -88,8 +93,8 @@ function createQRCodePost(qrCode) {
         id: null,
         title: null,
         userDisplayName: 'Here For Me',
-        acceptedSiteIds: ['63f58ae9fcdae20ea8d3743ab806ab2f'],
-        acceptedSiteOwnerIds: ['8ae1a3cf2fa609656eaa447f8fe99b15'],
+        acceptedSiteIds: [SITE_ID],
+        acceptedSiteOwnerIds: [SITE_OWNER_ID],
         contentType: 'string',
         filter: null,
         content: 'LAUNCH_DEMO_STEP_ONE',
@@ -106,34 +111,34 @@ function createQRCodePost(qrCode) {
 }
 
 titleInputElement.onkeyup = function () {
-    
-    if(titleInputElement.value.trim() === '') {
-        
+
+    if (titleInputElement.value.trim() === '') {
+
         nextButtonElement.setAttribute('disabled', true);
-    }else {
-        
+    } else {
+
         nextButtonElement.removeAttribute('disabled');
     }
 };
 
 postMessageInputElement.onkeyup = function () {
-    
-    if(postMessageInputElement.value.trim() === '') {
-        
+
+    if (postMessageInputElement.value.trim() === '') {
+
         nextButtonElement.setAttribute('disabled', true);
-    }else {
-        
+    } else {
+
         nextButtonElement.removeAttribute('disabled');
     }
 };
 
 qrCodeMessageInputElement.onkeyup = function () {
-    
-    if(qrCodeMessageInputElement.value.trim() === '') {
-        
+
+    if (qrCodeMessageInputElement.value.trim() === '') {
+
         nextButtonElement.setAttribute('disabled', true);
-    }else {
-        
+    } else {
+
         nextButtonElement.removeAttribute('disabled');
     }
 };
@@ -169,7 +174,7 @@ postFormBackButtonElement.onclick = function () {
 
 nextButtonElement.onclick = function () {
 
-    if(nextButtonElement.getAttribute('disabled')) {
+    if (nextButtonElement.getAttribute('disabled')) {
         return;
     }
 
@@ -195,3 +200,52 @@ nextButtonElement.onclick = function () {
     }
     here4Me.resize();
 };
+
+submitFormBackButtonElement.onclick = function () {
+
+    postFormElement.style.display = 'block';
+    qrCodeMessageFormGroupElement.style.display = 'block';
+    submitFormElement.style.display = 'none';
+    currentFormGroup--;
+    here4Me.resize();
+};
+
+createFirstPostButtonElement.addEventListener('click', function (event) {
+
+    let post = buildPost();
+    if (post === null) {
+
+        return;
+    }
+
+    here4Me.createPost(post, function (response) {
+
+        if (response.statusCode === 'SUCCESSFUL') {
+
+            here4Me.broadcastMessage('POST_CREATED');
+        }
+    });
+});
+
+function buildPost() {
+
+    let title = titleInputElement.value;
+    let postMessage = postMessageInputElement.value;
+    let qrCodeMessage = qrCodeMessageInputElement.value;
+
+    let post = {
+        title: title,
+        userDisplayName: null,
+        contentType: CONTENT_TYPE,
+        acceptedSiteIds: [SITE_ID],
+        acceptedSiteOwnerIds: [SITE_OWNER_ID],
+        isUserProfilePost: false,
+        filter: buildDateTimeFilter(),
+        content: JSON.stringify({
+            postMessage: postMessage,
+            qrCodeMessage: qrCodeMessage
+        })
+    };
+
+    return post;
+}
