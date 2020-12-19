@@ -894,23 +894,23 @@ function initializeHere4me() {
         }
     });
 
-    window.addEventListener('click', function () {
-
-        let message = {
-            messageType: 'documentClick'
-        };
-
-        parent.postMessage(message, '*');
-    });
-
-    document.addEventListener("touchstart", function () {
-
-        let message = {
-            messageType: 'documentClick'
-        };
-
-        parent.postMessage(message, '*');
-    });
+//    window.addEventListener('click', function () {
+//
+//        let message = {
+//            messageType: 'documentClick'
+//        };
+//
+//        parent.postMessage(message, '*');
+//    });
+//
+//    document.addEventListener("touchstart", function () {
+//
+//        let message = {
+//            messageType: 'documentClick'
+//        };
+//
+//        parent.postMessage(message, '*');
+//    });
 }
 
 function sendResizeMessage(height, width) {
