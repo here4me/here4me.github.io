@@ -53,6 +53,9 @@ let here4Me = {
             yCoord: yCoord
         }, '*');
     },
+    resize: function () {
+        sendResizeMessage(document.body.scrollHeight, document.body.scrollWidth);
+    },
     enableScanner: function () {
 
         parent.postMessage({
@@ -879,7 +882,7 @@ function initializeHere4me() {
         sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
     });
 
-    bodyElement.addEventListener('resize', function () {
+    window.addEventListener('resize', function () {
 
         let newHeight = bodyElement.scrollHeight;
         var newWidth = bodyElement.scrollWidth;

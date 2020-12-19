@@ -122,4 +122,5 @@ nextButtonElement.onclick = function () {
             currentFormGroup++;
             break;
     }
+    here4Me.resize();
 };
