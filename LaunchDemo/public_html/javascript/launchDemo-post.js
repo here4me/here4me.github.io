@@ -161,6 +161,8 @@ nextButtonElement.onclick = function () {
             currentFormGroup++;
             break;
     }
-    nextButtonElement.setAttribute('disabled', true);
+    titleInputElement.onkeyup();
+    postMessageInputElement.onkeyup();
+    qrCodeMessageInputElement.onkeyup();
     here4Me.resize();
 };
