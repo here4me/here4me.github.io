@@ -21,13 +21,16 @@
 
 #submitForm {
     display: none;
-    padding-bottom: 25px;
 }
 
 #location-modal-image {
     margin-top: 10px;
     max-width: 256px;
     margin-bottom: 25px;
+}
+
+#postButton {
+    margin-top: 100px;
 }
 
 .button-icon {
