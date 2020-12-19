@@ -127,7 +127,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMe'
         }, '*');
-        here4Me.resize();
     },
     showHereForMeWithMenu: function () {
 
@@ -136,7 +135,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMeWithMenu'
         }, '*');
-        here4Me.resize();
     },
     showSiteHome: function () {
 
@@ -145,7 +143,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteHome'
         }, '*');
-        here4Me.resize();
     },
     showSiteHomeWithMenu: function () {
 
@@ -154,7 +151,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteHomeWithMenu'
         }, '*');
-        here4Me.resize();
     },
     showHereForMePost: function () {
 
@@ -163,7 +159,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMePost'
         }, '*');
-        here4Me.resize();
     },
     showSitePost: function () {
 
@@ -172,7 +167,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSitePost'
         }, '*');
-        here4Me.resize();
     },
     showHereForMeScan: function () {
 
@@ -181,7 +175,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMeScan'
         }, '*');
-        here4Me.resize();
     },
     showSiteScan: function () {
 
@@ -190,7 +183,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteScan'
         }, '*');
-        here4Me.resize();
     },
     showHereForMeConfiguration: function () {
 
@@ -199,7 +191,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMeConfiguration'
         }, '*');
-        here4Me.resize();
     },
     showSiteConfiguration: function () {
 
@@ -208,7 +199,6 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteConfiguration'
         }, '*');
-        here4Me.resize();
     },
     close: function () {
 
@@ -725,9 +715,20 @@ function initializeHere4me() {
             if (data.type === 'windowResize') {
 
                 let message = data.message;
-                bodyElement.style.width = message.width + 'px';
-                bodyElement.style.height = message.height + 'px';
-                if (windowResizeIntervalId !== null) {
+                let resizeNeeded = false;
+                if(currentDocumentWidth < message.width) {
+                    
+                    bodyElement.style.width = message.width + 'px';
+                    resizeNeeded = true;
+                }
+                
+                if(currentDocumentHeight < message.height) {
+                    
+                    bodyElement.style.height = message.height + 'px';
+                    resizeNeeded = true;
+                }
+                
+                if (!resizeNeeded || windowResizeIntervalId !== null) {
 
                     return;
                 }
