@@ -127,6 +127,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMe'
         }, '*');
+        here4Me.resize();
     },
     showHereForMeWithMenu: function () {
 
@@ -135,6 +136,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMeWithMenu'
         }, '*');
+        here4Me.resize();
     },
     showSiteHome: function () {
 
@@ -143,6 +145,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteHome'
         }, '*');
+        here4Me.resize();
     },
     showSiteHomeWithMenu: function () {
 
@@ -151,6 +154,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteHomeWithMenu'
         }, '*');
+        here4Me.resize();
     },
     showHereForMePost: function () {
 
@@ -159,6 +163,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMePost'
         }, '*');
+        here4Me.resize();
     },
     showSitePost: function () {
 
@@ -167,6 +172,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSitePost'
         }, '*');
+        here4Me.resize();
     },
     showHereForMeScan: function () {
 
@@ -175,6 +181,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMeScan'
         }, '*');
+        here4Me.resize();
     },
     showSiteScan: function () {
 
@@ -183,6 +190,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteScan'
         }, '*');
+        here4Me.resize();
     },
     showHereForMeConfiguration: function () {
 
@@ -191,6 +199,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showHereForMeConfiguration'
         }, '*');
+        here4Me.resize();
     },
     showSiteConfiguration: function () {
 
@@ -199,6 +208,7 @@ let here4Me = {
             homeId: here4Me.homeId,
             messageType: 'showSiteConfiguration'
         }, '*');
+        here4Me.resize();
     },
     close: function () {
 
