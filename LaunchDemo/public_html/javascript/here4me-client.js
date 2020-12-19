@@ -715,20 +715,17 @@ function initializeHere4me() {
             if (data.type === 'windowResize') {
 
                 let message = data.message;
-                let resizeNeeded = false;
                 if(currentDocumentWidth < message.width) {
                     
                     bodyElement.style.width = message.width + 'px';
-                    resizeNeeded = true;
                 }
                 
                 if(currentDocumentHeight < message.height) {
                     
                     bodyElement.style.height = message.height + 'px';
-                    resizeNeeded = true;
                 }
                 
-                if (!resizeNeeded || windowResizeIntervalId !== null) {
+                if (windowResizeIntervalId !== null) {
 
                     return;
                 }
