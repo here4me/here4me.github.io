@@ -21,6 +21,7 @@
 
 #submitForm {
     display: none;
+    padding-bottom: 25px;
 }
 
 #location-modal-image {
