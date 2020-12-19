@@ -2,15 +2,15 @@
 
 let currentFormGroup = 0;
 
-let postFormElement = document.getElementById("postForm");
-let titleFormGroupElement = document.getElementById("titleFormGroup");
-let titleInputElement = document.getElementById("title");
-let postMessageFormGroupElement = document.getElementById("postMessageFormGroup");
-let postMessageInputElement = document.getElementById("postMessage");
-let qrCodeMessageFormGroupElement = document.getElementById("qrCodeMessageFormGroup");
-let qrCodeMessageInputElement = document.getElementById("qrCodeMessage");
-let nextButtonElement = document.getElementById("nextButton");
-let submitFormElement = document.getElementById("submitForm");
+let postFormElement = document.getElementById('postForm');
+let titleFormGroupElement = document.getElementById('titleFormGroup');
+let titleInputElement = document.getElementById('title');
+let postMessageFormGroupElement = document.getElementById('postMessageFormGroup');
+let postMessageInputElement = document.getElementById('postMessage');
+let qrCodeMessageFormGroupElement = document.getElementById('qrCodeMessageFormGroup');
+let qrCodeMessageInputElement = document.getElementById('qrCodeMessage');
+let nextButtonElement = document.getElementById('nextButton');
+let submitFormElement = document.getElementById('submitForm');
 
 here4Me.addEventListener('initialize', function (userId) {
 
@@ -104,40 +104,44 @@ function createQRCodePost(qrCode) {
     here4Me.createPost(post, function () {});
 }
 
-titleInputElement.onchange = function () {
+titleInputElement.onkeyup = function () {
     
     if(titleInputElement.value.trim() === '') {
         
-        nextButtonElement.classList.add('disabled');
+        nextButtonElement.setAttribute('disabled', true);
     }else {
         
-        nextButtonElement.classList.remove('disabled');
+        nextButtonElement.removeAttribute('disabled');
     }
 };
 
-postMessageInputElement.onchange = function () {
+postMessageInputElement.onkeyup = function () {
     
     if(postMessageInputElement.value.trim() === '') {
         
-        nextButtonElement.classList.add('disabled');
+        nextButtonElement.setAttribute('disabled', true);
     }else {
         
-        nextButtonElement.classList.remove('disabled');
+        nextButtonElement.removeAttribute('disabled');
     }
 };
 
-qrCodeMessageInputElement.onchange = function () {
+qrCodeMessageInputElement.onkeyup = function () {
     
     if(qrCodeMessageInputElement.value.trim() === '') {
         
-        nextButtonElement.classList.add('disabled');
+        nextButtonElement.setAttribute('disabled', true);
     }else {
         
-        nextButtonElement.classList.remove('disabled');
+        nextButtonElement.removeAttribute('disabled');
     }
 };
 
 nextButtonElement.onclick = function () {
+
+    if(nextButtonElement.getAttribute('disabled')) {
+        return;
+    }
 
     switch (currentFormGroup) {
         case 0:
@@ -157,5 +161,6 @@ nextButtonElement.onclick = function () {
             currentFormGroup++;
             break;
     }
+    nextButtonElement.setAttribute('disabled', true);
     here4Me.resize();
 };
