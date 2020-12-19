@@ -715,16 +715,8 @@ function initializeHere4me() {
             if (data.type === 'windowResize') {
 
                 let message = data.message;
-                if(currentDocumentWidth < message.width) {
-                    
-                    bodyElement.style.width = message.width + 'px';
-                }
-                
-                if(currentDocumentHeight < message.height) {
-                    
-                    bodyElement.style.height = message.height + 'px';
-                }
-                
+                bodyElement.style.width = message.width + 'px';
+                bodyElement.style.height = message.height + 'px';
                 if (windowResizeIntervalId !== null) {
 
                     return;
