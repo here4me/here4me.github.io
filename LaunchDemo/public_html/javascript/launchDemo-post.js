@@ -9,6 +9,7 @@ let postMessageFormGroupElement = document.getElementById('postMessageFormGroup'
 let postMessageInputElement = document.getElementById('postMessage');
 let qrCodeMessageFormGroupElement = document.getElementById('qrCodeMessageFormGroup');
 let qrCodeMessageInputElement = document.getElementById('qrCodeMessage');
+let postFormBackButtonElement = document.getElementById('postFormBackButton');
 let nextButtonElement = document.getElementById('nextButton');
 let submitFormElement = document.getElementById('submitForm');
 
@@ -137,6 +138,35 @@ qrCodeMessageInputElement.onkeyup = function () {
     }
 };
 
+postFormBackButtonElement.onclick = function () {
+
+    switch (currentFormGroup) {
+        case 0:
+            here4Me.showSiteHome();
+            break;
+        case 1:
+            titleFormGroupElement.style.display = 'block';
+            postMessageFormGroupElement.style.display = 'none';
+            currentFormGroup--;
+            titleInputElement.onkeyup();
+            break;
+        case 2:
+            postMessageFormGroupElement.style.display = 'block';
+            qrCodeMessageFormGroupElement.style.display = 'none';
+            currentFormGroup--;
+            postMessageInputElement.onkeyup();
+            break;
+        case 3:
+            postFormElement.style.display = 'block';
+            qrCodeMessageFormGroupElement.style.display = 'block';
+            submitFormElement.style.display = 'none';
+            currentFormGroup--;
+            qrCodeMessageInputElement.onkeyup();
+            break;
+    }
+    here4Me.resize();
+};
+
 nextButtonElement.onclick = function () {
 
     if(nextButtonElement.getAttribute('disabled')) {
@@ -148,11 +178,13 @@ nextButtonElement.onclick = function () {
             titleFormGroupElement.style.display = 'none';
             postMessageFormGroupElement.style.display = 'block';
             currentFormGroup++;
+            postMessageInputElement.onkeyup();
             break;
         case 1:
             postMessageFormGroupElement.style.display = 'none';
             qrCodeMessageFormGroupElement.style.display = 'block';
             currentFormGroup++;
+            qrCodeMessageInputElement.onkeyup();
             break;
         case 2:
             postFormElement.style.display = 'none';
@@ -161,8 +193,5 @@ nextButtonElement.onclick = function () {
             currentFormGroup++;
             break;
     }
-    titleInputElement.onkeyup();
-    postMessageInputElement.onkeyup();
-    qrCodeMessageInputElement.onkeyup();
     here4Me.resize();
 };

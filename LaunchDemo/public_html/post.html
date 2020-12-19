@@ -45,8 +45,13 @@
                         <textarea id="qrCodeMessage"  class="form-control" rows="3"></textarea>
                     </div>
                 </form>
-                <div class="col-12 text-right">
-                    <button id="nextButton" class="btn btn-primary" disabled>Next</button>
+                <div class="row">
+                    <div class="col-4 text-left">
+                        <button id="postFormBackButton" class="btn btn-light">Back</button>
+                    </div>
+                    <div class="col-8 text-right">
+                        <button id="nextButton" class="btn btn-primary" disabled>Next</button>
+                    </div>
                 </div>
             </div>
             <div id="submitForm">
@@ -56,14 +61,19 @@
                     and select locations by address. Please select an address
                     different from your current one but also one you can quickly
                     walk to.  You can also search for an address or place by using
-                    the search box.  For example, you can type Safeway and hit
-                    search, and Safeway's near you will show up.
+                    the search box.  For example, if you type Safeway and tap the
+                    search button, all the Safeway's near you will show up.
                 </p>
                 <div class="text-center">
                     <img id="location-modal-image" src="./images/location-modal.png" alt="">
                 </div>
-                <div class="col-12 text-right">
-                    <button id="postButton" class="btn btn-primary">Create First Post</button>
+                <div class="row">
+                    <div class="col-4 text-left">
+                        <button id="submitFormBackButton" class="btn btn-light">Back</button>
+                    </div>
+                    <div class="col-8 text-right">
+                        <button id="postButton" class="btn btn-primary">Create First Post</button>
+                    </div>
                 </div>
             </div>
         </div>
