@@ -8,71 +8,73 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/launchDemo.css">
     </head>
-    <body data-site-id="63f58ae9fcdae20ea8d3743ab806ab2f">
-        <div class="container">
-            <h5>
-                Create First Post
-            </h5>
-            <div id="postForm">
-                <form>
-                    <div id="titleFormGroup" class="form-group">
-                        <p>
-                            First, let's give our post a title. The title is the label
-                            that will show up under the post icon when the post is
-                            available.
-                        </p>
-                        <h6>Title</h6>
-                        <input id="title" class="form-control" autocomplete="off">
-                    </div>
-                    <div id="postMessageFormGroup" class="form-group">
-                        <p>
-                            Now, let's define what content we want this post to have.
-                            This is a simple demo, so we will add a short text message.
-                            As stated before, the content can be as simple or complex
-                            as the content producer desires.
-                        </p>
-                        <h6>Post Message</h6>
-                        <textarea id="postMessage"  class="form-control" rows="3"></textarea>
-                    </div>
-                    <div id="qrCodeMessageFormGroup" class="form-group">
-                        <p>
-                            Finally, we will define what content we want to show when
-                            the demo QR code is scanned. Keep in mind that not every
-                            site will require QR codes. QR codes have been added to
-                            this demo to show the QR code feature.
-                        </p>
-                        <h6>QR Code Message</h6>
-                        <textarea id="qrCodeMessage"  class="form-control" rows="3"></textarea>
-                    </div>
-                </form>
-                <div class="row">
-                    <div class="col-4 text-left">
-                        <button id="postFormBackButton" class="btn btn-light">Back</button>
-                    </div>
-                    <div class="col-8 text-right">
-                        <button id="nextButton" class="btn btn-primary" disabled>Next</button>
+    <body>
+        <div id="here4Me" data-site-id="63f58ae9fcdae20ea8d3743ab806ab2f">
+            <div class="container">
+                <h5>
+                    Create First Post
+                </h5>
+                <div id="postForm">
+                    <form>
+                        <div id="titleFormGroup" class="form-group">
+                            <p>
+                                First, let's give our post a title. The title is the label
+                                that will show up under the post icon when the post is
+                                available.
+                            </p>
+                            <h6>Title</h6>
+                            <input id="title" class="form-control" autocomplete="off">
+                        </div>
+                        <div id="postMessageFormGroup" class="form-group">
+                            <p>
+                                Now, let's define what content we want this post to have.
+                                This is a simple demo, so we will add a short text message.
+                                As stated before, the content can be as simple or complex
+                                as the content producer desires.
+                            </p>
+                            <h6>Post Message</h6>
+                            <textarea id="postMessage"  class="form-control" rows="3"></textarea>
+                        </div>
+                        <div id="qrCodeMessageFormGroup" class="form-group">
+                            <p>
+                                Finally, we will define what content we want to show when
+                                the demo QR code is scanned. Keep in mind that not every
+                                site will require QR codes. QR codes have been added to
+                                this demo to show the QR code feature.
+                            </p>
+                            <h6>QR Code Message</h6>
+                            <textarea id="qrCodeMessage"  class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-4 text-left">
+                            <button id="postFormBackButton" class="btn btn-light">Back</button>
+                        </div>
+                        <div class="col-8 text-right">
+                            <button id="nextButton" class="btn btn-primary" disabled>Next</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="submitForm">
-                <p>
-                    Now we need to select a location where the post will be available.
-                    By default here4.me provides the functionality to search for
-                    and select locations by address. Please select an address
-                    different from your current one but also one you can quickly
-                    walk to.  You can also search for an address or place by using
-                    the search box.  For example, if you type Safeway and tap the
-                    search button, all the Safeway's near you will show up.
-                </p>
-                <div class="text-center">
-                    <img id="location-modal-image" src="./images/location-modal.png" alt="">
-                </div>
-                <div class="row">
-                    <div class="col-4 text-left">
-                        <button id="submitFormBackButton" class="btn btn-light">Back</button>
+                <div id="submitForm">
+                    <p>
+                        Now we need to select a location where the post will be available.
+                        By default here4.me provides the functionality to search for
+                        and select locations by address. Please select an address
+                        different from your current one but also one you can quickly
+                        walk to.  You can also search for an address or place by using
+                        the search box.  For example, if you type Safeway and tap the
+                        search button, all the Safeway's near you will show up.
+                    </p>
+                    <div class="text-center">
+                        <img id="location-modal-image" src="./images/location-modal.png" alt="">
                     </div>
-                    <div class="col-8 text-right">
-                        <button id="postButton" class="btn btn-primary">Create First Post</button>
+                    <div class="row">
+                        <div class="col-4 text-left">
+                            <button id="submitFormBackButton" class="btn btn-light">Back</button>
+                        </div>
+                        <div class="col-8 text-right">
+                            <button id="postButton" class="btn btn-primary">Create First Post</button>
+                        </div>
                     </div>
                 </div>
             </div>
