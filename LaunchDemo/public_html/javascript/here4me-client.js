@@ -729,17 +729,7 @@ function initializeHere4me() {
                     }
                     window.clearInterval(windowResizeIntervalId);
                     windowResizeIntervalId = null;
-                    if (currentDocumentWidth !== bodyElement.scrollWidth ||
-                            currentDocumentHeight !== bodyElement.scrollHeight ||
-                            currentWindoWidth !== message.width ||
-                            currentWindowHeight !== message.height) {
-
-                        currentWindoWidth = message.width;
-                        currentWindowHeight = message.height;
-                        currentDocumentWidth = bodyElement.scrollWidth;
-                        currentDocumentHeight = bodyElement.scrollHeight;
-                        sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
-                    }
+                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                 }, 100);
             }
 
@@ -893,24 +883,6 @@ function initializeHere4me() {
             sendResizeMessage(newHeight, newWidth);
         }
     });
-
-//    window.addEventListener('click', function () {
-//
-//        let message = {
-//            messageType: 'documentClick'
-//        };
-//
-//        parent.postMessage(message, '*');
-//    });
-//
-//    document.addEventListener("touchstart", function () {
-//
-//        let message = {
-//            messageType: 'documentClick'
-//        };
-//
-//        parent.postMessage(message, '*');
-//    });
 }
 
 function sendResizeMessage(height, width) {
