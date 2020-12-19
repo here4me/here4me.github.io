@@ -2,6 +2,10 @@
 
 here4Me.scrollTo(0, 0);
 
-document.getElementById('enablePostButton').onclick = function () {
-    here4Me.enablePostButton();
-};
+let enablePostButtonElement = document.getElementById('enablePostButton');
+if (enablePostButtonElement) {
+    
+    enablePostButtonElement.onclick = function () {
+        here4Me.enablePostButton();
+    };
+}
