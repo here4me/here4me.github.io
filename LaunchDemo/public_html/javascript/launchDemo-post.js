@@ -1,6 +1,6 @@
 /* global here4Me */
 
-const CONTENT_TYPE = 'string';
+const CONTENT_TYPE = 'demo-data';
 const SITE_ID = '63f58ae9fcdae20ea8d3743ab806ab2f';
 const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
