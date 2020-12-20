@@ -240,6 +240,7 @@ function showBoundingBoxProgress(percentComplete) {
     submitFormElement.style.display = 'none';
     postProgressElement.style.display = 'block';
     postProgressMessageElement.innerHTML = percentComplete + '%';
+    here4Me.scrollTo(0, 0);
 }
 
 function buildPost() {
