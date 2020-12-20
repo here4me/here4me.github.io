@@ -33,6 +33,10 @@ h5 {
     margin-bottom: 25px;
 }
 
+#postProgress {
+    display: none;
+}
+
 .small-icon {
     width: 24px;
     height: 24px;
