@@ -17,6 +17,8 @@ let nextButtonElement = document.getElementById('nextButton');
 let submitFormElement = document.getElementById('submitForm');
 let submitFormBackButtonElement = document.getElementById('submitFormBackButton');
 let createFirstPostButtonElement = document.getElementById('createFirstPostButton');
+let postProgressElement = document.getElementById('postProgress');
+let postProgressMessageElement = document.getElementById('postProgressMessage');
 
 here4Me.addEventListener('initialize', function (userId) {
 
@@ -224,8 +226,21 @@ createFirstPostButtonElement.addEventListener('click', function (event) {
 
             here4Me.broadcastMessage('POST_CREATED');
         }
+        clearPostForm();
     });
 });
+
+here4Me.addEventListener('calculatingBoundingBox', function (status) {
+
+    showBoundingBoxProgress(status.percentComplete);
+});
+
+function showBoundingBoxProgress(percentComplete) {
+
+    submitFormElement.style.display = 'none';
+    postProgressElement.style.display = 'block';
+    postProgressMessageElement.innerHTML = percentComplete + '%';
+}
 
 function buildPost() {
 
@@ -248,4 +263,11 @@ function buildPost() {
     };
 
     return post;
+}
+
+function clearPostForm() {
+
+    titleInputElement.value = null;
+    postMessageInputElement.value = null;
+    qrCodeMessageInputElement.value = null;
 }
