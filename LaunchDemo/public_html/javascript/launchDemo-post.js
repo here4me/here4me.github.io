@@ -21,9 +21,9 @@ let postProgressElement = document.getElementById('postProgress');
 let postProgressMessageElement = document.getElementById('postProgressMessage');
 let createSecondButtonElement = document.getElementById('createSecondButton');
 
-here4Me.addEventListener('initialize', function (userId) {
+here4Me.addEventListener('initialize', function (message) {
 
-    if (userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
+    if (message.userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
 
         checkIfStepOnePostExists(function (exists) {
 

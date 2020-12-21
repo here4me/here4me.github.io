@@ -841,7 +841,12 @@ function initializeHere4me() {
 
                 for (var i = 0; i < here4Me.initializeEventListeners.length; i++) {
 
-                    here4Me.initializeEventListeners[i](data.userId);
+                    let message = {
+                        userId: data.userId,
+                        userIsAnonymous: data.userIsAnonymous,
+                        siteId: data.siteId
+                    };
+                    here4Me.initializeEventListeners[i](message);
                 }
 
                 return;
