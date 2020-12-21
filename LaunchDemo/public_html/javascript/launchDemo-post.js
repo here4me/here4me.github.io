@@ -22,6 +22,12 @@ let postProgressMessageElement = document.getElementById('postProgressMessage');
 let createSecondButtonElement = document.getElementById('createSecondButton');
 
 here4Me.addEventListener('initialize', function (message) {
+    
+    if(!message.siteIsActive) {
+        
+        window.location = "./demoNotActive.html";
+        return;
+    }
 
     if (message.userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
 
