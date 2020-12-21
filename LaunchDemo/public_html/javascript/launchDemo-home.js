@@ -28,11 +28,3 @@ if (enablePostButtonElement) {
         here4Me.enablePostButton();
     };
 }
-
-let closeButtonElement = document.getElementById('closeButton');
-if (closeButtonElement) {
-    
-    closeButtonElement.onclick = function () {
-        here4Me.close();
-    };
-}
