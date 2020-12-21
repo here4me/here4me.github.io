@@ -19,6 +19,7 @@ let submitFormBackButtonElement = document.getElementById('submitFormBackButton'
 let createFirstPostButtonElement = document.getElementById('createFirstPostButton');
 let postProgressElement = document.getElementById('postProgress');
 let postProgressMessageElement = document.getElementById('postProgressMessage');
+let createSecondButtonElement = document.getElementById('createSecondButton');
 
 here4Me.addEventListener('initialize', function (userId) {
 
@@ -224,7 +225,8 @@ createFirstPostButtonElement.addEventListener('click', function (event) {
 
         if (response.statusCode === 'SUCCESSFUL') {
 
-            here4Me.broadcastMessage('POST_CREATED');
+            showBoundingBoxProgress(100);
+            createSecondButtonElement.removeAttribute('disabled');
         }
         clearPostForm();
     });
