@@ -15,10 +15,9 @@ here4Me.addEventListener('initialize', function (message) {
 
 here4Me.addEventListener('openPost', function (post) {
 
-    enableSiteFunctionality();
     if (post === null) {
 
-        window.location = "./notFromPost.html";
+        window.location = "./notFromQRCode.html";
         return;
     }
 });
