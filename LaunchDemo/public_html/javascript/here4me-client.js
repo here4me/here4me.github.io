@@ -699,9 +699,6 @@ function initializeHere4me() {
     let bodyElement = document.body;
     let currentDocumentWidth = bodyElement.scrollWidth;
     let currentDocumentHeight = bodyElement.scrollHeight;
-    let currentWindoWidth = Number.MIN_VALUE;
-    let currentWindowHeight = Number.MIN_VALUE;
-
     window.setInterval(here4Me.removeTimedoutCallbackFunctions, 15000);
 
     let eventMethod = (window.addEventListener) ? 'addEventListener' : 'attachEvent';
@@ -729,6 +726,8 @@ function initializeHere4me() {
                     }
                     window.clearInterval(windowResizeIntervalId);
                     windowResizeIntervalId = null;
+                    currentDocumentWidth = bodyElement.scrollWidth;
+                    currentDocumentHeight = bodyElement.scrollHeight;
                     sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                 }, 100);
             }
