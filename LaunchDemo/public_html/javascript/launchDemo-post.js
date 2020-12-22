@@ -30,6 +30,7 @@ here4Me.addEventListener('initialize', function (message) {
     }
     
     document.body.style.display = 'block';
+    here4Me.resize();
 
     if (message.userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
 

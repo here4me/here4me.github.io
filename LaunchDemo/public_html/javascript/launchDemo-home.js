@@ -11,6 +11,7 @@ here4Me.addEventListener('initialize', function (message) {
     }
     
     document.body.style.display = 'block';
+    here4Me.resize();
 });
 
 here4Me.addEventListener('openPost', function (post) {
