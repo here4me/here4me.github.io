@@ -28,6 +28,8 @@ here4Me.addEventListener('initialize', function (message) {
         window.location = "./demoNotActive.html";
         return;
     }
+    
+    document.body.style.display = 'block';
 
     if (message.userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
 

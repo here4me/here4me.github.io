@@ -1,5 +1,7 @@
 /* global here4Me */
 
+here4Me.scrollTo(0, 0);
+
 here4Me.addEventListener('initialize', function (message) {
     
     if(!message.userIsAnonymous) {
@@ -7,9 +9,19 @@ here4Me.addEventListener('initialize', function (message) {
         window.location = "./notAnonymous.html";
         return;
     }
+    
+    document.body.style.display = 'block';
 });
 
-here4Me.scrollTo(0, 0);
+here4Me.addEventListener('openPost', function (post) {
+
+    enableSiteFunctionality();
+    if (post === null) {
+
+        window.location = "./notFromPost.html";
+        return;
+    }
+});
 
 let slide3BackButtonElement = document.getElementById('slide3BackButton');
 if (slide3BackButtonElement) {
