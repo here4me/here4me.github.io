@@ -23,9 +23,9 @@ let createSecondButtonElement = document.getElementById('createSecondButton');
 
 here4Me.addEventListener('initialize', function (message) {
     
-    if(!message.siteIsActive) {
+    if(!message.siteIsOpen) {
         
-        window.location = "./demoNotActive.html";
+        window.location = "./demoNotOpen.html";
         return;
     }
     
