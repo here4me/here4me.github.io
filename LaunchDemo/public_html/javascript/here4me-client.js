@@ -844,7 +844,7 @@ function initializeHere4me() {
                     let message = {
                         userId: data.userId,
                         userIsAnonymous: data.message.userIsAnonymous,
-                        siteIsOpen: data.message.activeHome
+                        siteIsOpen: data.message.siteIsOpen
                     };
                     here4Me.initializeEventListeners[i](message);
                 }
