@@ -5,6 +5,7 @@ const SITE_ID = '63f58ae9fcdae20ea8d3743ab806ab2f';
 const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
 let currentFormGroup = 0;
+let userId = null;
 let postFormElement = document.getElementById('postForm');
 let titleFormGroupElement = document.getElementById('titleFormGroup');
 let titleInputElement = document.getElementById('title');
@@ -22,17 +23,18 @@ let postProgressMessageElement = document.getElementById('postProgressMessage');
 let createSecondButtonElement = document.getElementById('createSecondButton');
 
 here4Me.addEventListener('initialize', function (message) {
-    
-    if(!message.siteIsOpen) {
-        
+
+    userId = message.userId;
+    if (!message.siteIsOpen) {
+
         window.location = "./demoNotOpen.html";
         return;
     }
-    
+
     document.body.style.display = 'block';
     here4Me.resize();
 
-    if (message.userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
+    if (userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
 
         checkIfStepOnePostExists(function (exists) {
 
@@ -236,6 +238,13 @@ createFirstPostButtonElement.addEventListener('click', function (event) {
 
             showBoundingBoxProgress(100);
             createSecondButtonElement.removeAttribute('disabled');
+            record = {
+                id: null,
+                entityId: userId,
+                content: 'A',
+                version: null
+            };
+            here4Me.createRecord(record, function (response) {});
         }
         clearPostForm();
     });
