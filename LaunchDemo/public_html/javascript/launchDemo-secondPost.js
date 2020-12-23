@@ -48,14 +48,17 @@ postItButtonElement.addEventListener('click', function (event) {
     });
 });
 
-closeButtonElement.addEventListener('click', function (event) {
+if (closeButtonElement) {
+    
+    closeButtonElement.addEventListener('click', function (event) {
 
-    here4Me.close();
-});
+        here4Me.close();
+    });
+}
 
 function checkForValidForm() {
-    
-    if(titleInputElement.value.trim() === '' ||
+
+    if (titleInputElement.value.trim() === '' ||
             postMessageInputElement.value.trim() === '' ||
             qrCodeMessageInputElement.value.trim() === '') {
 
