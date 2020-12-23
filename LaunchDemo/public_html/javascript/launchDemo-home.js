@@ -2,7 +2,9 @@
 
 let demoAgendaElement = document.getElementById('demoAgenda');
 let postLocationOneElement = document.getElementById('postLocationOne');
+let postLocationMessageOneElement = document.getElementById('postLocationMessageOne');
 let postLocationTwoElement = document.getElementById('postLocationTwo');
+let postLocationMessageTwoElement = document.getElementById('postLocationMessageTwo');
 
 here4Me.scrollTo(0, 0);
 
@@ -27,9 +29,11 @@ here4Me.addEventListener('openPost', function (post) {
     switch(post.index) {
         case 1:
             postLocationOneElement.style.display = 'block';
+            postLocationMessageOneElement.innerHTML = post.postMessage;
             break;
         case 2:
             postLocationTwoElement.style.display = 'block';
+            postLocationMessageTwoElement.innerHTML = post.postMessage;
             break;
         default:
             demoAgendaElement.style.display = 'block';
