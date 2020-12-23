@@ -237,7 +237,7 @@ createFirstPostButtonElement.addEventListener('click', function (event) {
         if (response.statusCode === 'SUCCESSFUL') {
 
             showBoundingBoxProgress(100);
-            createSecondButtonElement.removeAttribute('disabled');
+            createSecondButtonElement.classList.remove('disabled');
             record = {
                 id: null,
                 entityId: userId,
