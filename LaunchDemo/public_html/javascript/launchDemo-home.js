@@ -14,6 +14,16 @@ here4Me.addEventListener('initialize', function (message) {
     here4Me.resize();
 });
 
+here4Me.addEventListener('broadcastMessage', function (message) {
+
+    switch (message) {
+
+        case 'FIRST_POST_CREATED':
+            window.location = "./slide3a.html";
+            break;
+    }
+});
+
 here4Me.addEventListener('openPost', function (post) {
 
     if (post === null) {

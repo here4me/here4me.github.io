@@ -236,6 +236,7 @@ createFirstPostButtonElement.addEventListener('click', function (event) {
 
         if (response.statusCode === 'SUCCESSFUL') {
 
+            here4Me.broadcastMessage('FIRST_POST_CREATED');
             showBoundingBoxProgress(100);
             createSecondButtonElement.classList.remove('disabled');
             record = {
