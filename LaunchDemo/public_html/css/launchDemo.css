@@ -15,7 +15,15 @@ h5 {
     display: none;
 }
 
+#qrCodeLocationOne {
+    display: none;
+}
+
 #postLocationTwo {
+    display: none;
+}
+
+#qrCodeLocationTwo {
     display: none;
 }
 
