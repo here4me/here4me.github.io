@@ -29,27 +29,30 @@ here4Me.addEventListener('initialize', function (message) {
     here4Me.resize();
 });
 
-postItButtonElement.addEventListener('click', function (event) {
+if (postItButtonElement) {
 
-    let post = buildPost();
-    if (post === null) {
+    postItButtonElement.addEventListener('click', function (event) {
 
-        return;
-    }
+        let post = buildPost();
+        if (post === null) {
 
-    here4Me.createPost(post, function (response) {
-
-        if (response.statusCode === 'SUCCESSFUL') {
-
-            showBoundingBoxProgress(100);
-            window.location = './slide5.html';
+            return;
         }
-        here4Me.refreshContext();
+
+        here4Me.createPost(post, function (response) {
+
+            if (response.statusCode === 'SUCCESSFUL') {
+
+                showBoundingBoxProgress(100);
+                window.location = './slide5.html';
+            }
+            here4Me.refreshContext();
+        });
     });
-});
+}
 
 if (closeButtonElement) {
-    
+
     closeButtonElement.addEventListener('click', function (event) {
 
         here4Me.close();
