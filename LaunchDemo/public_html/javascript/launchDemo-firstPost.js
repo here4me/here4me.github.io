@@ -111,13 +111,17 @@ function createQRCodePost(qrCode) {
         acceptedSiteOwnerIds: [SITE_OWNER_ID],
         contentType: 'string',
         filter: null,
-        content: 'LAUNCH_DEMO_STEP_ONE',
         context: {
             boundingBox: null,
             qrCodes: [qrCode],
             isUserProfile: false,
             promptLocation: false
         },
+        content: JSON.stringify({
+            index: null,
+            postMessage: null,
+            qrCodeMessage: null
+        }),
         version: null
     };
 
@@ -280,6 +284,7 @@ function buildPost() {
         isUserProfilePost: false,
         filter: null,
         content: JSON.stringify({
+            index: 1,
             postMessage: postMessage,
             qrCodeMessage: qrCodeMessage
         })

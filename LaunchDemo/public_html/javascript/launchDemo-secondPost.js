@@ -106,6 +106,7 @@ function buildPost() {
         isUserProfilePost: false,
         filter: 'return ((new Date()).getTime() >= ' + startTime + ');',
         content: JSON.stringify({
+            index: 2,
             postMessage: postMessage,
             qrCodeMessage: qrCodeMessage
         })
