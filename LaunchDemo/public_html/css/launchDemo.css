@@ -15,12 +15,20 @@ h5 {
     display: none;
 }
 
+#postLocationMessageOne {
+    font-style: italic;
+}
+
 #qrCodeLocationOne {
     display: none;
 }
 
 #postLocationTwo {
     display: none;
+}
+
+#postLocationMessageTwo {
+    font-style: italic;
 }
 
 #qrCodeLocationTwo {

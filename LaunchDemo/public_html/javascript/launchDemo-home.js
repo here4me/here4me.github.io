@@ -28,10 +28,14 @@ here4Me.addEventListener('openPost', function (post) {
     var post = JSON.parse(post.content);
     switch(post.index) {
         case 1:
+            here4Me.enableScanButton();
+            here4Me.enableScanner();
             postLocationOneElement.style.display = 'block';
             postLocationMessageOneElement.innerHTML = post.postMessage;
             break;
         case 2:
+            here4Me.enableScanButton();
+            here4Me.enableScanner();
             postLocationTwoElement.style.display = 'block';
             postLocationMessageTwoElement.innerHTML = post.postMessage;
             break;
