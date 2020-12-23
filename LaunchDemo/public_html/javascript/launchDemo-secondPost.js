@@ -14,6 +14,7 @@ let fromTimeSelectElement = document.getElementById('fromTime');
 let postItButtonElement = document.getElementById('postItButton');
 let postProgressElement = document.getElementById('postProgress');
 let postProgressMessageElement = document.getElementById('postProgressMessage');
+let closeButtonElement = document.getElementById('closeButton');
 
 here4Me.addEventListener('initialize', function (message) {
 
@@ -41,9 +42,15 @@ postItButtonElement.addEventListener('click', function (event) {
         if (response.statusCode === 'SUCCESSFUL') {
 
             showBoundingBoxProgress(100);
+            window.location = './slide5.html';
         }
         here4Me.refreshContext();
     });
+});
+
+closeButtonElement.addEventListener('click', function (event) {
+
+    here4Me.close();
 });
 
 function checkForValidForm() {
