@@ -56,6 +56,14 @@ let here4Me = {
     resize: function () {
         sendResizeMessage(document.body.scrollHeight, document.body.scrollWidth);
     },
+    refreshContext: function () {
+
+        parent.postMessage({
+            viewType: here4Me.viewType,
+            homeId: here4Me.homeId,
+            messageType: 'contextUpdate'
+        }, '*');
+    },
     enableScanner: function () {
 
         parent.postMessage({

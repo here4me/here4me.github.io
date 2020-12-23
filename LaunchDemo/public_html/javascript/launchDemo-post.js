@@ -247,6 +247,7 @@ createFirstPostButtonElement.addEventListener('click', function (event) {
             here4Me.createRecord(record, function (response) {});
         }
         clearPostForm();
+        here4Me.refreshContext();
     });
 });
 
