@@ -10,6 +10,7 @@ let qrCodeLocationMessageOneElement = document.getElementById('qrCodeLocationMes
 let postLocationTwoElement = document.getElementById('postLocationTwo');
 let qrCodeLocationOneElement = document.getElementById('qrCodeLocationOne');
 let postLocationMessageTwoElement = document.getElementById('postLocationMessageTwo');
+let closeButtonTwoMessageElement = document.getElementById('closeButtonTwoMessage');
 
 here4Me.scrollTo(0, 0);
 
@@ -82,6 +83,9 @@ here4Me.addEventListener('broadcastMessage', function (message) {
 
         case 'FIRST_POST_CREATED':
             window.location = "./slide3a.html";
+            break;
+        case 'SECOND_POST_SCAN':
+            closeButtonTwoMessageElement.style.display = 'block';
             break;
         default:
             break;

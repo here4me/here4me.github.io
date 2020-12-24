@@ -79,6 +79,10 @@ h5 {
     display: none;
 }
 
+#closeButtonTwoMessage {
+    display: none;
+}
+
 .small-icon {
     width: 24px;
     height: 24px;
