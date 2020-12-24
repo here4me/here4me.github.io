@@ -9,6 +9,7 @@ let qrCodeLocationMessageOneElement = document.getElementById('qrCodeLocationMes
 let postLocationTwoElement = document.getElementById('postLocationTwo');
 let qrCodeLocationOneElement = document.getElementById('qrCodeLocationOne');
 let postLocationMessageTwoElement = document.getElementById('postLocationMessageTwo');
+let closeButtonElement = document.getElementById('closeButton');
 
 here4Me.scrollTo(0, 0);
 
@@ -101,5 +102,13 @@ if (enablePostButtonElement) {
     enablePostButtonElement.onclick = function () {
         enablePostButtonElement.style.display = 'none';
         here4Me.enablePostButton();
+    };
+}
+
+let closeButtonElement = document.getElementById('closeButton');
+if (closeButtonElement) {
+
+    closeButtonElement.onclick = function () {
+        here4Me.close();
     };
 }
