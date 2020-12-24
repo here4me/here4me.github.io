@@ -64,9 +64,10 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             here4Me.showSiteHome();
             postLocationOneElement.style.display = 'none';
             qrCodeLocationOneElement.style.display = 'block';
+            here4Me.resize();
             break;
         case 2:
-            here4Me.broadcastMessage(message.content);
+            here4Me.broadcastMessage(qrCodeMessage);
             break;
     }
 });
