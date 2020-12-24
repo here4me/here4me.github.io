@@ -62,6 +62,8 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
     switch (postIndexValue) {
         case 1:
             here4Me.showSiteHome();
+            here4Me.disableScanButton();
+            here4Me.disableScanner();
             postLocationOneElement.style.display = 'none';
             qrCodeLocationOneElement.style.display = 'block';
             here4Me.resize();
