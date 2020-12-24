@@ -1,5 +1,6 @@
 /* global here4Me */
 
+let postEntity;
 let postIndexValue;
 let qrCodeMessage;
 let demoAgendaElement = document.getElementById('demoAgenda');
@@ -29,29 +30,30 @@ here4Me.addEventListener('openPost', function (post) {
         return;
     }
 
-    var post = JSON.parse(post.content);
-    switch (post.index) {
+    postEntity = post;
+    var postContent = JSON.parse(post.content);
+    switch (postContent.index) {
         case 1:
             postIndexValue = 1;
             here4Me.enableScanButton();
             here4Me.enableScanner();
             postLocationOneElement.style.display = 'block';
-            postLocationMessageOneElement.innerHTML = post.postMessage;
-            qrCodeLocationMessageOneElement.innerHTML = post.qrCodeMessage;
+            postLocationMessageOneElement.innerHTML = postContent.postMessage;
+            qrCodeLocationMessageOneElement.innerHTML = postContent.qrCodeMessage;
             break;
         case 2:
             postIndexValue = 2;
             here4Me.enableScanButton();
             here4Me.enableScanner();
             postLocationTwoElement.style.display = 'block';
-            postLocationMessageTwoElement.innerHTML = post.postMessage;
+            postLocationMessageTwoElement.innerHTML = postContent.postMessage;
             break;
         default:
             postIndexValue = null;
             demoAgendaElement.style.display = 'block';
             break;
     }
-    qrCodeMessage = post.qrCodeMessage;
+    qrCodeMessage = postContent.qrCodeMessage;
 
     document.body.style.display = 'block';
     here4Me.resize();
@@ -108,6 +110,7 @@ let closeButtonElement = document.getElementById('closeButton');
 if (closeButtonElement) {
 
     closeButtonElement.onclick = function () {
+        here4Me.deletePost(postEntity);
         here4Me.close();
     };
 }
