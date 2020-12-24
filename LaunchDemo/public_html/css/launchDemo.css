@@ -20,6 +20,10 @@ h5 {
     font-style: italic;
 }
 
+#qrCodeLocationMessageOne {
+    font-style: italic;
+}
+
 #qrCodeLocationOne {
     display: none;
 }
@@ -29,6 +33,10 @@ h5 {
 }
 
 #postLocationMessageTwo {
+    font-style: italic;
+}
+
+#qrCodeLocationMessageTwo {
     font-style: italic;
 }
 
