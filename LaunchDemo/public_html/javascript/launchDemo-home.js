@@ -106,11 +106,19 @@ if (enablePostButtonElement) {
     };
 }
 
-let closeButtonElement = document.getElementById('closeButton');
-if (closeButtonElement) {
+let closeButtonOneElement = document.getElementById('closeButtonOne');
+if (closeButtonOneElement) {
+    closeButtonOneElement.onclick = closeLocationPost;
+}
 
-    closeButtonElement.onclick = function () {
-        here4Me.deletePost(postEntity);
-        here4Me.close();
-    };
+let closeButtonTwoElement = document.getElementById('closeButtonTwo');
+if (closeButtonTwoElement) {
+    closeButtonTwoElement.onclick = closeLocationPost;
+}
+
+function closeLocationPost() {
+
+    here4Me.deletePost(postEntity);
+    here4Me.refreshContext();
+    here4Me.close();
 }
