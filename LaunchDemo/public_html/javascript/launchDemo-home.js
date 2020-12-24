@@ -7,6 +7,7 @@ let postLocationOneElement = document.getElementById('postLocationOne');
 let postLocationMessageOneElement = document.getElementById('postLocationMessageOne');
 let qrCodeLocationMessageOneElement = document.getElementById('qrCodeLocationMessageOne');
 let postLocationTwoElement = document.getElementById('postLocationTwo');
+let qrCodeLocationOneElement = document.getElementById('qrCodeLocationOne');
 let postLocationMessageTwoElement = document.getElementById('postLocationMessageTwo');
 
 here4Me.scrollTo(0, 0);
@@ -61,7 +62,7 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
     switch (postIndexValue) {
         case 1:
             postLocationOneElement.style.display = 'none';
-            qrCodeLocationMessageOneElement.style.display = 'block';
+            qrCodeLocationOneElement.style.display = 'block';
             here4Me.showSiteHome();
             break;
         case 2:
