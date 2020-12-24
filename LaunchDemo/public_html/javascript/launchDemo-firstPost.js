@@ -83,7 +83,7 @@ function createQRCodeContent(content, callback) {
         id: null,
         acceptedSiteIds: [SITE_ID],
         acceptedSiteOwnerIds: [SITE_OWNER_ID],
-        contentType: 'string',
+        contentType: 'demo-data',
         filter: null,
         content: content,
         service: null,
@@ -109,7 +109,7 @@ function createQRCodePost(qrCode) {
         userDisplayName: 'Here For Me',
         acceptedSiteIds: [SITE_ID],
         acceptedSiteOwnerIds: [SITE_OWNER_ID],
-        contentType: 'string',
+        contentType: 'demo-data',
         filter: null,
         context: {
             boundingBox: null,

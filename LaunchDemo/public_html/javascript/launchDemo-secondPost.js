@@ -29,6 +29,15 @@ here4Me.addEventListener('initialize', function (message) {
     here4Me.resize();
 });
 
+here4Me.qrCodeScanEventListeners.push(function (message) {
+    
+    let qrCodeContent = message.content;
+    if(qrCodeContent === 'LAUNCH_DEMO_QR_CODE') {
+        
+        here4Me.showSiteHome();
+    }
+});
+
 if (postItButtonElement) {
 
     postItButtonElement.addEventListener('click', function (event) {
