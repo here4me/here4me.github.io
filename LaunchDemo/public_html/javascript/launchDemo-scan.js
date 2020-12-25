@@ -5,7 +5,7 @@ let closeButtonElement = document.getElementById('closeButton');
 
 here4Me.addEventListener('broadcastMessage', function (message) {
 
-    if (message !== 'FIRST_POST_CREATED' &&  message !== 'SECOND_POST_SCAN') {
+    if (message !== 'FIRST_POST_CREATED' && message !== 'SECOND_POST_SCAN') {
 
         qrCodeLocationMessageTwoElement.innerHTML = message;
         document.body.style.display = 'block';
@@ -13,6 +13,6 @@ here4Me.addEventListener('broadcastMessage', function (message) {
     }
 });
 
-closeButtonElement.onclick = function() {
+closeButtonElement.onclick = function () {
     here4Me.broadcastMessage('CLOSE_AND_DELETE');
 };

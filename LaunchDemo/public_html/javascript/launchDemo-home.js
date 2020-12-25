@@ -11,7 +11,6 @@ let qrCodeLocationMessageOneElement = document.getElementById('qrCodeLocationMes
 let postLocationTwoElement = document.getElementById('postLocationTwo');
 let qrCodeLocationOneElement = document.getElementById('qrCodeLocationOne');
 let postLocationMessageTwoElement = document.getElementById('postLocationMessageTwo');
-let closeButtonTwoMessageElement = document.getElementById('closeButtonTwoMessage');
 
 here4Me.scrollTo(0, 0);
 
@@ -65,15 +64,14 @@ here4Me.addEventListener('openPost', function (post) {
 });
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
-    
-    if(scanCount === 0) {
-        
-        scanCount++;
-        return;
-    }
 
     switch (postIndexValue) {
         case 1:
+            if (scanCount === 0) {
+
+                scanCount++;
+                break;
+            }
             here4Me.showSiteHome();
             here4Me.disableScanButton();
             here4Me.disableScanner();
@@ -83,7 +81,6 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             break;
         case 2:
             here4Me.broadcastMessage(qrCodeMessage);
-            closeButtonTwoMessageElement.style.display = 'block';
             break;
     }
 });
@@ -124,11 +121,6 @@ if (enablePostButtonElement) {
 let closeButtonOneElement = document.getElementById('closeButtonOne');
 if (closeButtonOneElement) {
     closeButtonOneElement.onclick = closeLocationPost;
-}
-
-let closeButtonTwoElement = document.getElementById('closeButtonTwo');
-if (closeButtonTwoElement) {
-    closeButtonTwoElement.onclick = closeLocationPost;
 }
 
 function closeLocationPost() {
