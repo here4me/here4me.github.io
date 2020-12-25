@@ -54,7 +54,9 @@ here4Me.addEventListener('openPost', function (post) {
             break;
         default:
             postIndexValue = null;
-            demoAgendaElement.style.display = 'block';
+            if(demoAgendaElement) {
+                demoAgendaElement.style.display = 'block';
+            }
             break;
     }
     qrCodeMessage = postContent.qrCodeMessage;
