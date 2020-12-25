@@ -81,9 +81,20 @@ function checkForValidForm() {
     }
 }
 
-titleInputElement.onkeyup = checkForValidForm;
-postMessageInputElement.onkeyup = checkForValidForm;
-qrCodeMessageInputElement.onkeyup = checkForValidForm;
+if(titleInputElement) {
+    
+    titleInputElement.onkeyup = checkForValidForm;
+}
+
+if(postMessageInputElement) {
+    
+    postMessageInputElement.onkeyup = checkForValidForm;
+}
+
+if(qrCodeMessageInputElement) {
+    
+    qrCodeMessageInputElement.onkeyup = checkForValidForm;
+}
 
 here4Me.addEventListener('calculatingBoundingBox', function (status) {
 
