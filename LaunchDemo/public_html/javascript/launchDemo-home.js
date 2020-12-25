@@ -90,7 +90,7 @@ here4Me.addEventListener('broadcastMessage', function (message) {
             window.location = "./slide3a.html";
             break;
         case 'WHAT_IS_SECOND_QR_CODE_MESSAGE':
-            window.location = "./slide3a.html";
+            here4Me.broadcastMessage(qrCodeMessage);
             break;
         case 'CLOSE_AND_DELETE':
             closeLocationPost();
