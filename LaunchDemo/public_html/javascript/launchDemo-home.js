@@ -123,7 +123,8 @@ if (closeButtonTwoElement) {
 
 function closeLocationPost() {
 
-    here4Me.deletePost(postEntity);
-    here4Me.refreshContext();
-    here4Me.close();
+    here4Me.deletePost(postEntity, function () {
+        here4Me.refreshContext();
+        here4Me.close();
+    });
 }
