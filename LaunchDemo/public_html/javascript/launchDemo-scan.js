@@ -1,7 +1,7 @@
 /* global here4Me */
 
 let qrCodeLocationMessageTwoElement = document.getElementById('qrCodeLocationMessageTwo');
-let homeButtonElement = document.getElementById('qrCodeLocationMessageTwo');
+let homeButtonElement = document.getElementById('homeButton');
 
 here4Me.addEventListener('broadcastMessage', function (message) {
 
