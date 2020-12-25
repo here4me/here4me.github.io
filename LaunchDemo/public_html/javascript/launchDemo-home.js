@@ -65,23 +65,20 @@ here4Me.addEventListener('openPost', function (post) {
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
 
-    switch (postIndexValue) {
-        case 1:
-            if (scanCount === 0) {
+    if (postIndexValue === 1) {
+        
+        if (scanCount === 0) {
 
-                scanCount++;
-                break;
-            }
-            here4Me.showSiteHome();
-            here4Me.disableScanButton();
-            here4Me.disableScanner();
-            postLocationOneElement.style.display = 'none';
-            qrCodeLocationOneElement.style.display = 'block';
-            here4Me.resize();
-            break;
-        case 2:
-            here4Me.broadcastMessage(qrCodeMessage);
-            break;
+            scanCount++;
+            return;
+        }
+        
+        here4Me.showSiteHome();
+        here4Me.disableScanButton();
+        here4Me.disableScanner();
+        postLocationOneElement.style.display = 'none';
+        qrCodeLocationOneElement.style.display = 'block';
+        here4Me.resize();
     }
 });
 
@@ -90,6 +87,9 @@ here4Me.addEventListener('broadcastMessage', function (message) {
     switch (message) {
 
         case 'FIRST_POST_CREATED':
+            window.location = "./slide3a.html";
+            break;
+        case 'WHAT_IS_SECOND_QR_CODE_MESSAGE':
             window.location = "./slide3a.html";
             break;
         case 'CLOSE_AND_DELETE':
