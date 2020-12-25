@@ -12,5 +12,3 @@ here4Me.addEventListener('broadcastMessage', function (message) {
         here4Me.scrollTo(0, 0);
     }
 });
-
-here4Me.broadcastMessage('SECOND_POST_SCAN');

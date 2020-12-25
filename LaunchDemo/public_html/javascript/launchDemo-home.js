@@ -73,6 +73,7 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             break;
         case 2:
             here4Me.broadcastMessage(qrCodeMessage);
+            closeButtonTwoMessageElement.style.display = 'block';
             break;
     }
 });
@@ -83,9 +84,6 @@ here4Me.addEventListener('broadcastMessage', function (message) {
 
         case 'FIRST_POST_CREATED':
             window.location = "./slide3a.html";
-            break;
-        case 'SECOND_POST_SCAN':
-            closeButtonTwoMessageElement.style.display = 'block';
             break;
         default:
             break;
