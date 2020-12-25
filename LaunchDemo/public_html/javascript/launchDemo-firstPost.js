@@ -216,6 +216,7 @@ nextButtonElement.onclick = function () {
             currentFormGroup++;
             break;
     }
+    here4Me.scrollTo(0, 0);
     here4Me.resize();
 };
 
@@ -225,6 +226,7 @@ submitFormBackButtonElement.onclick = function () {
     qrCodeMessageFormGroupElement.style.display = 'block';
     submitFormElement.style.display = 'none';
     currentFormGroup--;
+    here4Me.scrollTo(0, 0);
     here4Me.resize();
 };
 
