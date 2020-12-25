@@ -15,5 +15,6 @@ here4Me.addEventListener('broadcastMessage', function (message) {
 });
 
 homeButtonElement.onclick = function() {
+    here4Me.broadcastMessage('SCROLL_TO_CLOSE');
     here4Me.showSiteHome();
 };

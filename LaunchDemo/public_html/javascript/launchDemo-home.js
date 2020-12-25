@@ -85,6 +85,9 @@ here4Me.addEventListener('broadcastMessage', function (message) {
         case 'FIRST_POST_CREATED':
             window.location = "./slide3a.html";
             break;
+        case 'SCROLL_TO_CLOSE':
+            closeButtonTwoMessageElement.scrollIntoView()
+            break;
         default:
             break;
     }
