@@ -70,11 +70,11 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
     if (postIndexValue === 1) {
 
         here4Me.showSiteHome();
-        if (scanCount === 0) {
-
-            scanCount++;
-            return;
-        }
+//        if (scanCount === 0) {
+//
+//            scanCount++;
+//            return;
+//        }
 
         here4Me.disableScanButton();
         here4Me.disableScanner();
