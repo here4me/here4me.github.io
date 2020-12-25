@@ -21,6 +21,9 @@ here4Me.addEventListener('initialize', function (message) {
         window.location = "./notAnonymous.html";
         return;
     }
+
+    document.body.style.display = 'block';
+    here4Me.resize();
 });
 
 here4Me.addEventListener('openPost', function (post) {
@@ -55,8 +58,6 @@ here4Me.addEventListener('openPost', function (post) {
             break;
     }
     qrCodeMessage = postContent.qrCodeMessage;
-
-    document.body.style.display = 'block';
     here4Me.resize();
 });
 
