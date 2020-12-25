@@ -137,9 +137,11 @@ function closeLocationPost() {
 
                     let record = response.message[0];
                     record.content = 'B';
-                    here4Me.updateRecord(record);
-                    here4Me.refreshContext();
-                    here4Me.close();
+                    here4Me.updateRecord(record, function () {
+
+                        here4Me.refreshContext();
+                        here4Me.close();
+                    });
                 });
             } else {
 
