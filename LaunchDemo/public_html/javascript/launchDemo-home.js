@@ -139,9 +139,9 @@ function closeLocationPost() {
                     record.content = 'B';
                     here4Me.updateRecord(record);
                 });
-                here4Me.refreshContext();
-                here4Me.close();
             }
+            here4Me.refreshContext();
+            here4Me.close();
         });
     });
 }
