@@ -1,5 +1,6 @@
 /* global here4Me */
 
+let userId;
 let postEntity;
 let postIndexValue;
 let qrCodeMessage;
@@ -21,6 +22,7 @@ here4Me.addEventListener('initialize', function (message) {
         window.location = "./notAnonymous.html";
         return;
     }
+    userId = message.userId;
 
     document.body.style.display = 'block';
     here4Me.resize();
@@ -65,6 +67,7 @@ here4Me.addEventListener('openPost', function (post) {
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
 
+    here4Me.showSiteHome();
     if (postIndexValue === 1) {
 
         if (scanCount === 0) {
@@ -73,7 +76,6 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             return;
         }
 
-        here4Me.showSiteHome();
         here4Me.disableScanButton();
         here4Me.disableScanner();
         postLocationOneElement.style.display = 'none';
@@ -128,13 +130,18 @@ function closeLocationPost() {
     here4Me.deletePost(postEntity, function () {
 
         here4Me.readAllPosts(function (response) {
-            
-            if(response.message.length === 0) {
-                
-                console.log('Update user record!');
+
+            if (response.message.length === 0) {
+
+                here4Me.readAllRecords(function (response) {
+
+                    let record = response.message[0];
+                    record.content = 'B';
+                    here4Me.updateRecord(record);
+                });
+                here4Me.refreshContext();
+                here4Me.close();
             }
-            here4Me.refreshContext();
-            here4Me.close();
-        })
+        });
     });
 }
