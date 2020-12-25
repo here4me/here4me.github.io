@@ -67,9 +67,9 @@ here4Me.addEventListener('openPost', function (post) {
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
 
-    here4Me.showSiteHome();
     if (postIndexValue === 1) {
 
+        here4Me.showSiteHome();
         if (scanCount === 0) {
 
             scanCount++;
