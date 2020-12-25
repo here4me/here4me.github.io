@@ -10,7 +10,6 @@ here4Me.addEventListener('broadcastMessage', function (message) {
         qrCodeLocationMessageTwoElement.innerHTML = message;
         document.body.style.display = 'block';
         here4Me.resize();
-        here4Me.scrollTo(0, 0);
     }
 });
 
