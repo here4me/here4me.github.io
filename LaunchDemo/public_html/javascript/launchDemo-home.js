@@ -66,13 +66,13 @@ here4Me.addEventListener('openPost', function (post) {
 here4Me.qrCodeScanEventListeners.push(function (message) {
 
     if (postIndexValue === 1) {
-        
+
         if (scanCount === 0) {
 
             scanCount++;
             return;
         }
-        
+
         here4Me.showSiteHome();
         here4Me.disableScanButton();
         here4Me.disableScanner();
@@ -126,7 +126,15 @@ if (closeButtonOneElement) {
 function closeLocationPost() {
 
     here4Me.deletePost(postEntity, function () {
-        here4Me.refreshContext();
-        here4Me.close();
+
+        here4Me.readAllPosts(function (response) {
+            
+            if(response.message.length === 0) {
+                
+                console.log('Update user record!');
+            }
+            here4Me.refreshContext();
+            here4Me.close();
+        })
     });
 }
