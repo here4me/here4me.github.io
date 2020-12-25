@@ -3,6 +3,7 @@
 let postEntity;
 let postIndexValue;
 let qrCodeMessage;
+let scanCount = 0;
 let demoAgendaElement = document.getElementById('demoAgenda');
 let postLocationOneElement = document.getElementById('postLocationOne');
 let postLocationMessageOneElement = document.getElementById('postLocationMessageOne');
@@ -54,7 +55,7 @@ here4Me.addEventListener('openPost', function (post) {
             break;
         default:
             postIndexValue = null;
-            if(demoAgendaElement) {
+            if (demoAgendaElement) {
                 demoAgendaElement.style.display = 'block';
             }
             break;
@@ -64,6 +65,12 @@ here4Me.addEventListener('openPost', function (post) {
 });
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
+    
+    if(scanCount === 0) {
+        
+        scanCount++;
+        return;
+    }
 
     switch (postIndexValue) {
         case 1:
