@@ -133,7 +133,7 @@ function closeLocationPost() {
 
             if (response.message.length === 0) {
 
-                here4Me.readAllRecords(function (response) {
+                here4Me.readAllRecords(userId, function (response) {
 
                     let record = response.message[0];
                     record.content = 'B';
