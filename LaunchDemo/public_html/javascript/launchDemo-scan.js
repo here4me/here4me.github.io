@@ -14,8 +14,5 @@ here4Me.addEventListener('broadcastMessage', function (message) {
 });
 
 closeButtonElement.onclick = function() {
-    here4Me.disableScanner();
-    here4Me.disableScanButton();
-    here4Me.showSiteHome();
     here4Me.broadcastMessage('CLOSE_AND_DELETE');
 };
