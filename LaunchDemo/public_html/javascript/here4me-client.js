@@ -899,7 +899,6 @@ function initializeHere4me() {
 
 function sendResizeMessage(height, width) {
 
-    console.log('Site sending documentResize.');
     let message = {
         messageType: 'documentResize',
         height: height,
