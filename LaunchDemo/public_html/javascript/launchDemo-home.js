@@ -4,7 +4,6 @@ let userId;
 let postEntity;
 let postIndexValue;
 let qrCodeMessage;
-let scanCount = 0;
 let demoAgendaElement = document.getElementById('demoAgenda');
 let postLocationOneElement = document.getElementById('postLocationOne');
 let postLocationMessageOneElement = document.getElementById('postLocationMessageOne');
@@ -69,9 +68,8 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
 
     if (postIndexValue === 1) {
 
-        if (scanCount === 0) {
+        if (message.isCached) {
 
-            scanCount++;
             return;
         }
 
