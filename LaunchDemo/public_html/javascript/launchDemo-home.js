@@ -63,12 +63,12 @@ here4Me.addEventListener('openPost', function (post) {
                 } else if (demoAgendaElement) {
                     
                     demoAgendaElement.style.display = 'block';
+                    here4Me.resize();
                 }
             });
             break;
     }
     qrCodeMessage = postContent.qrCodeMessage;
-    here4Me.resize();
 });
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
