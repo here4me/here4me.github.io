@@ -55,9 +55,17 @@ here4Me.addEventListener('openPost', function (post) {
             break;
         default:
             postIndexValue = null;
-            if (demoAgendaElement) {
-                demoAgendaElement.style.display = 'block';
-            }
+            here4Me.readAllRecords(userId, function (response) {
+
+                let record = response.message[0];
+                if (record.content === 'B') {
+
+                } else if (demoAgendaElement) {
+                    
+                    window.location = "./slide6.html";
+                    demoAgendaElement.style.display = 'block';
+                }
+            });
             break;
     }
     qrCodeMessage = postContent.qrCodeMessage;
