@@ -57,12 +57,11 @@ here4Me.addEventListener('openPost', function (post) {
             postIndexValue = null;
             here4Me.readAllRecords(userId, function (response) {
 
-                let record = response.message[0];
-                if (record.content === 'B') {
+                if (response.message.length > 0 && response.message[0].content === 'B') {
 
+                    window.location = "./slide6.html";
                 } else if (demoAgendaElement) {
                     
-                    window.location = "./slide6.html";
                     demoAgendaElement.style.display = 'block';
                 }
             });
