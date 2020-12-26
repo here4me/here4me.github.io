@@ -12,7 +12,7 @@ here4Me.addEventListener('broadcastMessage', function (message) {
 
     if (message !== 'FIRST_POST_CREATED' &&
             message !== 'SECOND_POST_SCAN' &&
-            message !== 'WHAT_IS_SECOND_QR_CODE_MESSAGE' && 
+            message !== 'WHAT_IS_SECOND_QR_CODE_MESSAGE' &&
             message !== 'CLOSE_AND_DELETE') {
 
         qrCodeLocationMessageTwoElement.innerHTML = message;

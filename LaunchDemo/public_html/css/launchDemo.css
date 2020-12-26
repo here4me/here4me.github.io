@@ -75,6 +75,12 @@ h5 {
     margin-bottom: 25px;
 }
 
+#personal-qrcode-image {
+    margin-top: 10px;
+    max-width: 256px;
+    margin-bottom: 25px;
+}
+
 #postProgress {
     display: none;
 }
