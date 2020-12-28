@@ -11,6 +11,8 @@ let qrCodeLocationMessageOneElement = document.getElementById('qrCodeLocationMes
 let postLocationTwoElement = document.getElementById('postLocationTwo');
 let qrCodeLocationOneElement = document.getElementById('qrCodeLocationOne');
 let postLocationMessageTwoElement = document.getElementById('postLocationMessageTwo');
+let siteQRCodeElement = document.getElementById('siteQRCode');
+let siteQRCodeMessageElement = document.getElementById('siteQRCodeMessage');
 
 here4Me.scrollTo(0, 0);
 
@@ -60,8 +62,11 @@ here4Me.addEventListener('openPost', function (post) {
                 if (response.message.length > 0 && response.message[0].content === 'B') {
 
                     window.location = "./slide6.html";
+                } else if (response.message.length > 0 && response.message[0].content === 'C') {
+
+                    window.location = "./slide7.html";
                 } else if (demoAgendaElement) {
-                    
+
                     demoAgendaElement.style.display = 'block';
                     here4Me.resize();
                 }
@@ -86,7 +91,12 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
         postLocationOneElement.style.display = 'none';
         qrCodeLocationOneElement.style.display = 'block';
         here4Me.resize();
+        return;
     }
+
+    siteQRCodeMessageElement.innerHTML = message.content;
+    siteQRCodeElement.style.display = 'block';
+    here4Me.resize();
 });
 
 here4Me.addEventListener('broadcastMessage', function (message) {
@@ -101,6 +111,9 @@ here4Me.addEventListener('broadcastMessage', function (message) {
             break;
         case 'CLOSE_AND_DELETE':
             closeLocationPost();
+            break;
+        case 'USER_SITE_QR_CODE_CONTENT_SET':
+            userSiteQRCodeSet();
             break;
         default:
             break;
@@ -153,6 +166,19 @@ function closeLocationPost() {
                 here4Me.refreshContext();
                 here4Me.close();
             }
+        });
+    });
+}
+
+function userSiteQRCodeSet() {
+
+    here4Me.readAllRecords(userId, function (response) {
+
+        let record = response.message[0];
+        record.content = 'C';
+        here4Me.updateRecord(record, function () {
+
+            window.location = "./slide7.html";
         });
     });
 }

@@ -75,6 +75,7 @@ function setUserQRCodeContent() {
                 
                 here4Me.disableConfigurationButton();
                 here4Me.enableScanButton();
+                here4Me.broadcastMessage('USER_SITE_QR_CODE_CONTENT_SET');
             });
         }
     });
@@ -101,11 +102,7 @@ function buildQRCodeContent() {
         acceptedSiteOwnerIds: [SITE_OWNER_ID],
         contentType: CONTENT_TYPE,
         filter: null,
-        content: JSON.stringify({
-            index: 3,
-            postMessage: null,
-            qrCodeMessage: siteQRCodeMessageElement.value
-        }),
+        content: siteQRCodeMessageElement.value,
         service: null,
         context: null,
         version: null
