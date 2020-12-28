@@ -112,9 +112,6 @@ here4Me.addEventListener('broadcastMessage', function (message) {
         case 'CLOSE_AND_DELETE':
             closeLocationPost();
             break;
-        case 'USER_SITE_QR_CODE_CONTENT_SET':
-            userSiteQRCodeSet();
-            break;
         default:
             break;
     }
@@ -166,19 +163,6 @@ function closeLocationPost() {
                 here4Me.refreshContext();
                 here4Me.close();
             }
-        });
-    });
-}
-
-function userSiteQRCodeSet() {
-
-    here4Me.readAllRecords(userId, function (response) {
-
-        let record = response.message[0];
-        record.content = 'C';
-        here4Me.updateRecord(record, function () {
-
-            window.location = "./slide7.html";
         });
     });
 }

@@ -14,6 +14,18 @@ here4Me.addEventListener('initialize', function (message) {
     here4Me.resize();
 });
 
+here4Me.addEventListener('broadcastMessage', function (message) {
+
+    switch (message) {
+
+        case 'USER_SITE_QR_CODE_CONTENT_SET':
+            userSiteQRCodeSet();
+            break;
+        default:
+            break;
+    }
+});
+
 siteQRCodeMessageElement.onkeyup = function () {
 
     if (siteQRCodeMessageElement.value.trim() === '') {
@@ -109,4 +121,17 @@ function buildQRCodeContent() {
     };
 
     return qrCodeContent;
+}
+
+function userSiteQRCodeSet() {
+
+    here4Me.readAllRecords(userId, function (response) {
+
+        let record = response.message[0];
+        record.content = 'C';
+        here4Me.updateRecord(record, function () {
+
+            window.location = "./slide7.html";
+        });
+    });
 }
