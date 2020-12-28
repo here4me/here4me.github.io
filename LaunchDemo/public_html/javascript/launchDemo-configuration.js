@@ -4,11 +4,13 @@ const CONTENT_TYPE = 'demo-data';
 const SITE_ID = '63f58ae9fcdae20ea8d3743ab806ab2f';
 const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
+let userId;
 let siteQRCodeMessageElement = document.getElementById('siteQRCodeMessage');
 let setQRCodeButtonElement = document.getElementById('setQRCodeButton');
 
 here4Me.addEventListener('initialize', function (message) {
 
+    userId = message.userId;
     here4Me.enableConfigurationButton();
     document.body.style.display = 'block';
     here4Me.resize();
