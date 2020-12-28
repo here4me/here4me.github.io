@@ -18,14 +18,19 @@ siteQRCodeMessageElement.onkeyup = function () {
 
     if (siteQRCodeMessageElement.value.trim() === '') {
 
-        setQRCodeButtonElement.setAttribute('disabled', true);
+        setQRCodeButtonElement.classList.add('disabled');
     } else {
 
-        setQRCodeButtonElement.removeAttribute('disabled');
+        setQRCodeButtonElement.classList.remove('disabled');
     }
 };
 
 setQRCodeButtonElement.onclick = function () {
+    
+    if (siteQRCodeMessageElement.value.trim() === '') {
+        
+        return;
+    }
 
     getUserQRCodeContent(function (qrCodeContent) {
 
@@ -96,7 +101,11 @@ function buildQRCodeContent() {
         acceptedSiteOwnerIds: [SITE_OWNER_ID],
         contentType: CONTENT_TYPE,
         filter: null,
-        content: siteQRCodeMessageElement.value,
+        content: JSON.stringify({
+            index: 3,
+            postMessage: null,
+            qrCodeMessage: siteQRCodeMessageElement.value
+        }),
         service: null,
         context: null,
         version: null
