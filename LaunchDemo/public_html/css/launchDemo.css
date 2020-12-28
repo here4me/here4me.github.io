@@ -89,6 +89,10 @@ h5 {
     display: none;
 }
 
+#setQRCodeButton {
+    margin-bottom: 20px;
+}
+
 .small-icon {
     width: 24px;
     height: 24px;
