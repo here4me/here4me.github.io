@@ -4,28 +4,14 @@ const CONTENT_TYPE = 'demo-data';
 const SITE_ID = '63f58ae9fcdae20ea8d3743ab806ab2f';
 const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
-let userId;
 let siteQRCodeMessageElement = document.getElementById('siteQRCodeMessage');
 let setQRCodeButtonElement = document.getElementById('setQRCodeButton');
 
 here4Me.addEventListener('initialize', function (message) {
 
-    userId = message.userId;
     here4Me.enableConfigurationButton();
     document.body.style.display = 'block';
     here4Me.resize();
-});
-
-here4Me.addEventListener('broadcastMessage', function (message) {
-
-    switch (message) {
-
-        case 'USER_SITE_QR_CODE_CONTENT_SET':
-            userSiteQRCodeSet();
-            break;
-        default:
-            break;
-    }
 });
 
 if (siteQRCodeMessageElement) {
@@ -129,17 +115,4 @@ function buildQRCodeContent() {
     };
 
     return qrCodeContent;
-}
-
-function userSiteQRCodeSet() {
-
-    here4Me.readAllRecords(userId, function (response) {
-
-        let record = response.message[0];
-        record.content = 'C';
-        here4Me.updateRecord(record, function () {
-
-            window.location = "./slide7.html";
-        });
-    });
 }
