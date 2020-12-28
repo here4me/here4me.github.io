@@ -98,14 +98,16 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
         return;
     }
 
-    if (siteQRCodeMessageElement) {
-        siteQRCodeMessageElement.innerHTML = message.content;
-    }
+    if (message.content !== 'LAUNCH_DEMO_QR_CODE') {
+        if (siteQRCodeMessageElement) {
+            siteQRCodeMessageElement.innerHTML = message.content;
+        }
 
-    if (siteQRCodeElement) {
-        siteQRCodeElement.style.display = 'block';
+        if (siteQRCodeElement) {
+            siteQRCodeElement.style.display = 'block';
+        }
+        here4Me.resize();
     }
-    here4Me.resize();
 });
 
 here4Me.addEventListener('broadcastMessage', function (message) {
