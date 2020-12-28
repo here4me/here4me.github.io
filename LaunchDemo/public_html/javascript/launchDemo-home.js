@@ -61,9 +61,13 @@ here4Me.addEventListener('openPost', function (post) {
 
                 if (response.message.length > 0 && response.message[0].content === 'B' && !window.location.href.includes("slide6")) {
 
+                    here4Me.enableConfigurationButton();
                     window.location = "./slide6.html";
                 } else if (response.message.length > 0 && response.message[0].content === 'C' && !window.location.href.includes("slide7")) {
 
+                    here4Me.disablePostButton();
+                    here4Me.disableScanButton();
+                    here4Me.disableConfigurationButton();
                     window.location = "./slide7.html";
                 } else if (demoAgendaElement) {
 

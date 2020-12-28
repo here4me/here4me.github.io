@@ -9,7 +9,6 @@ let setQRCodeButtonElement = document.getElementById('setQRCodeButton');
 
 here4Me.addEventListener('initialize', function (message) {
 
-    here4Me.enableConfigurationButton();
     document.body.style.display = 'block';
     here4Me.resize();
 });
