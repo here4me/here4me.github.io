@@ -94,9 +94,15 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
         return;
     }
 
-    siteQRCodeMessageElement.innerHTML = message.content;
-    siteQRCodeElement.style.display = 'block';
+    if (siteQRCodeMessageElement) {
+        siteQRCodeMessageElement.innerHTML = message.content;
+    }
+
+    if (siteQRCodeElement) {
+        siteQRCodeElement.style.display = 'block';
+    }
     here4Me.resize();
+    console.log('.');
 });
 
 here4Me.addEventListener('broadcastMessage', function (message) {
