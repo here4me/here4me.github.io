@@ -59,10 +59,10 @@ here4Me.addEventListener('openPost', function (post) {
             postIndexValue = null;
             here4Me.readAllRecords(userId, function (response) {
 
-                if (response.message.length > 0 && response.message[0].content === 'B' && !window.location.includes("slide6")) {
+                if (response.message.length > 0 && response.message[0].content === 'B' && !window.location.href.includes("slide6")) {
 
                     window.location = "./slide6.html";
-                } else if (response.message.length > 0 && response.message[0].content === 'C' && !window.location.includes("slide7")) {
+                } else if (response.message.length > 0 && response.message[0].content === 'C' && !window.location.href.includes("slide7")) {
 
                     window.location = "./slide7.html";
                 } else if (demoAgendaElement) {
