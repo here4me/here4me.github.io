@@ -26,33 +26,39 @@ here4Me.addEventListener('broadcastMessage', function (message) {
     }
 });
 
-siteQRCodeMessageElement.onkeyup = function () {
+if (siteQRCodeMessageElement) {
 
-    if (siteQRCodeMessageElement.value.trim() === '') {
+    siteQRCodeMessageElement.onkeyup = function () {
 
-        setQRCodeButtonElement.classList.add('disabled');
-    } else {
+        if (siteQRCodeMessageElement.value.trim() === '') {
 
-        setQRCodeButtonElement.classList.remove('disabled');
-    }
-};
+            setQRCodeButtonElement.classList.add('disabled');
+        } else {
 
-setQRCodeButtonElement.onclick = function () {
-    
-    if (siteQRCodeMessageElement.value.trim() === '') {
-        
-        return;
-    }
-
-    getUserQRCodeContent(function (qrCodeContent) {
-
-        if (qrCodeContent !== null) {
-
-            here4Me.deleteQRCodeContent(qrCodeContent, function (response) {});
+            setQRCodeButtonElement.classList.remove('disabled');
         }
-        setUserQRCodeContent();
-    });
-};
+    };
+}
+
+if (setQRCodeButtonElement) {
+    
+    setQRCodeButtonElement.onclick = function () {
+
+        if (siteQRCodeMessageElement.value.trim() === '') {
+
+            return;
+        }
+
+        getUserQRCodeContent(function (qrCodeContent) {
+
+            if (qrCodeContent !== null) {
+
+                here4Me.deleteQRCodeContent(qrCodeContent, function (response) {});
+            }
+            setUserQRCodeContent();
+        });
+    };
+}
 
 function getUserQRCodeContent(callback) {
 
@@ -84,7 +90,7 @@ function setUserQRCodeContent() {
         if (qrCodeContentId !== null) {
 
             here4Me.setUserQRCodeContentId(qrCodeContentId, function (response) {
-                
+
                 here4Me.disableConfigurationButton();
                 here4Me.enableScanButton();
                 here4Me.broadcastMessage('USER_SITE_QR_CODE_CONTENT_SET');
