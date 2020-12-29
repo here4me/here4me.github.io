@@ -84,6 +84,9 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
     
     if (message.content !== 'LAUNCH_DEMO_QR_CODE') {
         
+        postLocationOneElement.style.display = 'none';
+        qrCodeLocationOneElement.style.display = 'none';
+        postLocationTwoElement.style.display = 'none';
         if (siteQRCodeMessageElement) {
             siteQRCodeMessageElement.innerHTML = message.content;
         }
@@ -92,6 +95,7 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             siteQRCodeElement.style.display = 'block';
         }
         here4Me.resize();
+        here4Me.showSiteHome();
         return;
     }
 
