@@ -18,7 +18,7 @@ here4Me.scrollTo(0, 0);
 
 here4Me.addEventListener('initialize', function (message) {
 
-    if (message.userIsAnonymous) {
+    if (!message.userIsAnonymous) {
 
         window.location = "./notAnonymous.html";
         return;
