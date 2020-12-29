@@ -92,7 +92,7 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             siteQRCodeElement.style.display = 'block';
         }
         here4Me.resize();
-        return
+        return;
     }
 
     if (postIndexValue === 1) {
