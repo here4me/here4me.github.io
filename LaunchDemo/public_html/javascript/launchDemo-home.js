@@ -81,6 +81,19 @@ here4Me.addEventListener('openPost', function (post) {
 });
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
+    
+    if (message.content !== 'LAUNCH_DEMO_QR_CODE') {
+        
+        if (siteQRCodeMessageElement) {
+            siteQRCodeMessageElement.innerHTML = message.content;
+        }
+
+        if (siteQRCodeElement) {
+            siteQRCodeElement.style.display = 'block';
+        }
+        here4Me.resize();
+        return
+    }
 
     if (postIndexValue === 1) {
 
@@ -96,17 +109,6 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
         qrCodeLocationOneElement.style.display = 'block';
         here4Me.resize();
         return;
-    }
-
-    if (message.content !== 'LAUNCH_DEMO_QR_CODE') {
-        if (siteQRCodeMessageElement) {
-            siteQRCodeMessageElement.innerHTML = message.content;
-        }
-
-        if (siteQRCodeElement) {
-            siteQRCodeElement.style.display = 'block';
-        }
-        here4Me.resize();
     }
 });
 
