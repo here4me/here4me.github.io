@@ -4,7 +4,7 @@ const CONTENT_TYPE = 'demo-data';
 const SITE_ID = '63f58ae9fcdae20ea8d3743ab806ab2f';
 const SITE_OWNER_ID = '8ae1a3cf2fa609656eaa447f8fe99b15';
 
-let userSiteQRCodeFormElement =  document.getElementById('userSiteQRCodeForm');
+let userSiteQRCodeFormElement = document.getElementById('userSiteQRCodeForm');
 let siteQRCodeMessageElement = document.getElementById('siteQRCodeMessage');
 let setQRCodeButtonElement = document.getElementById('setQRCodeButton');
 
@@ -29,7 +29,7 @@ if (siteQRCodeMessageElement) {
 }
 
 if (setQRCodeButtonElement) {
-    
+
     setQRCodeButtonElement.onclick = function () {
 
         if (siteQRCodeMessageElement.value.trim() === '') {
@@ -80,9 +80,16 @@ function setUserQRCodeContent() {
 
             here4Me.setUserQRCodeContentId(qrCodeContentId, function (response) {
 
-                here4Me.disableConfigurationButton();
-                here4Me.enableScanButton();
-                here4Me.broadcastMessage('USER_SITE_QR_CODE_CONTENT_SET');
+                here4Me.readPost('9a864efd451ecaf23d20f38e21d5bc84', function (post) {
+
+                    post.context.qrCodes.push(qrCodeContentId);
+                    here4Me.updatePost(post, null, function () {
+
+                        here4Me.disableConfigurationButton();
+                        here4Me.enableScanButton();
+                        here4Me.broadcastMessage('USER_SITE_QR_CODE_CONTENT_SET');
+                    });
+                });
             });
         }
     });
