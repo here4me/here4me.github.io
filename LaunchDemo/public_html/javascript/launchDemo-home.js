@@ -82,7 +82,7 @@ here4Me.addEventListener('openPost', function (post) {
 
 here4Me.qrCodeScanEventListeners.push(function (message) {
     
-    if (message.content !== 'LAUNCH_DEMO_QR_CODE') {
+    if (!message.isCached && message.content !== 'LAUNCH_DEMO_QR_CODE') {
         
         postLocationOneElement.style.display = 'none';
         qrCodeLocationOneElement.style.display = 'none';
