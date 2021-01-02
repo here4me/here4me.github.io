@@ -9,6 +9,9 @@
         clickable: true
       }
     });
+    swiperH.on('slideChange', function() {
+        here4Me.resize();
+    });
     
     let swiperV = new Swiper('.swiper-container-v', {
       direction: 'vertical',
@@ -18,6 +21,7 @@
         clickable: true
       }
     });
-    
-    here4Me.resize();
+    swiperV.on('slideChange', function() {
+        here4Me.resize();
+    });
 });
