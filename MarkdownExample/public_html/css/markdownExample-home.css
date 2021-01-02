@@ -1,0 +1,30 @@
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.swiper-container {
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+}
+
+.swiper-container-h {
+}
+
+.swiper-container-v {
+    margin-left: 4%;
+    margin-right: 4%;
+    width: 92%;
+}
+
+.slide-content {
+}
