@@ -3,7 +3,7 @@
 here4Me.addEventListener('initialize', function (message) {
 
     let mySwipe = Swipe(document.getElementById('slider'), {
-        startSlide: 2,
+        startSlide: 1,
         speed: 400,
         auto: 3000,
         continuous: true,
