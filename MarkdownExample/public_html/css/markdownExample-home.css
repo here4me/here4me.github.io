@@ -10,16 +10,31 @@ body {
 }
 
 .swipe {
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
 }
 .swipe-wrap {
-  overflow: hidden;
-  position: relative;
+    overflow: hidden;
+    position: relative;
 }
 .swipe-wrap > div {
-  float:left;
-  width:100%;
-  position: relative;
+    float:left;
+    width:100%;
+    position: relative;
+}
+
+#first {
+    height: 100px;
+    background-color: red;
+}
+
+#second {
+    height: 200px;
+    background-color: green;
+}
+
+#third {
+    height: 200px;
+    background-color: blue;
 }
