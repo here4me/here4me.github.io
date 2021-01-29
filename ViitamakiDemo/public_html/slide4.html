@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Second Post</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/filipelinhares/ress/master/dist/ress.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/viitamakiDemo.css">
+    </head>
+    <body data-site-id="cdf5813a65990f1377873213381e470c">
+        <div class="container">
+            <h5>
+                Create Second Post
+            </h5>
+            <div id="postForm">
+                <p>
+                    Now let's create a second post. This time we will add a time
+                    component to it. Please select an address different from
+                    your first post but also one you can quickly walk to.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <h6>Title</h6>
+                        <input id="title" class="form-control" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <h6>Post Message</h6>
+                        <textarea id="postMessage"  class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <h6>QR Code Message</h6>
+                        <textarea id="qrCodeMessage"  class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <h6>When will post be available?</h6>
+                        <select id="fromTime" class="form-control">
+                            <option value="5">Five minutes from now</option>
+                            <option value="10" selected>Ten minutes from now</option>
+                            <option value="15">Fifteen minutes from now</option>
+                            <option value="20">Twenty minutes from now</option>
+                            <option value="30">Thirty minutes from now</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="text-right">
+                    <button id="postItButton" class="btn btn-primary" disabled>Post it!</button>
+                </div>
+            </div>
+            <div id="postProgress">
+                <p>
+                    Please wait till 100% complete; thank you for your patience!<br/><br/>
+                    Percent Complete: <b><span id="postProgressMessage">&nbsp;</span></b>
+                </p>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="./javascript/here4me-client.js"></script>
+        <script src="./javascript/viitamakiDemo-secondPost.js"></script>
+    </body>
+</html>

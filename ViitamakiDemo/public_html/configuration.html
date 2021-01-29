@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Configuration</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/filipelinhares/ress/master/dist/ress.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/viitamakiDemo.css">
+    </head>
+    <body data-site-id="cdf5813a65990f1377873213381e470c">
+        <div class="container">
+            <h5>
+                Set Personal QR Code
+            </h5>
+            <p>
+                We will use this demo's configuration view to set
+                the user's site QR code found on the QR Code view
+                <img class="small-icon" src="./images/qrcode.png" alt="">.
+            </p>
+            <div id='userSiteQRCodeForm'>
+                <form>
+                    <div class="form-group">
+                        <h6>Users's Site QR Code Content</h6>
+                        <textarea id="siteQRCodeMessage"  class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+                <div class="text-right">
+                    <button id="setQRCodeButton" class="btn btn-primary disabled">Set User's Site QR Code</button>
+                </div>
+            </div>
+            <p>
+                Once set another user may scan the QR Code from your mobile
+                device to receive the content. You may also tap the QR Code
+                to copy a URL you can send via text, email, or social media
+                platforms. This is another way users can pass information from
+                one user to another using here4.me.
+            </p>
+            <p>
+                To continue, tap the QR Code icon <img class="small-icon" src="./images/qrcode.png" alt="">
+                in the navigation bar below. After reviewing your site QR Code,
+                tap the Viitamaki Demo icon <img class="small-icon" src="./images/icon.jpg" alt="">
+                in the navigation bar below to complete the demo.
+            </p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="./javascript/here4me-client.js"></script>
+        <script src="./javascript/viitamakiDemo-configuration.js"></script>
+    </body>
+</html>
