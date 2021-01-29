@@ -24,16 +24,10 @@ let createSecondButtonElement = document.getElementById('createSecondButton');
 
 here4Me.addEventListener('initialize', function (message) {
 
-    userId = message.userId;
-    if (!message.siteIsOpen) {
-
-        window.location = "./demoNotOpen.html";
-        return;
-    }
-
     document.body.style.display = 'block';
     here4Me.resize();
 
+    userId = message.userId;
     if (userId === '8ae1a3cf2fa609656eaa447f8fe99b15') {
 
         checkIfStepOnePostExists(function (exists) {
@@ -43,6 +37,10 @@ here4Me.addEventListener('initialize', function (message) {
                 createDemoPost();
             }
         });
+    } else if (!message.siteIsOpen) {
+
+        window.location = "./demoNotOpen.html";
+        return;
     }
 });
 
@@ -252,7 +250,7 @@ createFirstPostButtonElement.addEventListener('click', function (event) {
                 version: null
             };
             here4Me.createRecord(record, function (response) {
-                
+
                 clearPostForm();
                 here4Me.refreshContext();
             });
