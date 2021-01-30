@@ -890,8 +890,8 @@ function initializeHere4me() {
         var newWidth = bodyElement.scrollWidth;
         if (Math.abs(currentDocumentHeight - newHeight) > 0 || Math.abs(currentDocumentWidth - newWidth) > 0) {
 
-            bodyElement.style.minHeight = currentDocumentHeight = newHeight;
-            bodyElement.style.minWidth = currentDocumentWidth = newWidth;
+            bodyElement.style.height = currentDocumentHeight = newHeight;
+            bodyElement.style.width = currentDocumentWidth = newWidth;
             sendResizeMessage(newHeight, newWidth);
         }
     });
