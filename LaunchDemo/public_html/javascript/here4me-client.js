@@ -886,9 +886,9 @@ function initializeHere4me() {
 
     window.addEventListener('resize', function () {
 
-        let newHeight = bodyElement.scrollHeight;
+        let newHeight = bodyElement.scrollHeight + 15;
         var newWidth = bodyElement.scrollWidth;
-        if (Math.abs(currentDocumentHeight - newHeight) > 0 || Math.abs(currentDocumentWidth - newWidth) > 0) {
+        if (Math.abs(currentDocumentHeight - newHeight) > 20 || Math.abs(currentDocumentWidth - newWidth) > 0) {
 
             currentDocumentHeight = newHeight;
             bodyElement.style.height = newHeight + 'px';
