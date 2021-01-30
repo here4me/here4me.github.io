@@ -873,7 +873,7 @@ function initializeHere4me() {
 
         let newHeight = bodyElement.scrollHeight;
         var newWidth = bodyElement.scrollWidth;
-        if (Math.abs(currentDocumentHeight - newHeight) > 5 || Math.abs(currentDocumentWidth - newWidth) > 5) {
+        if (Math.abs(currentDocumentHeight - newHeight) > 0 || Math.abs(currentDocumentWidth - newWidth) > 0) {
 
             currentDocumentHeight = newHeight;
             currentDocumentWidth = newWidth;
