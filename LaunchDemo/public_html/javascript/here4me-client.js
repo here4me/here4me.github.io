@@ -735,8 +735,9 @@ function initializeHere4me() {
                     window.clearInterval(windowResizeIntervalId);
                     windowResizeIntervalId = null;
                     currentDocumentWidth = bodyElement.scrollWidth;
-                    currentDocumentHeight = bodyElement.scrollHeight;
+                    currentDocumentHeight = bodyElement.scrollHeight + 15;
                     sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
+                    bodyElement.style.height = currentDocumentHeight + 'px';
                 }, 100);
             }
 
