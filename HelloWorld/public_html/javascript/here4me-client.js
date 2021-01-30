@@ -43,6 +43,27 @@ let here4Me = {
         }
         eventListeners.push(handler);
     },
+    scrollTo: function (xCoord, yCoord) {
+
+        parent.postMessage({
+            viewType: here4Me.viewType,
+            homeId: here4Me.homeId,
+            messageType: 'scrollTo',
+            xCoord: xCoord,
+            yCoord: yCoord
+        }, '*');
+    },
+    resize: function () {
+        sendResizeMessage(document.body.scrollHeight, document.body.scrollWidth);
+    },
+    refreshContext: function () {
+
+        parent.postMessage({
+            viewType: here4Me.viewType,
+            homeId: here4Me.homeId,
+            messageType: 'contextUpdate'
+        }, '*');
+    },
     enableScanner: function () {
 
         parent.postMessage({
@@ -686,9 +707,6 @@ function initializeHere4me() {
     let bodyElement = document.body;
     let currentDocumentWidth = bodyElement.scrollWidth;
     let currentDocumentHeight = bodyElement.scrollHeight;
-    let currentWindoWidth = Number.MIN_VALUE;
-    let currentWindowHeight = Number.MIN_VALUE;
-
     window.setInterval(here4Me.removeTimedoutCallbackFunctions, 15000);
 
     let eventMethod = (window.addEventListener) ? 'addEventListener' : 'attachEvent';
@@ -716,19 +734,9 @@ function initializeHere4me() {
                     }
                     window.clearInterval(windowResizeIntervalId);
                     windowResizeIntervalId = null;
-                    if (currentDocumentWidth !== bodyElement.scrollWidth ||
-                            currentDocumentHeight !== bodyElement.scrollHeight ||
-                            currentWindoWidth !== message.width ||
-                            currentWindowHeight !== message.height) {
-
-                        currentWindoWidth = message.width;
-                        currentWindowHeight = message.height;
-                        currentDocumentWidth = bodyElement.scrollWidth;
-                        currentDocumentHeight = bodyElement.scrollHeight;
-                        bodyElement.style.width = currentDocumentWidth + 'px';
-                        bodyElement.style.height = currentDocumentHeight + 'px';
-                        sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
-                    }
+                    bodyElement.style.width = currentDocumentWidth + 'px';
+                    bodyElement.style.height = currentDocumentHeight + 'px';
+                    sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
                 }, 100);
             }
 
@@ -840,7 +848,12 @@ function initializeHere4me() {
 
                 for (var i = 0; i < here4Me.initializeEventListeners.length; i++) {
 
-                    here4Me.initializeEventListeners[i](data.userId);
+                    let message = {
+                        userId: data.userId,
+                        userIsAnonymous: data.message.userIsAnonymous,
+                        siteIsOpen: data.message.siteIsOpen
+                    };
+                    here4Me.initializeEventListeners[i](message);
                 }
 
                 return;
@@ -881,24 +894,6 @@ function initializeHere4me() {
             currentDocumentWidth = newWidth;
             sendResizeMessage(newHeight, newWidth);
         }
-    });
-
-    window.addEventListener('click', function () {
-
-        let message = {
-            messageType: 'documentClick'
-        };
-
-        parent.postMessage(message, '*');
-    });
-
-    document.addEventListener("touchstart", function () {
-
-        let message = {
-            messageType: 'documentClick'
-        };
-
-        parent.postMessage(message, '*');
     });
 }
 
