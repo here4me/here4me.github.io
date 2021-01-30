@@ -54,11 +54,7 @@ let here4Me = {
         }, '*');
     },
     resize: function () {
-        let currentDocumentWidth = document.body.scrollWidth;
-        let currentDocumentHeight = document.body.scrollHeight;
-        document.body.style.width = currentDocumentWidth + 'px';
-        document.body.style.height = currentDocumentHeight + 'px';
-        sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
+        sendResizeMessage(document.body.scrollHeight + 15, document.body.scrollWidth);
     },
     refreshContext: function () {
 
@@ -885,13 +881,13 @@ function initializeHere4me() {
             if (++scaleCount === 10) {
 
                 window.clearInterval(intervalId);
+                currentDocumentWidth = bodyElement.scrollWidth;
+                currentDocumentHeight = bodyElement.scrollHeight;
+                bodyElement.style.width = currentDocumentWidth + 'px';
+                bodyElement.style.height = currentDocumentHeight + 'px';
+                sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
             }
         }, 100);
-        currentDocumentWidth = bodyElement.scrollWidth;
-        currentDocumentHeight = bodyElement.scrollHeight;
-        bodyElement.style.width = currentDocumentWidth + 'px';
-        bodyElement.style.height = currentDocumentHeight + 'px';
-        sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
     });
 
     window.addEventListener('resize', function () {
