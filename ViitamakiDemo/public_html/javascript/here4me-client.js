@@ -891,7 +891,7 @@ function initializeHere4me() {
         if (Math.abs(currentDocumentHeight - newHeight) > 0 || Math.abs(currentDocumentWidth - newWidth) > 0) {
 
             currentDocumentHeight = newHeight;
-            bodyElement.style.height = (newHeight + 15) + 'px';
+            bodyElement.style.height = newHeight + 'px';
             currentDocumentWidth = newWidth;
             bodyElement.style.width = newWidth + 'px';
             sendResizeMessage(newHeight, newWidth);
