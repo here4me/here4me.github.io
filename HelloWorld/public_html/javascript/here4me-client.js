@@ -723,8 +723,8 @@ function initializeHere4me() {
 
                         currentWindoWidth = message.width;
                         currentWindowHeight = message.height;
-                        currentDocumentWidth = bodyElement.scrollWidth;
-                        currentDocumentHeight = bodyElement.scrollHeight;
+                        currentDocumentWidth = bodyElement.scrollWidth + 15;
+                        currentDocumentHeight = bodyElement.scrollHeight + 15;
                         sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                     }
                 }, 100);
@@ -875,8 +875,8 @@ function initializeHere4me() {
         var newWidth = bodyElement.scrollWidth;
         if (Math.abs(currentDocumentHeight - newHeight) > 0 || Math.abs(currentDocumentWidth - newWidth) > 0) {
 
-            currentDocumentHeight = newHeight + 15;
-            currentDocumentWidth = newWidth + 15;
+            currentDocumentHeight = newHeight;
+            currentDocumentWidth = newWidth;
             sendResizeMessage(newHeight, newWidth);
         }
     });
