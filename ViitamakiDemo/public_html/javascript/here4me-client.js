@@ -736,7 +736,7 @@ function initializeHere4me() {
                     windowResizeIntervalId = null;
                     bodyElement.style.width = currentDocumentWidth + 'px';
                     bodyElement.style.height = currentDocumentHeight + 'px';
-                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
+                    sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
                 }, 100);
             }
 
@@ -881,7 +881,7 @@ function initializeHere4me() {
                 window.clearInterval(intervalId);
             }
         }, 100);
-        sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
+        sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
     });
 
     window.addEventListener('resize', function () {
@@ -901,7 +901,7 @@ function sendResizeMessage(height, width) {
 
     let message = {
         messageType: 'documentResize',
-        height: height + 15,
+        height: height,
         width: width
     };
 
