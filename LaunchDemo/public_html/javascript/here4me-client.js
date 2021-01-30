@@ -737,7 +737,7 @@ function initializeHere4me() {
                     currentDocumentWidth = bodyElement.scrollWidth;
                     currentDocumentHeight = bodyElement.scrollHeight;
                     bodyElement.style.width = currentDocumentWidth + 'px';
-                    bodyElement.style.height = currentDocumentHeight + 'px';
+                    bodyElement.style.height = (currentDocumentHeight + 15) + 'px';
                     sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
                 }, 100);
             }
