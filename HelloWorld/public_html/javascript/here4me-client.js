@@ -54,7 +54,11 @@ let here4Me = {
         }, '*');
     },
     resize: function () {
-        sendResizeMessage(document.body.scrollHeight + 15, document.body.scrollWidth);
+        let currentDocumentWidth = document.body.scrollWidth;
+        let currentDocumentHeight = document.body.scrollHeight;
+        document.body.style.width = currentDocumentWidth + 'px';
+        document.body.style.height = currentDocumentHeight + 'px';
+        sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
     },
     refreshContext: function () {
 
@@ -734,6 +738,8 @@ function initializeHere4me() {
                     }
                     window.clearInterval(windowResizeIntervalId);
                     windowResizeIntervalId = null;
+                    currentDocumentWidth = bodyElement.scrollWidth;
+                    currentDocumentHeight = bodyElement.scrollHeight;
                     bodyElement.style.width = currentDocumentWidth + 'px';
                     bodyElement.style.height = currentDocumentHeight + 'px';
                     sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
@@ -881,6 +887,10 @@ function initializeHere4me() {
                 window.clearInterval(intervalId);
             }
         }, 100);
+        currentDocumentWidth = bodyElement.scrollWidth;
+        currentDocumentHeight = bodyElement.scrollHeight;
+        bodyElement.style.width = currentDocumentWidth + 'px';
+        bodyElement.style.height = currentDocumentHeight + 'px';
         sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
     });
 
