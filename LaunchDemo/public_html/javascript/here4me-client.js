@@ -54,7 +54,7 @@ let here4Me = {
         }, '*');
     },
     resize: function () {
-        sendResizeMessage(document.body.scrollHeight + 15, document.body.scrollWidth);
+        sendResizeMessage(document.body.scrollHeight, document.body.scrollWidth);
     },
     refreshContext: function () {
 
@@ -734,9 +734,9 @@ function initializeHere4me() {
                     }
                     window.clearInterval(windowResizeIntervalId);
                     windowResizeIntervalId = null;
-                    bodyElement.style.width = currentDocumentWidth + 'px';
-                    bodyElement.style.height = (currentDocumentHeight + 15) + 'px';
-                    sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
+                    currentDocumentWidth = bodyElement.scrollWidth;
+                    currentDocumentHeight = bodyElement.scrollHeight;
+                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                 }, 100);
             }
 
@@ -881,16 +881,16 @@ function initializeHere4me() {
                 window.clearInterval(intervalId);
             }
         }, 100);
-        sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
+        sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
     });
 
     window.addEventListener('resize', function () {
 
         let newHeight = bodyElement.scrollHeight;
         var newWidth = bodyElement.scrollWidth;
-        if (Math.abs(currentDocumentHeight - newHeight) > 15 || Math.abs(currentDocumentWidth - newWidth) > 15) {
+        if (Math.abs(currentDocumentHeight - newHeight) > 0 || Math.abs(currentDocumentWidth - newWidth) > 0) {
 
-            currentDocumentHeight = newHeight + 15;
+            currentDocumentHeight = newHeight;
             currentDocumentWidth = newWidth;
             sendResizeMessage(newHeight, newWidth);
         }
