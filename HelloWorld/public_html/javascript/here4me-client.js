@@ -56,8 +56,6 @@ let here4Me = {
     resize: function () {
         let currentDocumentWidth = document.body.scrollWidth;
         let currentDocumentHeight = document.body.scrollHeight;
-        document.body.style.width = currentDocumentWidth + 'px';
-        document.body.style.height = currentDocumentHeight + 'px';
         sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
     },
     refreshContext: function () {
