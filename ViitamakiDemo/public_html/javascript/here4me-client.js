@@ -54,7 +54,7 @@ let here4Me = {
         }, '*');
     },
     resize: function () {
-        sendResizeMessage(document.body.scrollHeight, document.body.scrollWidth);
+        sendResizeMessage(document.body.scrollHeight + 15, document.body.scrollWidth);
     },
     refreshContext: function () {
 
