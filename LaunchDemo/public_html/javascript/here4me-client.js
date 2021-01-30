@@ -881,13 +881,9 @@ function initializeHere4me() {
             if (++scaleCount === 10) {
 
                 window.clearInterval(intervalId);
-                currentDocumentWidth = bodyElement.scrollWidth;
-                currentDocumentHeight = bodyElement.scrollHeight;
-                bodyElement.style.width = currentDocumentWidth + 'px';
-                bodyElement.style.height = currentDocumentHeight + 'px';
-                sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
             }
         }, 100);
+        sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
     });
 
     window.addEventListener('resize', function () {
