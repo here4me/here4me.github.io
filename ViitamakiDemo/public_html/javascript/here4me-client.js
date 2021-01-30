@@ -736,7 +736,7 @@ function initializeHere4me() {
                     windowResizeIntervalId = null;
                     bodyElement.style.width = currentDocumentWidth + 'px';
                     bodyElement.style.height = currentDocumentHeight + 'px';
-                    sendResizeMessage(currentDocumentHeight + 15, currentDocumentWidth);
+                    sendResizeMessage(currentDocumentHeight, currentDocumentWidth);
                 }, 100);
             }
 
@@ -901,7 +901,7 @@ function sendResizeMessage(height, width) {
 
     let message = {
         messageType: 'documentResize',
-        height: height,
+        height: height + 15,
         width: width
     };
 
