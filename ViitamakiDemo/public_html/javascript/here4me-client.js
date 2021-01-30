@@ -888,11 +888,11 @@ function initializeHere4me() {
 
         let newHeight = bodyElement.scrollHeight;
         var newWidth = bodyElement.scrollWidth;
-        if (Math.abs(currentDocumentHeight - newHeight) > 0 || Math.abs(currentDocumentWidth - newWidth) > 0) {
+        if (Math.abs(currentDocumentHeight - newHeight) > 15 || Math.abs(currentDocumentWidth - newWidth) > 15) {
 
-            currentDocumentHeight = newHeight;
+            currentDocumentHeight = newHeight + 15;
             currentDocumentWidth = newWidth;
-            sendResizeMessage(newHeight + 15, newWidth);
+            sendResizeMessage(newHeight, newWidth);
         }
     });
 }
