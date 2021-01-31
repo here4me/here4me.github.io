@@ -94,6 +94,7 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             siteQRCodeElement.style.display = 'block';
         }
         here4Me.resize();
+        console.log('B)');
         here4Me.showSiteHome();
         return;
     }
@@ -105,6 +106,7 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
             return;
         }
 
+        console.log('C)');
         here4Me.showSiteHome();
         here4Me.disableScanButton();
         here4Me.disableScanner();

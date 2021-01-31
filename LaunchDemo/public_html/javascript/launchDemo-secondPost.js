@@ -34,6 +34,7 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
     let qrCodeContent = message.content;
     if(qrCodeContent === 'LAUNCH_DEMO_QR_CODE') {
         
+        console.log('D)');
         here4Me.showSiteHome();
     }
 });

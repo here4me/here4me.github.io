@@ -165,6 +165,7 @@ postFormBackButtonElement.onclick = function () {
 
     switch (currentFormGroup) {
         case 0:
+            console.log('A)');
             here4Me.showSiteHome();
             break;
         case 1:
