@@ -193,6 +193,9 @@ function userSiteQRCodeSet() {
 
         let record = response.message[0];
         record.content = 'C';
-        here4Me.updateRecord(record, function () {});
+        here4Me.updateRecord(record, function () {
+
+            window.location = "./slide7.html";
+        });
     });
 }
