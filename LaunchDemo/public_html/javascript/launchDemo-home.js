@@ -68,8 +68,6 @@ here4Me.addEventListener('openPost', function (post) {
                     here4Me.disablePostButton();
                     here4Me.disableScanButton();
                     here4Me.disableConfigurationButton();
-                    console.log('3)');
-                    window.location = "./slide7.html";
                 } else if (demoAgendaElement) {
 
                     demoAgendaElement.style.display = 'block';
@@ -97,7 +95,6 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
         }
         here4Me.resize();
         here4Me.showSiteHome();
-        console.log('1)');
         return;
     }
 
@@ -109,7 +106,6 @@ here4Me.qrCodeScanEventListeners.push(function (message) {
         }
 
         here4Me.showSiteHome();
-        console.log('2)');
         here4Me.disableScanButton();
         here4Me.disableScanner();
         postLocationOneElement.style.display = 'none';
