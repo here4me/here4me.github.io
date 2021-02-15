@@ -1,0 +1,11 @@
+{
+    "elements": {},
+    "attributes": {
+        "as": {
+            "context": "link"
+        },
+        "once": {
+            "context": "section"
+        }
+    }
+}
