@@ -379,6 +379,7 @@ nav .mbr-section-btn {
 
 /*! Full-screen */
 .mbr-fullscreen .mbr-overlay {
+  min-height: 100vh;
 }
 
 .mbr-fullscreen {
@@ -391,6 +392,7 @@ nav .mbr-section-btn {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
@@ -814,6 +816,7 @@ input[type="range"] {
 html,
 body {
   height: auto;
+  min-height: 100vh;
 }
 
 .dropup .dropdown-toggle::after {
