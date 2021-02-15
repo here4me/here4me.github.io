@@ -383,6 +383,15 @@ nav .mbr-section-btn {
 }
 
 .mbr-fullscreen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 3rem;
